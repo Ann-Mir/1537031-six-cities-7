@@ -1,7 +1,7 @@
 # Личный проект «Шесть городов»
 
 * Студент: [Анна](https://up.htmlacademy.ru/react/7/user/1537031).
-* Наставник: `Неизвестно`.
+* Наставник: [Виктор Кан](https://htmlacademy.ru/profile/viktorkan).
 
 ---
 
