@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import PlacesList from '../places-list/places-list';
+import PlacesList from '../../places-list/places-list';
+import Logo from '../../logo/logo';
 
 function MainPage({ placesCount }) {
 
@@ -10,9 +11,7 @@ function MainPage({ placesCount }) {
         <div className="container">
           <div className="header__wrapper">
             <div className="header__left">
-              <a className="header__logo-link header__logo-link--active">
-                <img className="header__logo" src="img/logo.svg" alt="6 cities logo"  style={{width: '81', height: '41'}}/>
-              </a>
+              <Logo />
             </div>
             <nav className="header__nav">
               <ul className="header__nav-list">
