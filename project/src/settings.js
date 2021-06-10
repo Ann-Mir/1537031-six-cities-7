@@ -15,4 +15,6 @@ export const LOGO_SETTINGS = {
     WIDTH: 64,
     HEIGHT: 33,
   }
-}
+};
+
+export const RATING_STEP = 20;

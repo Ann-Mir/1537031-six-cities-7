@@ -1,12 +1,25 @@
 import React from 'react';
-import {capitalizeFirstLetter} from "../../utils/render";
+import {capitalizeFirstLetter, getRating} from '../../utils/render';
 
 function PlaceCard(props) {
-  const { previewImage, price, description, type, isFavorite, isPremium, rating } = props.offer;
-  const ratingWidth = Math.round(rating) * 20;
+  const {
+    id,
+    previewImage,
+    price,
+    description,
+    type,
+    isFavorite,
+    isPremium,
+    rating } = props.offer;
+  const setActiveOffer = props.setActiveOffer;
+  const ratingWidth = getRating(rating);
 
   return (
-    <article className="cities__place-card place-card">
+    <article
+      className="cities__place-card place-card"
+      onMouseEnter={() => setActiveOffer(id)}
+      onMouseLeave={() => setActiveOffer(null)}
+    >
       <div className={`place-card__mark ${isPremium ? '' : 'visually-hidden'}`}>
         <span>Premium</span>
       </div>
@@ -39,7 +52,7 @@ function PlaceCard(props) {
         <h2 className="place-card__name">
           <a href="#">{description}</a>
         </h2>
-        <p className="place-card__type">{type}</p>
+        <p className="place-card__type">{capitalizeFirstLetter(type)}</p>
       </div>
     </article>
   );
