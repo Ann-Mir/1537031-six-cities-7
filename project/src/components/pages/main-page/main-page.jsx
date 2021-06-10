@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import PlacesList from '../../places-list/places-list';
 import Header from '../../header/header';
 
-function MainPage({ placesCount }) {
+function MainPage({ offers }) {
 
   return (
     <div className="page page--gray page--main">
@@ -66,7 +66,7 @@ function MainPage({ placesCount }) {
                   <li className="places__option" tabIndex="0">Top rated first</li>
                 </ul>
               </form>
-              <PlacesList placesCount={placesCount}/>
+              <PlacesList offers={offers}/>
             </section>
             <div className="cities__right-section">
               <section className="cities__map map"></section>
@@ -77,9 +77,5 @@ function MainPage({ placesCount }) {
     </div>
   );
 }
-
-MainPage.propTypes = {
-  placesCount: PropTypes.number.isRequired,
-};
 
 export default MainPage;

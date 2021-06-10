@@ -8,13 +8,13 @@ import LoginPage from '../pages/login-page/login-page';
 import RoomPage from '../pages/room-page/room-page';
 import NotFoundPage from '../pages/not-found-page/not-found-page';
 
-function App({ placesCount }) {
+function App({ offers }) {
   return (
     <BrowserRouter>
       <Switch>
         <Route exact path={AppRoute.ROOT}>
           <MainPage
-            placesCount={placesCount}
+            offers={offers}
           />
         </Route>
         <Route exact path={AppRoute.FAVORITES}>
@@ -35,7 +35,7 @@ function App({ placesCount }) {
 }
 
 App.propTypes = {
-  placesCount: PropTypes.number.isRequired,
+
 };
 
 export default App;
