@@ -26,7 +26,10 @@ function App({ offers }) {
           <LoginPage />
         </Route>
         <Route exact path={AppRoute.ROOM}>
-          <RoomPage />
+          <RoomPage
+            offers={offers}
+            onReviewSubmit={() => {}}
+          />
         </Route>
         <Route>
           <NotFoundPage />

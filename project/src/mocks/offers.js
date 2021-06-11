@@ -14,13 +14,13 @@ const offers = [
     description: 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.',
     goods: ['Heating', 'Kitchen', 'Cable TV', 'Washing machine', 'Coffee machine', 'Dishwasher'],
     host: {
-      avatarUrl: `http://picsum.photos/248/152?r=${getRandomInteger(1, 100)}`,
+      avatarUrl: 'img/avatar-angelina.jpg',
       id: 3,
       isPro: true,
       name: 'Angelina'
     },
     id: 1,
-    images: [`http://picsum.photos/248/152?r=${getRandomInteger(1, 100)}`, `http://picsum.photos/248/152?r=${getRandomInteger(1, 100)}`],
+    images: [`http://picsum.photos/248/152?r=${getRandomInteger(1, 100)}`, `http://picsum.photos/248/152?r=${getRandomInteger(1, 100)}`, `http://picsum.photos/248/152?r=${getRandomInteger(1, 100)}`, `http://picsum.photos/248/152?r=${getRandomInteger(1, 100)}`, `http://picsum.photos/248/152?r=${getRandomInteger(1, 100)}`, `http://picsum.photos/248/152?r=${getRandomInteger(1, 100)}`,],
     isFavorite: false,
     isPremium: false,
     location: {
@@ -48,13 +48,13 @@ const offers = [
     description: 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.',
     goods: ['Heating', 'Kitchen', 'Coffee machine', 'Dishwasher'],
     host: {
-      avatarUrl: `http://picsum.photos/248/152?r=${getRandomInteger(1, 100)}`,
+      avatarUrl: 'img/avatar-angelina.jpg',
       id: 2,
       isPro: false,
       name: 'Elizabeth'
     },
     id: 2,
-    images: [`http://picsum.photos/248/152?r=${getRandomInteger(1, 100)}`, `http://picsum.photos/248/152?r=${getRandomInteger(1, 100)}`],
+    images: [`http://picsum.photos/248/152?r=${getRandomInteger(1, 100)}`, `http://picsum.photos/248/152?r=${getRandomInteger(1, 100)}`, `http://picsum.photos/248/152?r=${getRandomInteger(1, 100)}`, `http://picsum.photos/248/152?r=${getRandomInteger(1, 100)}`, `http://picsum.photos/248/152?r=${getRandomInteger(1, 100)}`, `http://picsum.photos/248/152?r=${getRandomInteger(1, 100)}`],
     isFavorite: true,
     isPremium: false,
     location: {
@@ -82,15 +82,15 @@ const offers = [
     description: 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.',
     goods: ['Heating', 'Cable TV', 'Coffee machine'],
     host: {
-      avatarUrl: `http://picsum.photos/248/152?r=${getRandomInteger(1, 100)}`,
+      avatarUrl: 'img/avatar-angelina.jpg',
       id: 1,
       isPro: true,
       name: 'Oliver'
     },
     id: 3,
-    images: [`http://picsum.photos/248/152?r=${getRandomInteger(1, 100)}`, `http://picsum.photos/248/152?r=${getRandomInteger(1, 100)}`],
+    images: [`http://picsum.photos/248/152?r=${getRandomInteger(1, 100)}`, `http://picsum.photos/248/152?r=${getRandomInteger(1, 100)}`, `http://picsum.photos/248/152?r=${getRandomInteger(1, 100)}`, `http://picsum.photos/248/152?r=${getRandomInteger(1, 100)}`, `http://picsum.photos/248/152?r=${getRandomInteger(1, 100)}`],
     isFavorite: false,
-    isPremium: false,
+    isPremium: true,
     location: {
       latitude: 52.36129248736812,
       longitude: 4.930045185368442,
@@ -116,13 +116,13 @@ const offers = [
     description: 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.',
     goods: ['Heating', 'Coffee machine'],
     host: {
-      avatarUrl: `http://picsum.photos/248/152?r=${getRandomInteger(1, 100)}`,
+      avatarUrl: 'img/avatar-angelina.jpg',
       id: 4,
       isPro: false,
       name: 'John'
     },
     id: 4,
-    images: [`http://picsum.photos/248/152?r=${getRandomInteger(1, 100)}`, `http://picsum.photos/248/152?r=${getRandomInteger(1, 100)}`],
+    images: [`http://picsum.photos/248/152?r=${getRandomInteger(1, 100)}`, `http://picsum.photos/248/152?r=${getRandomInteger(1, 100)}`, `http://picsum.photos/248/152?r=${getRandomInteger(1, 100)}`, `http://picsum.photos/248/152?r=${getRandomInteger(1, 100)}`, `http://picsum.photos/248/152?r=${getRandomInteger(1, 100)}`, `http://picsum.photos/248/152?r=${getRandomInteger(1, 100)}`],
     isFavorite: true,
     isPremium: true,
     location: {

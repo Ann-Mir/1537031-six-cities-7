@@ -10,7 +10,6 @@ const SETTINGS = {
 ReactDOM.render(
   <React.StrictMode>
     <App
-      placesCount={SETTINGS.placesCount}
       offers={offers}
     />
   </React.StrictMode>,
