@@ -2,6 +2,7 @@ import React from 'react';
 import PlaceCard from '../place-card/place-card';
 import PropTypes from 'prop-types';
 import offerPropTypes from '../offer.prop';
+import {CardTypes} from '../../settings';
 
 function PlacesList ({offers}) {
   const [activeOffer, setActiveOffer] = React.useState(null);
@@ -12,6 +13,9 @@ function PlacesList ({offers}) {
                                   offer={offer}
                                   key={offer.id + i}
                                   setActiveOffer={setActiveOffer}
+                                  cardType={CardTypes.MAIN}
+                                  onMouseEnter={() => setActiveOffer(offer.id)}
+                                  onMouseLeave={() => setActiveOffer(null)}
                                 />)}
     </div>
   );

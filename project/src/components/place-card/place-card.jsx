@@ -5,37 +5,43 @@ import {Link} from 'react-router-dom';
 import {AppRoute} from '../../const';
 import generatePath from 'react-router/modules/generatePath';
 import offerPropTypes from '../offer.prop';
+import {CARD_SETTINGS, CardTypes} from '../../settings';
 
 function PlaceCard(props) {
   const {
     id,
     previewImage,
     price,
-    description,
+    title,
     type,
     isFavorite,
     isPremium,
     rating } = props.offer;
-  const setActiveOffer = props.setActiveOffer;
+  const cardType = props.cardType;
   const ratingWidth = getRating(rating);
+  const onMouseEnter = props.onMouseEnter;
+  const onMouseLeave = props.onMouseLeave;
 
   return (
     <article
-      className="cities__place-card place-card"
-      onMouseEnter={() => setActiveOffer(id)}
-      onMouseLeave={() => setActiveOffer(null)}
+      className={`${CARD_SETTINGS[cardType].CLASS_MIX} place-card`}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
     >
       <div className={`place-card__mark ${isPremium ? '' : 'visually-hidden'}`}>
         <span>Premium</span>
       </div>
-      <div className="cities__image-wrapper place-card__image-wrapper">
+      <div className={`${CARD_SETTINGS[cardType].IMAGE_WRAPPER_CLASS} place-card__image-wrapper`}>
         <a href="#">
-          <img className="place-card__image" src={previewImage} style={{width: '260', height: '200'}}
-               alt="Place image"
+          <img
+            className="place-card__image"
+            src={previewImage}
+            style={{width: CARD_SETTINGS[cardType].CARD_WIDTH, height: CARD_SETTINGS[cardType].CARD_HEIGHT}}
+            alt="Place image"
           />
         </a>
       </div>
-      <div className="place-card__info">
+      <div className={`${CARD_SETTINGS[cardType].CARD_INFO_CLASS} place-card__info`}>
         <div className="place-card__price-wrapper">
           <div className="place-card__price">
             <b className="place-card__price-value">&euro;{price}</b>
@@ -56,7 +62,7 @@ function PlaceCard(props) {
         </div>
         <h2 className="place-card__name">
           <Link to={{ pathname: generatePath(AppRoute.ROOM, { id })}}>
-            {description}
+            {title}
           </Link>
         </h2>
         <p className="place-card__type">{capitalizeFirstLetter(type)}</p>
@@ -68,7 +74,9 @@ function PlaceCard(props) {
 
 PlaceCard.propTypes = {
   offer: offerPropTypes,
-  setActiveOffer: PropTypes.func.isRequired,
+  cardType: PropTypes.oneOf(Object.keys(CardTypes)).isRequired,
+  onMouseEnter: PropTypes.func,
+  onMouseLeave: PropTypes.func,
 };
 
 export default PlaceCard;

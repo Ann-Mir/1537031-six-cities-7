@@ -56,3 +56,25 @@ export const monthsByNumber = {
   '11': 'November',
   '12': 'December',
 };
+
+export const CardTypes = {
+  MAIN: 'MAIN',
+  FAVORITES: 'FAVORITES',
+};
+
+export const CARD_SETTINGS = {
+  'MAIN': {
+    CLASS_MIX: 'cities__place-card',
+    IMAGE_WRAPPER_CLASS: 'cities__image-wrapper',
+    CARD_INFO_CLASS: '',
+    CARD_WIDTH: 260,
+    CARD_HEIGHT: 200,
+  },
+  'FAVORITES': {
+    CLASS_MIX: 'favorites__card',
+    IMAGE_WRAPPER_CLASS: 'favorites__image-wrapper',
+    CARD_INFO_CLASS: 'favorites__card-info',
+    CARD_WIDTH: 150,
+    CARD_HEIGHT: 110,
+  }
+};
