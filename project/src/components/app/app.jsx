@@ -25,12 +25,14 @@ function App({ offers }) {
         <Route exact path={AppRoute.LOGIN}>
           <LoginPage />
         </Route>
-        <Route exact path={AppRoute.ROOM}>
-          <RoomPage
-            offers={offers}
+        <Route
+          exact
+          path={AppRoute.ROOM}
+          render={({ match }) => <RoomPage
+            offer={offers.find((item) => item.id === Number(match.params.id))}
             onReviewSubmit={() => {}}
-          />
-        </Route>
+          />}
+        />
         <Route>
           <NotFoundPage />
         </Route>

@@ -10,9 +10,7 @@ import reviews from '../../../mocks/reviews';
 import ReviewsItem from '../../reviews-item/reviews-item';
 
 function RoomPage(props) {
-  const location = useLocation();
-  const { offers, onReviewSubmit } = props;
-  const offer = offers.find((item) => item.id === 3);
+  const { offer, onReviewSubmit } = props;
   const {
     images,
     isPremium,

@@ -1,5 +1,8 @@
 import React from 'react';
 import {capitalizeFirstLetter, getRating} from '../../utils/render';
+import {Link} from "react-router-dom";
+import {AppRoute} from "../../const";
+import generatePath from "react-router/modules/generatePath";
 
 function PlaceCard(props) {
   const {
@@ -50,7 +53,9 @@ function PlaceCard(props) {
           </div>
         </div>
         <h2 className="place-card__name">
-          <a href="#">{description}</a>
+          <Link to={{ pathname: generatePath(AppRoute.ROOM, { id })}}>
+            {description}
+          </Link>
         </h2>
         <p className="place-card__type">{capitalizeFirstLetter(type)}</p>
       </div>
