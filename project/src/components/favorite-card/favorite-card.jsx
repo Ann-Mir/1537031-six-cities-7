@@ -1,5 +1,6 @@
 import React from 'react';
 import {capitalizeFirstLetter, getRating} from '../../utils/render';
+import offerPropTypes from '../offer.prop';
 
 function FavoriteCard(props) {
   const { price, rating, title, type } = props.offer;
@@ -42,5 +43,9 @@ function FavoriteCard(props) {
     </article>
   );
 }
+
+FavoriteCard.propTypes = {
+  offer: offerPropTypes,
+};
 
 export default FavoriteCard;

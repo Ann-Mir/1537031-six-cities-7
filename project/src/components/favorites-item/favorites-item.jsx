@@ -1,5 +1,7 @@
 import React from 'react';
 import FavoriteCard from '../favorite-card/favorite-card';
+import PropTypes from 'prop-types';
+import offerPropTypes from '../offer.prop';
 
 function FavoritesItem(props) {
   const favoriteOffersByCity = props.favoriteOffersByCity;
@@ -19,6 +21,11 @@ function FavoritesItem(props) {
       </div>
     </li>
   );
+}
+
+FavoritesItem.propTypes = {
+  favoriteOffersByCity: PropTypes.arrayOf(offerPropTypes).isRequired,
+  city: PropTypes.string.isRequired,
 }
 
 export default FavoritesItem;

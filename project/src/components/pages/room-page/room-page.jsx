@@ -1,13 +1,13 @@
 import React from 'react';
 import Header from '../../header/header';
-import ReviewFrom from '../../review-form/review-form';
+import ReviewForm from '../../review-form/review-form';
 import PropertyGallery from '../../property-gallery/property-gallery';
-import { useLocation } from 'react-router';
 import {capitalizeFirstLetter, getRating} from "../../../utils/render";
 import FeaturesList from '../../feautes-list/features-list';
 import PropertyOwner from '../../property-owner/property-owner';
 import reviews from '../../../mocks/reviews';
 import ReviewsItem from '../../reviews-item/reviews-item';
+import offerPropTypes from '../../offer.prop';
 
 function RoomPage(props) {
   const { offer, onReviewSubmit } = props;
@@ -86,7 +86,7 @@ function RoomPage(props) {
                 <ul className="reviews__list">
                   {reviews.map((review) => <ReviewsItem key={review.id} review={review}/>)}
                 </ul>
-                <ReviewFrom offer={offer} onReviewSubmit={onReviewSubmit}/>
+                <ReviewForm offer={offer} onReviewSubmit={onReviewSubmit}/>
               </section>
             </div>
           </div>
@@ -216,5 +216,9 @@ function RoomPage(props) {
     </div>
   );
 }
+
+RoomPage.propTypes = {
+  offer: offerPropTypes,
+};
 
 export default RoomPage;

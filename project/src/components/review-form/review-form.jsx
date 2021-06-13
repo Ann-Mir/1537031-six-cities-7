@@ -1,8 +1,9 @@
-import React, {Fragment} from 'react';
-import {ratingStarsOptions} from "../../settings";
-import RatingOptions from "../rating-options/rating-options";
+import React from 'react';
+import PropTypes from 'prop-types';
+import RatingOptions from '../rating-options/rating-options';
+import offerPropTypes from '../offer.prop';
 
-function ReviewFrom(props) {
+function ReviewForm(props) {
   const { offer, onReviewSubmit } = props;
   const [rating, setRating] = React.useState(0);
   const [reviewText, setReviewText] = React.useState('');
@@ -36,4 +37,9 @@ function ReviewFrom(props) {
   );
 }
 
-export default ReviewFrom;
+ReviewForm.propTypes = {
+  offer: offerPropTypes,
+  onReviewSubmit: PropTypes.func.isRequired,
+};
+
+export default ReviewForm;

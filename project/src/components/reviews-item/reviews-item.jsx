@@ -1,6 +1,7 @@
 import React from 'react';
 import {getRating} from '../../utils/render';
 import {monthsByNumber} from '../../settings';
+import reviewPropTypes from '../review.prop';
 
 function ReviewsItem(props) {
   const {comment, date, rating, user} = props.review;
@@ -40,5 +41,10 @@ function ReviewsItem(props) {
     </li>
   );
 }
+
+
+ReviewsItem.propTypes = {
+  review: reviewPropTypes,
+};
 
 export default ReviewsItem;

@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 
 function PropertyOwner(props) {
   const { avatarUrl, isPro, name } = props.host;
@@ -21,5 +23,14 @@ function PropertyOwner(props) {
     </div>
   );
 }
+
+
+PropertyOwner.propTypes = {
+  host: PropTypes.shape({
+    avatarUrl: PropTypes.string.isRequired,
+    isPro: PropTypes.bool.isRequired,
+    name: PropTypes.string.isRequired,
+  })
+};
 
 export default PropertyOwner;

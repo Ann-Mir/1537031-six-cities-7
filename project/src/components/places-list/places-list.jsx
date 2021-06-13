@@ -1,6 +1,7 @@
 import React from 'react';
 import PlaceCard from '../place-card/place-card';
 import PropTypes from 'prop-types';
+import offerPropTypes from '../offer.prop';
 
 function PlacesList ({offers}) {
   const [activeOffer, setActiveOffer] = React.useState(null);
@@ -17,6 +18,7 @@ function PlacesList ({offers}) {
 }
 
 PlacesList.propTypes = {
+  offers: PropTypes.arrayOf(offerPropTypes).isRequired,
 };
 
 export default PlacesList;

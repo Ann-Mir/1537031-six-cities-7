@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import PropertyImage from '../property-image/property-image';
 
 function PropertyGallery({ images }) {
@@ -8,5 +9,9 @@ function PropertyGallery({ images }) {
     </div>
   );
 }
+
+PropertyGallery.propTypes = {
+  images: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+};
 
 export default PropertyGallery;

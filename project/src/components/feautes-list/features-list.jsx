@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import FeatureItem from '../feature-item/feature-item';
 
 function FeaturesList({goods}) {
@@ -10,6 +11,10 @@ function FeaturesList({goods}) {
       </ul>
     </div>
   );
+}
+
+FeaturesList.propTypes = {
+  goods: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
 }
 
 export default FeaturesList;

@@ -1,5 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import FavoritesItem from '../favorites-item/favorites-item';
+import offerPropTypes from '../offer.prop';
+
 
 function FavoritesList({favoriteOffers}) {
   const offersByCity = new Map();
@@ -19,6 +22,10 @@ function FavoritesList({favoriteOffers}) {
         .map((city) => <FavoritesItem city={city} key={city} favoriteOffersByCity={offersByCity.get(city)}/>)}
     </ul>
   );
+}
+
+FavoritesList.propTypes = {
+  favoriteOffers: PropTypes.arrayOf(offerPropTypes).isRequired,
 }
 
 export default FavoritesList;

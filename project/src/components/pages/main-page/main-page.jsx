@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import PlacesList from '../../places-list/places-list';
 import Header from '../../header/header';
+import offerPropTypes from '../../offer.prop';
 
 function MainPage({ offers }) {
 
@@ -77,5 +78,9 @@ function MainPage({ offers }) {
     </div>
   );
 }
+
+MainPage.propTypes = {
+  offers: PropTypes.arrayOf(offerPropTypes).isRequired,
+};
 
 export default MainPage;

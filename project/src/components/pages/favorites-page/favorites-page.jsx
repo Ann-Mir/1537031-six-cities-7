@@ -1,7 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Header from '../../header/header';
 import Footer from '../../footer/footer';
 import FavoritesList from '../../favorites-list/favorites-list';
+import offerPropTypes from '../../offer.prop';
 
 function FavoritesPage({ offers }) {
   const favoriteOffers = offers.filter((offer) => offer.isFavorite);
@@ -20,5 +22,9 @@ function FavoritesPage({ offers }) {
     </div>
   );
 }
+
+FavoritesPage.propTypes = {
+  offers: PropTypes.arrayOf(offerPropTypes).isRequired,
+};
 
 export default FavoritesPage;

@@ -1,5 +1,6 @@
 import React, {Fragment} from 'react';
-import {ratingStarsOptions} from "../../settings";
+import PropTypes from 'prop-types';
+import {ratingStarsOptions} from '../../settings';
 
 function RatingOptions({setRating}) {
   return (
@@ -26,5 +27,9 @@ function RatingOptions({setRating}) {
     </div>
   );
 }
+
+RatingOptions.propTypes = {
+  setRating: PropTypes.func.isRequired,
+};
 
 export default RatingOptions;

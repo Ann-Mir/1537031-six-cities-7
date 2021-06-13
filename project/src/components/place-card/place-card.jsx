@@ -1,8 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {capitalizeFirstLetter, getRating} from '../../utils/render';
-import {Link} from "react-router-dom";
-import {AppRoute} from "../../const";
-import generatePath from "react-router/modules/generatePath";
+import {Link} from 'react-router-dom';
+import {AppRoute} from '../../const';
+import generatePath from 'react-router/modules/generatePath';
+import offerPropTypes from '../offer.prop';
 
 function PlaceCard(props) {
   const {
@@ -62,5 +64,11 @@ function PlaceCard(props) {
     </article>
   );
 }
+
+
+PlaceCard.propTypes = {
+  offer: offerPropTypes,
+  setActiveOffer: PropTypes.func.isRequired,
+};
 
 export default PlaceCard;

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 function FeatureItem({ feature }) {
   return (
@@ -6,6 +7,10 @@ function FeatureItem({ feature }) {
       {feature}
     </li>
   );
+}
+
+FeatureItem.propTypes = {
+  feature: PropTypes.string.isRequired,
 }
 
 export default FeatureItem;
