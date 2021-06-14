@@ -2,19 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import FavoritesItem from '../favorites-item/favorites-item';
 import offerPropTypes from '../offer.prop';
+import {mapOffersByCity} from '../../utils/common';
 
 
-function FavoritesList({favoriteOffers}) {
-  const offersByCity = new Map();
-  favoriteOffers.forEach((offer) => {
-    const currentCity = offer.city.name;
-    if (offersByCity.has(currentCity)) {
-      offersByCity.get(currentCity).push(offer);
-    } else {
-      const currentOffers = [offer];
-      offersByCity.set(currentCity, currentOffers);
-    }
-  })
+function FavoritesList({ favoriteOffers }) {
+  const offersByCity = mapOffersByCity(favoriteOffers);
 
   return (
     <ul className="favorites__list">

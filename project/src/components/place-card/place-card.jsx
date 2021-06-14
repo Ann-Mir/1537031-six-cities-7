@@ -7,7 +7,7 @@ import generatePath from 'react-router/modules/generatePath';
 import offerPropTypes from '../offer.prop';
 import {CARD_SETTINGS, CardTypes} from '../../settings';
 
-function PlaceCard(props) {
+function PlaceCard({ offer, cardType, onMouseEnter, onMouseLeave }) {
   const {
     id,
     previewImage,
@@ -16,11 +16,8 @@ function PlaceCard(props) {
     type,
     isFavorite,
     isPremium,
-    rating } = props.offer;
-  const cardType = props.cardType;
+    rating } = offer;
   const ratingWidth = getRating(rating);
-  const onMouseEnter = props.onMouseEnter;
-  const onMouseLeave = props.onMouseLeave;
 
   return (
     <article

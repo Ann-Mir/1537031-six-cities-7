@@ -1,12 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import offerPropTypes from '../offer.prop';
-import PlaceCard from '../place-card/place-card';
-import {CardTypes} from '../../settings';
+import FavoritesCityList from '../favorites-city-list/favorites-city-list';
 
-function FavoritesItem(props) {
-  const favoriteOffersByCity = props.favoriteOffersByCity;
-  const city = props.city;
+function FavoritesItem({ favoriteOffersByCity, city }) {
 
   return (
     <li className="favorites__locations-items">
@@ -17,14 +14,7 @@ function FavoritesItem(props) {
           </a>
         </div>
       </div>
-      <div className="favorites__places">
-        {favoriteOffersByCity.map(
-          (offer) => <PlaceCard
-            key={offer.id}
-            offer={offer}
-            cardType={CardTypes.FAVORITES}
-          />)}
-      </div>
+      <FavoritesCityList favoriteOffersByCity={favoriteOffersByCity} />
     </li>
   );
 }
@@ -32,6 +22,6 @@ function FavoritesItem(props) {
 FavoritesItem.propTypes = {
   favoriteOffersByCity: PropTypes.arrayOf(offerPropTypes).isRequired,
   city: PropTypes.string.isRequired,
-}
+};
 
 export default FavoritesItem;
