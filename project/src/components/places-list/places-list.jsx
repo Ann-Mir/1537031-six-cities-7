@@ -1,17 +1,28 @@
 import React from 'react';
 import PlaceCard from '../place-card/place-card';
 import PropTypes from 'prop-types';
+import offerPropTypes from '../offer.prop';
+import {CardTypes} from '../../settings';
 
-function PlacesList ({placesCount}) {
+function PlacesList ({offers}) {
+  const [activeOffer, setActiveOffer] = React.useState(null);
+
   return (
     <div className="cities__places-list places__list tabs__content">
-      {new Array(placesCount).fill(null).map((place, i) => <PlaceCard key={i}/>)}
+      {offers.map((offer, i) => <PlaceCard
+                                  offer={offer}
+                                  key={offer.id + i}
+                                  setActiveOffer={setActiveOffer}
+                                  cardType={CardTypes.MAIN}
+                                  onMouseEnter={() => setActiveOffer(offer.id)}
+                                  onMouseLeave={() => setActiveOffer(null)}
+                                />)}
     </div>
   );
 }
 
 PlacesList.propTypes = {
-  placesCount: PropTypes.number.isRequired,
+  offers: PropTypes.arrayOf(offerPropTypes).isRequired,
 };
 
 export default PlacesList;
