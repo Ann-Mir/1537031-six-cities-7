@@ -8,9 +8,11 @@ import PropertyOwner from '../../property-owner/property-owner';
 import reviews from '../../../mocks/reviews';
 import ReviewsItem from '../../reviews-item/reviews-item';
 import offerPropTypes from '../../offer.prop';
+import Map from '../../map/map';
+import PropTypes from 'prop-types';
 
 function RoomPage(props) {
-  const { offer, onReviewSubmit } = props;
+  const { offers, currentOffer, onReviewSubmit } = props;
   const {
     images,
     isPremium,
@@ -23,7 +25,7 @@ function RoomPage(props) {
     goods,
     host,
     description,
-  } = offer;
+  } = currentOffer;
   const ratingWidth = getRating(rating);
   return (
     <div className="page">
@@ -86,11 +88,13 @@ function RoomPage(props) {
                 <ul className="reviews__list">
                   {reviews.map((review) => <ReviewsItem key={review.id} review={review}/>)}
                 </ul>
-                <ReviewForm offer={offer} onReviewSubmit={onReviewSubmit}/>
+                <ReviewForm offer={currentOffer} onReviewSubmit={onReviewSubmit}/>
               </section>
             </div>
           </div>
-          <section className="property__map map"></section>
+          <section className="property__map map">
+            <Map place={'Amsterdam'} offers={offers}/>
+          </section>
         </section>
         <div className="container">
           <section className="near-places places">
@@ -218,7 +222,9 @@ function RoomPage(props) {
 }
 
 RoomPage.propTypes = {
-  offer: offerPropTypes,
+  offers: PropTypes.arrayOf(offerPropTypes).isRequired,
+  currentOffer: offerPropTypes,
+  onReviewSubmit: PropTypes.func.isRequired,
 };
 
 export default RoomPage;

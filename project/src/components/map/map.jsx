@@ -40,9 +40,7 @@ function Map({place, offers}) {
   }, [place, offers]);
 
   return (
-    <section className="cities__map map">
-      <div style={{height: '100%'}} id="map" ref={mapContainer}></div>
-    </section>
+      <div style={{height: '100%'}} ref={mapContainer}></div>
   );
 }
 

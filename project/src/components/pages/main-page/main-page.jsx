@@ -71,7 +71,9 @@ function MainPage({ offers }) {
               <PlacesList offers={offers}/>
             </section>
             <div className="cities__right-section">
-              <Map place={'Amsterdam'} offers={offers.filter(({ city }) => city.name === 'Amsterdam')}/>
+              <section className="cities__map map">
+                <Map place={'Amsterdam'} offers={offers.filter(({ city }) => city.name === 'Amsterdam')}/>
+              </section>
             </div>
           </div>
         </div>
