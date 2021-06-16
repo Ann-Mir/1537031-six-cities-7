@@ -4,6 +4,7 @@ import PlacesList from '../../places-list/places-list';
 import Header from '../../header/header';
 import offerPropTypes from '../../offer.prop';
 import Map from '../../map/map';
+import {amsterdam} from "../../../mocks/city";
 
 function MainPage({ offers }) {
 
@@ -72,7 +73,7 @@ function MainPage({ offers }) {
             </section>
             <div className="cities__right-section">
               <section className="cities__map map">
-                <Map place={'Amsterdam'} offers={offers.filter(({ city }) => city.name === 'Amsterdam')}/>
+                <Map place={amsterdam} offers={offers.filter(({ city }) => city.name === 'Amsterdam')}/>
               </section>
             </div>
           </div>

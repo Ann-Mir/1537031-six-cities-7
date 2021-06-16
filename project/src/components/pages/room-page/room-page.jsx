@@ -11,6 +11,7 @@ import offerPropTypes from '../../offer.prop';
 import Map from '../../map/map';
 import PropTypes from 'prop-types';
 import NearPlacesList from '../../near-places-list/near-places-list';
+import {amsterdam} from "../../../mocks/city";
 
 function RoomPage(props) {
   const { offers, currentOffer, onReviewSubmit } = props;
@@ -94,7 +95,7 @@ function RoomPage(props) {
             </div>
           </div>
           <section className="property__map map">
-            <Map place={'Amsterdam'} offers={offers}/>
+            <Map place={amsterdam} offers={offers}/>
           </section>
         </section>
         <div className="container">
