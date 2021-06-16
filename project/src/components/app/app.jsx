@@ -30,7 +30,7 @@ function App({ offers }) {
           exact
           path={AppRoute.ROOM}
           render={({ match }) => <RoomPage
-            offers={offers.slice(0, 3)}
+            offers={offers.slice(0, 4)}
             currentOffer={offers.find((item) => item.id === Number(match.params.id))}
             onReviewSubmit={() => {}}
           />}

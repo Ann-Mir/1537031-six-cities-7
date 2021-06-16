@@ -11,7 +11,7 @@ import offerPropTypes from '../../offer.prop';
 import Map from '../../map/map';
 import PropTypes from 'prop-types';
 import NearPlacesList from '../../near-places-list/near-places-list';
-import {amsterdam} from "../../../mocks/city";
+import {amsterdam} from '../../../mocks/city';
 
 function RoomPage(props) {
   const { offers, currentOffer, onReviewSubmit } = props;
