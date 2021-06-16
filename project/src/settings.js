@@ -60,6 +60,7 @@ export const monthsByNumber = {
 export const CardTypes = {
   MAIN: 'MAIN',
   FAVORITES: 'FAVORITES',
+  NEAR: 'NEAR',
 };
 
 export const CARD_SETTINGS = {
@@ -76,5 +77,12 @@ export const CARD_SETTINGS = {
     CARD_INFO_CLASS: 'favorites__card-info',
     CARD_WIDTH: 150,
     CARD_HEIGHT: 110,
+  },
+  'NEAR': {
+    CLASS_MIX: 'near-places__card',
+    IMAGE_WRAPPER_CLASS: 'near-places__image-wrapper',
+    CARD_INFO_CLASS: '',
+    CARD_WIDTH: 260,
+    CARD_HEIGHT: 200,
   }
 };
