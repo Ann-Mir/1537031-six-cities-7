@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import PlacesList from '../../places-list/places-list';
 import Header from '../../header/header';
 import offerPropTypes from '../../offer.prop';
+import Map from '../../map/map';
 
 function MainPage({ offers }) {
 
@@ -70,7 +71,7 @@ function MainPage({ offers }) {
               <PlacesList offers={offers}/>
             </section>
             <div className="cities__right-section">
-              <section className="cities__map map"></section>
+              <Map place={'Amsterdam'} offers={offers.filter(({ city }) => city.name === 'Amsterdam')}/>
             </div>
           </div>
         </div>
