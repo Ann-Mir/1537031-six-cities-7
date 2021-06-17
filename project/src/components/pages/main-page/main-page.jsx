@@ -4,6 +4,7 @@ import PlacesList from '../../places-list/places-list';
 import Header from '../../header/header';
 import offerPropTypes from '../../offer.prop';
 import Map from '../../map/map';
+import {amsterdam} from '../../../mocks/city';
 
 function MainPage({ offers }) {
 
@@ -68,10 +69,14 @@ function MainPage({ offers }) {
                   <li className="places__option" tabIndex="0">Top rated first</li>
                 </ul>
               </form>
-              <PlacesList offers={offers}/>
+              <PlacesList
+                offers={offers}
+              />
             </section>
             <div className="cities__right-section">
-              <Map place={'Amsterdam'} offers={offers.filter(({ city }) => city.name === 'Amsterdam')}/>
+              <section className="cities__map map">
+                <Map place={amsterdam} offers={offers.filter(({ city }) => city.name === 'Amsterdam')}/>
+              </section>
             </div>
           </div>
         </div>

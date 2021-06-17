@@ -1,49 +1,54 @@
 import React, {useEffect, useRef} from 'react';
 import leaflet from 'leaflet';
+import {MARKER_CURRENT, MARKER_DEFAULT} from '../../const';
 
 import 'leaflet/dist/leaflet.css';
+import useMap from '../../hooks/useMap';
+import PropTypes from 'prop-types';
+import offerPropTypes from '../offer.prop';
+
 
 function Map({place, offers}) {
-  const mapContainer = useRef(null);
-  const city = [52.38333, 4.9];
-  const icon = leaflet.icon({
-    iconUrl: `img/pin.svg`,
-    iconSize: [30, 30]
+  const mapRef = useRef(null);
+  const map = useMap(mapRef, place);
+
+  const defaultCustomIcon = leaflet.icon({
+    iconUrl: MARKER_DEFAULT,
+    iconSize: [27, 39],
+    iconAnchor: [13, 39],
   });
 
-  const zoom = 12;
+  const currentCustomIcon = leaflet.icon({
+    iconUrl: MARKER_CURRENT,
+    iconSize: [27, 39],
+    iconAnchor: [13, 39],
+  });
 
   useEffect(() => {
-    const map = leaflet.map(mapContainer.current, {
-      center: city,
-      zoom: zoom,
-      zoomControl: false,
-      marker: true
-    });
-
-    map.setView(city, zoom);
-
-    leaflet
-      .tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`, {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
-      })
-      .addTo(map);
-
-    const offersCoordinates = offers.map(({ location }) => [location.latitude, location.longitude]);
-
-    offersCoordinates.forEach((coordinates) => {
-      leaflet
-        .marker(coordinates, {icon})
-        .addTo(map);
-    });
-
-  }, [place, offers]);
+    if (map) {
+      offers.forEach(({ location }) => {
+        leaflet
+          .marker([location.latitude, location.longitude], {icon: defaultCustomIcon})
+          .addTo(map);
+      });
+    }
+  }, [map, offers]);
 
   return (
-    <section className="cities__map map">
-      <div style={{height: '100%'}} id="map" ref={mapContainer}></div>
-    </section>
+      <div style={{height: '100%'}} ref={mapRef}></div>
   );
 }
+
+Map.propTypes = {
+  offers: PropTypes.arrayOf(offerPropTypes).isRequired,
+  place: PropTypes.shape({
+    location: PropTypes.shape({
+      latitude: PropTypes.number.isRequired,
+      longitude: PropTypes.number.isRequired,
+      zoom: PropTypes.number.isRequired,
+    }).isRequired,
+    name: PropTypes.string.isRequired,
+  }).isRequired,
+};
 
 export default Map;

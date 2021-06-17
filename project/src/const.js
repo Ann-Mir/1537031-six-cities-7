@@ -4,3 +4,7 @@ export const AppRoute = {
   ROOM: '/offer/:id',
   ROOT: '/',
 };
+
+export const MARKER_DEFAULT = 'img/pin.svg';
+
+export const MARKER_CURRENT = 'img/pin-active.svg';
