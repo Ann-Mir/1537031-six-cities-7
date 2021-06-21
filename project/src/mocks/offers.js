@@ -137,6 +137,74 @@ const offers = [
     title: 'Beautiful & luxurious room at great location',
     type: 'room'
   },
+  {
+    bedrooms: 1,
+    city: {
+      name: `Paris`,
+      location: {
+        latitude: 48.85661,
+        longitude: 2.351499,
+        zoom: 13,
+      }
+    },
+    description: 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.',
+    goods: ['Heating', 'Coffee machine'],
+    host: {
+      avatarUrl: 'img/avatar-angelina.jpg',
+      id: 4,
+      isPro: false,
+      name: 'John'
+    },
+    id: 4,
+    images: [`http://picsum.photos/248/152?r=${getRandomInteger(1, 100)}`, `http://picsum.photos/248/152?r=${getRandomInteger(1, 100)}`, `http://picsum.photos/248/152?r=${getRandomInteger(1, 100)}`, `http://picsum.photos/248/152?r=${getRandomInteger(1, 100)}`, `http://picsum.photos/248/152?r=${getRandomInteger(1, 100)}`, `http://picsum.photos/248/152?r=${getRandomInteger(1, 100)}`],
+    isFavorite: true,
+    isPremium: true,
+    location: {
+      latitude: 48.81929353904051,
+      longitude: 2.274273393000697,
+      zoom: 8
+    },
+    maxAdults: 2,
+    previewImage: `http://picsum.photos/248/152?r=${getRandomInteger(1, 100)}`,
+    price: 70,
+    rating: 4.7,
+    title: 'Beautiful & luxurious room at great location',
+    type: 'room'
+  },
+  {
+    bedrooms: 2,
+    city: {
+      location: {
+        latitude: 48.85661,
+        longitude: 2.351499,
+        zoom: 10
+      },
+      name: 'Paris'
+    },
+    description: 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.',
+    goods: ['Heating', 'Kitchen', 'Coffee machine', 'Dishwasher'],
+    host: {
+      avatarUrl: 'img/avatar-angelina.jpg',
+      id: 2,
+      isPro: false,
+      name: 'Elizabeth'
+    },
+    id: 2,
+    images: [`http://picsum.photos/248/152?r=${getRandomInteger(1, 100)}`, `http://picsum.photos/248/152?r=${getRandomInteger(1, 100)}`, `http://picsum.photos/248/152?r=${getRandomInteger(1, 100)}`, `http://picsum.photos/248/152?r=${getRandomInteger(1, 100)}`, `http://picsum.photos/248/152?r=${getRandomInteger(1, 100)}`, `http://picsum.photos/248/152?r=${getRandomInteger(1, 100)}`],
+    isFavorite: true,
+    isPremium: false,
+    location: {
+      latitude: 48.87532409744568,
+      longitude: 2.392376415210578,
+      zoom: 8
+    },
+    maxAdults: 2,
+    previewImage: `http://picsum.photos/248/152?r=${getRandomInteger(1, 100)}`,
+    price: 220,
+    rating: 4.4,
+    title: 'Beautiful & luxurious house at great location',
+    type: 'house'
+  },
 ];
 
 export default offers;

@@ -8,15 +8,14 @@ import LoginPage from '../pages/login-page/login-page';
 import RoomPage from '../pages/room-page/room-page';
 import NotFoundPage from '../pages/not-found-page/not-found-page';
 import offerPropTypes from '../offer.prop';
+import { connect } from 'react-redux';
 
 function App({ offers }) {
   return (
     <BrowserRouter>
       <Switch>
         <Route exact path={AppRoute.ROOT}>
-          <MainPage
-            offers={offers}
-          />
+          <MainPage />
         </Route>
         <Route exact path={AppRoute.FAVORITES}>
           <FavoritesPage
@@ -47,4 +46,9 @@ App.propTypes = {
   offers: PropTypes.arrayOf(offerPropTypes).isRequired,
 };
 
-export default App;
+const mapStateToProps = (state) => ({
+  offers: state.offers,
+});
+
+export { App };
+export default connect(mapStateToProps)(App);
