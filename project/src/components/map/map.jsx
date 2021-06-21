@@ -25,12 +25,21 @@ function Map({place, offers}) {
   });
 
   useEffect(() => {
+    const markers = leaflet.layerGroup();
+
     if (map) {
       offers.forEach(({ location }) => {
         leaflet
           .marker([location.latitude, location.longitude], {icon: defaultCustomIcon})
-          .addTo(map);
+          .addTo(markers);
       });
+
+      markers.addTo(map);
+      map.flyTo([place.location.latitude, place.location.longitude], place.location.zoom);
+
+      return () => {
+        markers.clearLayers();
+      }
     }
   }, [map, offers]);
 
