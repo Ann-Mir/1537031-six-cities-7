@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import MainPage from '../pages/main-page/main-page';
-import {AppRoute} from '../../const';
+import {AppRoute, MAX_ROOMS_PER_PAGE} from '../../const';
 import {Switch, Route, BrowserRouter} from 'react-router-dom';
 import FavoritesPage from '../pages/favorites-page/favorites-page';
 import LoginPage from '../pages/login-page/login-page';
@@ -18,9 +18,7 @@ function App({ offers }) {
           <MainPage />
         </Route>
         <Route exact path={AppRoute.FAVORITES}>
-          <FavoritesPage
-            offers={offers}
-          />
+          <FavoritesPage />
         </Route>
         <Route exact path={AppRoute.LOGIN}>
           <LoginPage />
@@ -29,7 +27,7 @@ function App({ offers }) {
           exact
           path={AppRoute.ROOM}
           render={({ match }) => <RoomPage
-            offers={offers.slice(0, 4)}
+            offers={offers.slice(0, MAX_ROOMS_PER_PAGE)}
             currentOffer={offers.find((item) => item.id === Number(match.params.id))}
             onReviewSubmit={() => {}}
           />}

@@ -61,3 +61,5 @@ export const LOCATIONS = [
 ];
 
 export const DEFAULT_CITY = 'Amsterdam';
+
+export const MAX_ROOMS_PER_PAGE = 4;

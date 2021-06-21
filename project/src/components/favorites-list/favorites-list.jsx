@@ -20,4 +20,5 @@ FavoritesList.propTypes = {
   favoriteOffers: PropTypes.arrayOf(offerPropTypes).isRequired,
 }
 
+
 export default FavoritesList;

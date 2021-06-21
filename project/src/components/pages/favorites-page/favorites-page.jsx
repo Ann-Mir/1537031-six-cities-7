@@ -4,6 +4,7 @@ import Header from '../../header/header';
 import Footer from '../../footer/footer';
 import FavoritesList from '../../favorites-list/favorites-list';
 import offerPropTypes from '../../offer.prop';
+import {connect} from 'react-redux';
 
 function FavoritesPage({ offers }) {
   const favoriteOffers = offers.filter((offer) => offer.isFavorite);
@@ -24,7 +25,12 @@ function FavoritesPage({ offers }) {
 }
 
 FavoritesPage.propTypes = {
-  offers: PropTypes.arrayOf(offerPropTypes).isRequired,
+  favoriteOffers: PropTypes.arrayOf(offerPropTypes).isRequired,
 };
 
-export default FavoritesPage;
+const mapStateToProps = ({ offers }) => ({
+  offers: offers,
+});
+
+export { FavoritesPage };
+export default connect(mapStateToProps)(FavoritesPage);
