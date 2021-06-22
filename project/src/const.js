@@ -63,3 +63,12 @@ export const LOCATIONS = [
 export const DEFAULT_CITY = 'Amsterdam';
 
 export const MAX_ROOMS_PER_PAGE = 4;
+
+export const SortTypes = {
+  POPULAR: 'Popular',
+  LOW: 'Price: low to high',
+  HIGH: 'Price: high to low',
+  TOP: 'Top rated first',
+};
+
+export const DEFAULT_SORT_TYPE = SortTypes.POPULAR;
