@@ -5,7 +5,6 @@ import {ActionType} from './action';
 const initialState = {
   offers: offers,
   city: DEFAULT_CITY,
-  currentOffers: offers.filter(({ city }) => city.name === DEFAULT_CITY),
 };
 
 const reducer = (state = initialState, action) => {
@@ -14,7 +13,6 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         city: action.payload,
-        currentOffers: offers.filter(({ city }) => city.name === action.payload),
       };
     default:
       return state;

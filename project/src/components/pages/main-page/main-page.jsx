@@ -5,10 +5,12 @@ import Header from '../../header/header';
 import offerPropTypes from '../../offer.prop';
 import Map from '../../map/map';
 import LocationsList from '../../locations-list/locations-list';
-import {LOCATIONS} from '../../../const'
+import {DEFAULT_CITY, LOCATIONS} from '../../../const'
 import { connect } from 'react-redux';
+import offers from "../../../mocks/offers";
 
 function MainPage({ currentOffers, city }) {
+  console.log(currentOffers);
   return (
     <div className="page page--gray page--main">
       <Header />
@@ -63,9 +65,13 @@ MainPage.propTypes = {
   city: PropTypes.string.isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  currentOffers: state.currentOffers,
-  city: state.city,
-});
+const mapStateToProps = (state) => {
+  const city = state.city;
+  const currentOffers = state.offers.filter((offer) => offer.city.name === city);
+  return {
+    currentOffers: currentOffers,
+    city: city,
+  }
+};
 
 export default connect(mapStateToProps)(MainPage);
