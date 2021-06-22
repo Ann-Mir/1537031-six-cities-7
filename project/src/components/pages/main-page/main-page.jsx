@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 import offers from "../../../mocks/offers";
 import SortingForm from "../../sorting-form/sorting-form";
 
-function MainPage({ currentOffers, city }) {
+function MainPage({ currentOffers, city, activeSortType }) {
   return (
     <div className="page page--gray page--main">
       <Header />
@@ -29,6 +29,7 @@ function MainPage({ currentOffers, city }) {
               <SortingForm />
               <PlacesList
                 offers={currentOffers}
+                activeSortType={activeSortType}
               />
             </section>
             <div className="cities__right-section">
@@ -57,6 +58,7 @@ const mapStateToProps = (state) => {
   return {
     currentOffers: currentOffers,
     city: city,
+    activeSortType: state.activeSortType,
   }
 };
 
