@@ -4,9 +4,10 @@ import PropTypes from 'prop-types';
 import offerPropTypes from '../offer.prop';
 import {CardTypes} from '../../settings';
 import {getSortedOffers} from '../../utils/common';
+import {ActionCreator} from '../../store/action';
+import {connect} from 'react-redux';
 
-function PlacesList ({ offers, activeSortType }) {
-  const [activeOffer, setActiveOffer] = React.useState(null);
+function PlacesList ({ offers, activeSortType, setActiveOffer }) {
 
   return (
     <div className="cities__places-list places__list tabs__content">
@@ -26,4 +27,13 @@ PlacesList.propTypes = {
   offers: PropTypes.arrayOf(offerPropTypes).isRequired,
 };
 
-export default PlacesList;
+const mapDispatchToProps = (dispatch) => ({
+  setActiveOffer(activeOfferId) {
+    dispatch(ActionCreator.setActiveOffer(activeOfferId));
+  },
+});
+
+
+export { PlacesList };
+export default connect(null, mapDispatchToProps)(PlacesList);
+
