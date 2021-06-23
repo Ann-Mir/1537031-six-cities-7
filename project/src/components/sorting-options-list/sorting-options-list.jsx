@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {SortTypes} from '../../const';
 import SortingOption from '../sorting-option/sorting-option';
 
@@ -16,5 +17,9 @@ function SortingOptionsList({ handleSortTypeClick }) {
   );
 }
 
+
+SortingOptionsList.propTypes = {
+  handleSortTypeClick: PropTypes.func.isRequired,
+};
 
 export default SortingOptionsList;

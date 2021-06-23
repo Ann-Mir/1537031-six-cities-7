@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import FeatureItem from '../feature-item/feature-item';
 
-function FeaturesList({goods}) {
+function FeaturesList({ goods }) {
   return (
     <div className="property__inside">
       <h2 className="property__inside-title">What&apos;s inside</h2>

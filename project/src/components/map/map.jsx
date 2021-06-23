@@ -60,6 +60,7 @@ Map.propTypes = {
     }).isRequired,
     name: PropTypes.string.isRequired,
   }).isRequired,
+  activeOfferId: PropTypes.number,
 };
 
 const mapStateToProps = ({ activeOfferId }) => ({

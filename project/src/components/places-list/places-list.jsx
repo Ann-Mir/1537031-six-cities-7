@@ -25,6 +25,8 @@ function PlacesList ({ offers, activeSortType, setActiveOffer }) {
 
 PlacesList.propTypes = {
   offers: PropTypes.arrayOf(offerPropTypes).isRequired,
+  activeSortType: PropTypes.string.isRequired,
+  setActiveOffer: PropTypes.func.isRequired,
 };
 
 const mapDispatchToProps = (dispatch) => ({

@@ -26,6 +26,9 @@ function SortingOption({ sortingType, activeSortType, handleSortTypeClick, setSo
 
 SortingOption.propTypes = {
   sortingType: PropTypes.string.isRequired,
+  activeSortType: PropTypes.string.isRequired,
+  handleSortTypeClick: PropTypes.func.isRequired,
+  setSortType: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
