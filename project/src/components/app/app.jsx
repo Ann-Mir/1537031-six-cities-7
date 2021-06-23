@@ -1,27 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import MainPage from '../pages/main-page/main-page';
-import {AppRoute} from '../../const';
+import {AppRoute, MAX_ROOMS_PER_PAGE} from '../../const';
 import {Switch, Route, BrowserRouter} from 'react-router-dom';
 import FavoritesPage from '../pages/favorites-page/favorites-page';
 import LoginPage from '../pages/login-page/login-page';
 import RoomPage from '../pages/room-page/room-page';
 import NotFoundPage from '../pages/not-found-page/not-found-page';
 import offerPropTypes from '../offer.prop';
+import { connect } from 'react-redux';
 
 function App({ offers }) {
   return (
     <BrowserRouter>
       <Switch>
         <Route exact path={AppRoute.ROOT}>
-          <MainPage
-            offers={offers}
-          />
+          <MainPage />
         </Route>
         <Route exact path={AppRoute.FAVORITES}>
-          <FavoritesPage
-            offers={offers}
-          />
+          <FavoritesPage />
         </Route>
         <Route exact path={AppRoute.LOGIN}>
           <LoginPage />
@@ -30,7 +27,7 @@ function App({ offers }) {
           exact
           path={AppRoute.ROOM}
           render={({ match }) => <RoomPage
-            offers={offers.slice(0, 4)}
+            offers={offers.slice(0, MAX_ROOMS_PER_PAGE)}
             currentOffer={offers.find((item) => item.id === Number(match.params.id))}
             onReviewSubmit={() => {}}
           />}
@@ -47,4 +44,9 @@ App.propTypes = {
   offers: PropTypes.arrayOf(offerPropTypes).isRequired,
 };
 
-export default App;
+const mapStateToProps = (state) => ({
+  offers: state.offers,
+});
+
+export { App };
+export default connect(mapStateToProps)(App);
