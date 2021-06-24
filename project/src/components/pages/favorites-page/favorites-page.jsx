@@ -25,7 +25,7 @@ function FavoritesPage({ offers }) {
 }
 
 FavoritesPage.propTypes = {
-  favoriteOffers: PropTypes.arrayOf(offerPropTypes).isRequired,
+  offers: PropTypes.arrayOf(offerPropTypes).isRequired,
 };
 
 const mapStateToProps = ({ offers }) => ({

@@ -5,10 +5,9 @@ import Header from '../../header/header';
 import offerPropTypes from '../../offer.prop';
 import Map from '../../map/map';
 import LocationsList from '../../locations-list/locations-list';
-import {DEFAULT_CITY, LOCATIONS} from '../../../const'
+import {LOCATIONS} from '../../../const'
 import { connect } from 'react-redux';
-import offers from "../../../mocks/offers";
-import SortingForm from "../../sorting-form/sorting-form";
+import SortingForm from '../../sorting-form/sorting-form';
 
 function MainPage({ currentOffers, city, activeSortType }) {
   return (
@@ -50,6 +49,7 @@ function MainPage({ currentOffers, city, activeSortType }) {
 MainPage.propTypes = {
   currentOffers: PropTypes.arrayOf(offerPropTypes).isRequired,
   city: PropTypes.string.isRequired,
+  activeSortType: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = (state) => {

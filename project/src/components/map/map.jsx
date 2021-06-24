@@ -6,9 +6,10 @@ import 'leaflet/dist/leaflet.css';
 import useMap from '../../hooks/useMap';
 import PropTypes from 'prop-types';
 import offerPropTypes from '../offer.prop';
+import {connect} from 'react-redux';
 
 
-function Map({place, offers}) {
+function Map({place, offers, activeOfferId}) {
   const mapRef = useRef(null);
   const map = useMap(mapRef, place);
 
@@ -28,9 +29,10 @@ function Map({place, offers}) {
     const markers = leaflet.layerGroup();
 
     if (map) {
-      offers.forEach(({ location }) => {
+      offers.forEach((offer) => {
+        const markerIcon = offer.id === activeOfferId ? currentCustomIcon : defaultCustomIcon;
         leaflet
-          .marker([location.latitude, location.longitude], {icon: defaultCustomIcon})
+          .marker([offer.location.latitude, offer.location.longitude],{icon: markerIcon})
           .addTo(markers);
       });
 
@@ -58,6 +60,13 @@ Map.propTypes = {
     }).isRequired,
     name: PropTypes.string.isRequired,
   }).isRequired,
+  activeOfferId: PropTypes.number,
 };
 
-export default Map;
+const mapStateToProps = ({ activeOfferId }) => ({
+  activeOfferId: activeOfferId
+});
+
+
+export { Map };
+export default connect(mapStateToProps)(Map);

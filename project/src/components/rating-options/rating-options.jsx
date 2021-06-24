@@ -2,7 +2,7 @@ import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import {ratingStarsOptions} from '../../settings';
 
-function RatingOptions({setRating}) {
+function RatingOptions({ setRating }) {
   return (
     <div className="reviews__rating-form form__rating">
       {ratingStarsOptions.map(({value, title}) => {

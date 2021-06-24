@@ -6,6 +6,7 @@ const initialState = {
   offers: offers,
   city: DEFAULT_CITY,
   activeSortType: DEFAULT_SORT_TYPE,
+  activeOfferId: null,
 };
 
 const reducer = (state = initialState, action) => {
@@ -19,7 +20,12 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         activeSortType: action.payload,
-      }
+      };
+    case ActionType.SET_ACTIVE_OFFER:
+      return {
+        ...state,
+        activeOfferId: action.payload,
+      };
     default:
       return state;
   }
