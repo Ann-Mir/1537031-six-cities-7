@@ -1,7 +1,7 @@
 import React from 'react';
 import Logo from '../logo/logo';
 import {LogoTypes} from '../../settings';
-import {HeaderNav} from "../../header-nav/header-nav";
+import {HeaderNav} from '../../header-nav/header-nav';
 
 function Header() {
   return (
