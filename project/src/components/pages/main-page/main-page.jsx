@@ -1,19 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import PlacesList from '../../places-list/places-list';
 import Header from '../../header/header';
 import offerPropTypes from '../../offer.prop';
-import Map from '../../map/map';
 import LocationsList from '../../locations-list/locations-list';
 import {LOCATIONS} from '../../../const'
 import { connect } from 'react-redux';
-import SortingForm from '../../sorting-form/sorting-form';
+import PlacesContainer from '../../places-container/places-container';
+import MainEmpty from '../../main-empty/main-empty';
 
 function MainPage({ currentOffers, city, activeSortType }) {
   return (
     <div className="page page--gray page--main">
       <Header />
-      <main className="page__main page__main--index">
+      <main
+        className={`page__main page__main--index ${currentOffers.length > 0 ? '' : 'page__main--index-empty'}`}
+      >
         <h1 className="visually-hidden">Cities</h1>
         <div className="tabs">
           <section className="locations container">
@@ -21,25 +22,13 @@ function MainPage({ currentOffers, city, activeSortType }) {
           </section>
         </div>
         <div className="cities">
-          <div className="cities__places-container container">
-            <section className="cities__places places">
-              <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">{currentOffers.length} places to stay in {city}</b>
-              <SortingForm />
-              <PlacesList
-                offers={currentOffers}
+          {currentOffers.length > 0
+          && <PlacesContainer
+                currentOffers={currentOffers}
+                city={city}
                 activeSortType={activeSortType}
               />
-            </section>
-            <div className="cities__right-section">
-              <section className="cities__map map">
-                <Map
-                  place={LOCATIONS.find(({ name }) => name === city)}
-                  offers={currentOffers}
-                />
-              </section>
-            </div>
-          </div>
+          || <MainEmpty city={city}/>}
         </div>
       </main>
     </div>
@@ -61,5 +50,6 @@ const mapStateToProps = (state) => {
     activeSortType: state.activeSortType,
   }
 };
+
 
 export default connect(mapStateToProps)(MainPage);

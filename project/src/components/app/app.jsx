@@ -51,6 +51,8 @@ function App({ offers, authorizationStatus, isDataLoaded }) {
 
 App.propTypes = {
   offers: PropTypes.arrayOf(offerPropTypes).isRequired,
+  authorizationStatus: PropTypes.string.isRequired,
+  isDataLoaded: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = (state) => ({
