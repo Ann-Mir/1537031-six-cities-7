@@ -1,7 +1,4 @@
-import {ActionType} from "../store/action";
-import {SortTypes} from "../const";
-import {setClass} from "leaflet/src/dom/DomUtil";
-import offers from "../mocks/offers";
+import {AuthorizationStatus, SortTypes} from '../const';
 
 export const mapOffersByCity = (offers) => {
   const offersByCity = new Map();
@@ -36,4 +33,9 @@ export const getSortedOffers = (offers, sortingType) => {
     default:
       return offers;
   }
+};
+
+
+export const isCheckedAuth = (authorizationStatus) => {
+  return authorizationStatus === AuthorizationStatus.UNKNOWN;
 };

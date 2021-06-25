@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
 import MainPage from '../pages/main-page/main-page';
 import {AppRoute, MAX_ROOMS_PER_PAGE} from '../../const';
 import {Switch, Route, BrowserRouter} from 'react-router-dom';
@@ -8,9 +9,17 @@ import LoginPage from '../pages/login-page/login-page';
 import RoomPage from '../pages/room-page/room-page';
 import NotFoundPage from '../pages/not-found-page/not-found-page';
 import offerPropTypes from '../offer.prop';
-import { connect } from 'react-redux';
+import {isCheckedAuth} from '../../utils/common';
+import LoadingScreen from '../loading-screen/loadingScreen';
 
-function App({ offers }) {
+function App({ offers, authorizationStatus, isDataLoaded }) {
+
+  if (isCheckedAuth(authorizationStatus) || !isDataLoaded) {
+    return (
+      <LoadingScreen />
+    );
+  }
+
   return (
     <BrowserRouter>
       <Switch>
@@ -46,6 +55,8 @@ App.propTypes = {
 
 const mapStateToProps = (state) => ({
   offers: state.offers,
+  authorizationStatus: state.authorizationStatus,
+  isDataLoaded: state.isDataLoaded,
 });
 
 export { App };
