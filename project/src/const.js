@@ -5,6 +5,18 @@ export const AppRoute = {
   ROOT: '/',
 };
 
+export const AuthorizationStatus = {
+  AUTH: 'AUTH',
+  NO_AUTH: 'NO_AUTH',
+  UNKNOWN: 'UNKNOWN',
+};
+
+export const APIRoute = {
+  OFFERS: '/hotels',
+  LOGIN: '/login',
+  LOGOUT: '/logout',
+};
+
 export const MARKER_DEFAULT = 'img/pin.svg';
 
 export const MARKER_CURRENT = 'img/pin-active.svg';

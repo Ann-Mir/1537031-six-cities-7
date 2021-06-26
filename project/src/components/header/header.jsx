@@ -1,6 +1,7 @@
 import React from 'react';
 import Logo from '../logo/logo';
 import {LogoTypes} from '../../settings';
+import {HeaderNav} from '../../header-nav/header-nav';
 
 function Header() {
   return (
@@ -10,22 +11,7 @@ function Header() {
           <div className="header__left">
             <Logo logoType={LogoTypes.HEADER} />
           </div>
-          <nav className="header__nav">
-            <ul className="header__nav-list">
-              <li className="header__nav-item user">
-                <a className="header__nav-link header__nav-link--profile" href="#">
-                  <div className="header__avatar-wrapper user__avatar-wrapper">
-                  </div>
-                  <span className="header__user-name user__name">Oliver.conner@gmail.com</span>
-                </a>
-              </li>
-              <li className="header__nav-item">
-                <a className="header__nav-link" href="#">
-                  <span className="header__signout">Sign out</span>
-                </a>
-              </li>
-            </ul>
-          </nav>
+          <HeaderNav />
         </div>
       </div>
     </header>
