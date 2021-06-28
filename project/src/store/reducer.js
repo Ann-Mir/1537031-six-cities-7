@@ -43,10 +43,6 @@ const reducer = (state = initialState, action) => {
         offers: action.payload,
         isDataLoaded: true,
       };
-    case ActionType.RESET_OFFERS:
-      return {
-        ...initialState,
-      };
     default:
       return state;
   }

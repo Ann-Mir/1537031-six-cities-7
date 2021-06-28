@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import offerPropTypes from '../offer.prop';
 
 
-function PlacesContainer({ currentOffers, activeSortType, city }) {
+function PlacesWrapper({ currentOffers, activeSortType, city }) {
   return (
     <div className="cities__places-container container">
       <section className="cities__places places">
@@ -32,10 +32,10 @@ function PlacesContainer({ currentOffers, activeSortType, city }) {
 }
 
 
-PlacesContainer.propTypes = {
+PlacesWrapper.propTypes = {
   currentOffers: PropTypes.arrayOf(offerPropTypes).isRequired,
   city: PropTypes.string.isRequired,
   activeSortType: PropTypes.string.isRequired,
 };
 
-export default PlacesContainer;
+export default PlacesWrapper;

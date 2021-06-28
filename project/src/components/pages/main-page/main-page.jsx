@@ -5,7 +5,7 @@ import offerPropTypes from '../../offer.prop';
 import LocationsList from '../../locations-list/locations-list';
 import {LOCATIONS} from '../../../const'
 import { connect } from 'react-redux';
-import PlacesContainer from '../../places-container/places-container';
+import PlacesWrapper from '../../places-wrapper/places-wrapper';
 import MainEmpty from '../../main-empty/main-empty';
 
 function MainPage({ currentOffers, city, activeSortType }) {
@@ -23,7 +23,7 @@ function MainPage({ currentOffers, city, activeSortType }) {
         </div>
         <div className="cities">
           {currentOffers.length > 0
-          && <PlacesContainer
+          && <PlacesWrapper
                 currentOffers={currentOffers}
                 city={city}
                 activeSortType={activeSortType}

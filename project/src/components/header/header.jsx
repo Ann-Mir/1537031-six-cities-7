@@ -1,9 +1,11 @@
 import React from 'react';
 import Logo from '../logo/logo';
 import {LogoTypes} from '../../settings';
-import {HeaderNav} from '../../header-nav/header-nav';
+import HeaderNav from '../../header-nav/header-nav';
+import {connect} from 'react-redux';
+import PropTypes from "prop-types";
 
-function Header() {
+function Header({ authorizationStatus }) {
   return (
     <header className="header">
       <div className="container">
@@ -11,11 +13,20 @@ function Header() {
           <div className="header__left">
             <Logo logoType={LogoTypes.HEADER} />
           </div>
-          <HeaderNav />
+          <HeaderNav authorizationStatus={authorizationStatus}/>
         </div>
       </div>
     </header>
   );
 }
 
-export default Header;
+Header.propTypes = {
+  authorizationStatus: PropTypes.string.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  authorizationStatus: state.authorizationStatus,
+});
+
+export {Header};
+export default connect(mapStateToProps)(Header)

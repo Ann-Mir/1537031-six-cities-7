@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {useHistory} from 'react-router-dom';
+import {AppRoute} from '../../../const';
 import Header from '../../header/header';
 import Footer from '../../footer/footer';
 import FavoritesList from '../../favorites-list/favorites-list';
@@ -7,6 +9,7 @@ import offerPropTypes from '../../offer.prop';
 import {connect} from 'react-redux';
 
 function FavoritesPage({ offers }) {
+
   const favoriteOffers = offers.filter((offer) => offer.isFavorite);
   return (
     <div className="page">

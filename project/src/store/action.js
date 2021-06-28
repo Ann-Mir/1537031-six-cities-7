@@ -5,7 +5,6 @@ export const ActionType = {
   LOAD_OFFERS: 'offers/loadOffers',
   REQUIRED_AUTHORIZATION: 'user/requiredAuthorization',
   LOGOUT: 'user/logout',
-  RESET_OFFERS: 'offers/resetOffers',
 };
 
 export const ActionCreator = {
