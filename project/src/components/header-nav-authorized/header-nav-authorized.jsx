@@ -6,7 +6,7 @@ import {logout} from '../../store/api-actions';
 import {connect} from 'react-redux';
 
 
-function HeaderNavAuthorized({ logoutApp }) {
+function HeaderNavAuthorized({ username, logoutApp }) {
   return (
     <nav className="header__nav">
       <ul className="header__nav-list">
@@ -14,7 +14,7 @@ function HeaderNavAuthorized({ logoutApp }) {
           <Link className="header__nav-link header__nav-link--profile" to={AppRoute.FAVORITES}>
             <div className="header__avatar-wrapper user__avatar-wrapper">
             </div>
-            <span className="header__user-name user__name">Oliver.conner@gmail.com</span>
+            <span className="header__user-name user__name">{username}</span>
           </Link>
         </li>
         <li className="header__nav-item">
@@ -39,6 +39,10 @@ HeaderNavAuthorized.propTypes = {
   logoutApp: PropTypes.func.isRequired,
 };
 
+const mapStateToProps = (state) => ({
+  username: state.username
+});
+
 const mapDispatchToProps = (dispatch) => ({
   logoutApp() {
     dispatch(logout());
@@ -47,4 +51,4 @@ const mapDispatchToProps = (dispatch) => ({
 
 
 export {HeaderNavAuthorized};
-export default connect(null, mapDispatchToProps)(HeaderNavAuthorized);
+export default connect(mapStateToProps, mapDispatchToProps)(HeaderNavAuthorized);
