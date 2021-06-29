@@ -1,9 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import {AppRoute} from '../../const';
+import {logout} from '../../store/api-actions';
+import {connect} from 'react-redux';
 
 
-function HeaderNavAuthorized() {
+function HeaderNavAuthorized({ logoutApp }) {
   return (
     <nav className="header__nav">
       <ul className="header__nav-list">
@@ -15,9 +18,16 @@ function HeaderNavAuthorized() {
           </Link>
         </li>
         <li className="header__nav-item">
-          <a className="header__nav-link" href="#">
+          <Link
+            className="header__nav-link"
+            onClick={(evt) => {
+              evt.preventDefault();
+              logoutApp();
+            }}
+            to={AppRoute.ROOT}
+          >
             <span className="header__signout">Sign out</span>
-          </a>
+          </Link>
         </li>
       </ul>
     </nav>
@@ -25,4 +35,16 @@ function HeaderNavAuthorized() {
 }
 
 
-export default HeaderNavAuthorized;
+HeaderNavAuthorized.propTypes = {
+  logoutApp: PropTypes.func.isRequired,
+};
+
+const mapDispatchToProps = (dispatch) => ({
+  logoutApp() {
+    dispatch(logout());
+  },
+});
+
+
+export {HeaderNavAuthorized};
+export default connect(null, mapDispatchToProps)(HeaderNavAuthorized);
