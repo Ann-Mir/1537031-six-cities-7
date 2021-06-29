@@ -2,11 +2,11 @@ import React from 'react';
 import Logo from '../logo/logo';
 import {LogoTypes} from '../../settings';
 import {connect} from 'react-redux';
-import PropTypes from "prop-types";
-import {AuthorizationStatus} from "../../const";
-import HeaderNavAuthorized from "../header-nav-authorized/header-nav-authorized";
-import HeaderNavGuest from "../header-nav-guest/header-nav-guest";
-import {logout} from "../../store/api-actions";
+import PropTypes from 'prop-types';
+import {AuthorizationStatus} from '../../const';
+import HeaderNavAuthorized from '../header-nav-authorized/header-nav-authorized';
+import HeaderNavGuest from '../header-nav-guest/header-nav-guest';
+import {logout} from '../../store/api-actions';
 
 function Header({ username, authorizationStatus, logoutApp }) {
   return (

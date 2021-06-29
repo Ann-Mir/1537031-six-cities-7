@@ -6,9 +6,12 @@ const initialState = {
   city: DEFAULT_CITY,
   activeSortType: DEFAULT_SORT_TYPE,
   activeOfferId: null,
+  currentOffer: null,
   authorizationStatus: AuthorizationStatus.UNKNOWN,
   isDataLoaded: false,
   username: '',
+  comments: [],
+  offersNearby: [],
 };
 
 const reducer = (state = initialState, action) => {
@@ -49,6 +52,26 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         username: action.payload.email,
+      };
+    case ActionType.LOAD_COMMENTS:
+      return {
+        ...state,
+        comments: action.payload,
+      };
+    case ActionType.LOAD_OFFERS_NEARBY:
+      return {
+        ...state,
+        offersNearby: action.payload,
+      };
+    case ActionType.LOAD_OFFER:
+      return {
+        ...state,
+        currentOffer: action.payload,
+      };
+    case ActionType.SET_IS_DATA_LOADED:
+      return {
+        ...state,
+        isDataLoaded: action.payload,
       };
     default:
       return state;

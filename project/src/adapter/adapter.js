@@ -21,3 +21,20 @@ export const adaptOfferToClient = (offer) => {
 
   return adaptedOffer;
 };
+
+
+export const adaptCommentToClient = (comment) => {
+  const adaptedComment ={
+    ...comment,
+    user: {
+      ...comment.user,
+      avatarUrl: comment.user.avatar_url,
+      isPro: comment.user.is_pro,
+    }
+  };
+
+  delete adaptedComment.user.avatar_url;
+  delete adaptedComment.user.is_pro;
+
+  return adaptedComment;
+}
