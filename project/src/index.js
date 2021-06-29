@@ -23,7 +23,7 @@ const store = createStore(
   ),
 );
 
-store.dispatch(checkAuth());
+// store.dispatch(checkAuth());
 store.dispatch(fetchOffers());
 
 

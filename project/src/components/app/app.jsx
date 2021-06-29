@@ -16,11 +16,11 @@ import browserHistory from "../../browser-history";
 
 function App({ offers, authorizationStatus, isDataLoaded }) {
 
-  if (isCheckedAuth(authorizationStatus) || !isDataLoaded) {
-    return (
-      <LoadingScreen />
-    );
-  }
+  // if (isCheckedAuth(authorizationStatus) || !isDataLoaded) {
+  //   return (
+  //     <LoadingScreen />
+  //   );
+  // }
 
   return (
     <BrowserRouter history={browserHistory}>

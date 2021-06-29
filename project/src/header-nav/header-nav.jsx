@@ -7,7 +7,6 @@ import PropTypes from 'prop-types';
 
 
 function HeaderNav( props) {
-  console.log(props);
   if (props.authorizationStatus === AuthorizationStatus.AUTH) {
     return <HeaderNavAuthorized />
   };
