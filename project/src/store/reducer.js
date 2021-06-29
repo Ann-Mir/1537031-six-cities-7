@@ -21,6 +21,7 @@ const reducer = (state = initialState, action) => {
     case ActionType.LOGOUT:
       return {
         ...state,
+        username: '',
         authorizationStatus: AuthorizationStatus.NO_AUTH,
       };
     case ActionType.SET_CITY:

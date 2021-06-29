@@ -2,8 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import {AppRoute} from '../../const';
-import {logout} from '../../store/api-actions';
-import {connect} from 'react-redux';
 
 
 function HeaderNavAuthorized({ username, logoutApp }) {
@@ -37,18 +35,8 @@ function HeaderNavAuthorized({ username, logoutApp }) {
 
 HeaderNavAuthorized.propTypes = {
   logoutApp: PropTypes.func.isRequired,
+  username: PropTypes.string.isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  username: state.username
-});
 
-const mapDispatchToProps = (dispatch) => ({
-  logoutApp() {
-    dispatch(logout());
-  },
-});
-
-
-export {HeaderNavAuthorized};
-export default connect(mapStateToProps, mapDispatchToProps)(HeaderNavAuthorized);
+export default HeaderNavAuthorized;
