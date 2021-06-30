@@ -43,7 +43,7 @@ function Map({place, offers, activeOfferId}) {
         markers.clearLayers();
       }
     }
-  }, [map, offers]);
+  }, [map, offers, place]);
 
   return (
       <div style={{height: '100%'}} ref={mapRef}></div>

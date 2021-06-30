@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import offerPropTypes from '../offer.prop';
 
 
 function MainEmpty({ city }) {
@@ -16,13 +15,11 @@ function MainEmpty({ city }) {
       </section>
       <div className="cities__right-section"></div>
     </div>
-  )
+  );
 }
 
 MainEmpty.propTypes = {
-  currentOffers: PropTypes.arrayOf(offerPropTypes).isRequired,
   city: PropTypes.string.isRequired,
-  activeSortType: PropTypes.string.isRequired,
 };
 
 export default MainEmpty;
