@@ -4,10 +4,10 @@ import ReviewForm from '../review-form/review-form';
 import {fetchComments} from '../../store/api-actions';
 import {connect, useDispatch} from 'react-redux';
 import LoadWrapper from '../load-wrapper/load-wrapper';
-import {MAX_REVIEWS_COUNT} from '../../const';
+import {AuthorizationStatus, MAX_REVIEWS_COUNT} from '../../const';
 
 
-function Reviews({ offerId, currentOffer, comments, areReviewsLoaded, onReviewSubmit }) {
+function Reviews({ offerId, currentOffer, comments, areReviewsLoaded, onReviewSubmit, authorizationStatus }) {
 
   const dispatch = useDispatch();
 
@@ -22,7 +22,10 @@ function Reviews({ offerId, currentOffer, comments, areReviewsLoaded, onReviewSu
         <ul className="reviews__list">
           {comments.map((comment) => <ReviewsItem key={comment.id} review={comment}/>)}
         </ul>
-        <ReviewForm offer={currentOffer} onReviewSubmit={onReviewSubmit}/>
+        {
+          authorizationStatus === AuthorizationStatus.AUTH
+          && <ReviewForm offer={currentOffer} onReviewSubmit={onReviewSubmit}/>
+        }
       </section>
     </LoadWrapper>
   );
@@ -32,6 +35,7 @@ function Reviews({ offerId, currentOffer, comments, areReviewsLoaded, onReviewSu
 const mapStateToProps = (state) => ({
   comments: state.comments.slice().splice(0, MAX_REVIEWS_COUNT),
   areReviewsLoaded: state.areReviewsLoaded,
+  authorizationStatus: state.authorizationStatus,
 });
 
 export {Reviews};
