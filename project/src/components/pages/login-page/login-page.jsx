@@ -1,25 +1,19 @@
 import React, {useRef} from 'react';
 import PropTypes from 'prop-types';
 import Header from '../../header/header';
-import {useHistory} from "react-router";
-import {AppRoute} from "../../../const";
-import {login} from "../../../store/api-actions";
-import {connect} from "react-redux";
+import {login} from '../../../store/api-actions';
+import {connect} from 'react-redux';
 
 function LoginPage({ onSubmit }) {
-
   const loginRef = useRef();
   const passwordRef = useRef();
 
-  const history = useHistory();
-
   const handleSubmit = (evt) => {
     evt.preventDefault();
-
     onSubmit({
       login: loginRef.current.value,
       password: passwordRef.current.value,
-    });
+    })
   };
 
   return (
@@ -61,7 +55,6 @@ function LoginPage({ onSubmit }) {
               <button
                 className="login__submit form__submit button"
                 type="submit"
-                onClick={() => history.push(AppRoute.ROOT)}
               >
                 Sign in
               </button>

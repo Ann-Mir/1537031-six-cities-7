@@ -7,6 +7,7 @@ import generatePath from 'react-router/modules/generatePath';
 import offerPropTypes from '../offer.prop';
 import {CARD_SETTINGS, CardTypes} from '../../settings';
 
+
 function PlaceCard({ offer, cardType, onMouseEnter, onMouseLeave }) {
   const {
     id,
@@ -58,7 +59,9 @@ function PlaceCard({ offer, cardType, onMouseEnter, onMouseLeave }) {
           </div>
         </div>
         <h2 className="place-card__name">
-          <Link to={{ pathname: generatePath(AppRoute.ROOM, { id })}}>
+          <Link
+            to={{ pathname: generatePath(AppRoute.ROOM, { id })}}
+          >
             {title}
           </Link>
         </h2>
