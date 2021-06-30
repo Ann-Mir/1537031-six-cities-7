@@ -89,7 +89,7 @@ const reducer = (state = initialState, action) => {
     case ActionType.SET_ARE_LOADED_OFFERS_NEARBY:
       return {
         ...state,
-        areReviewsLoaded: action.payload,
+        areLoadedOffersNearby: action.payload,
       };
     default:
       return state;

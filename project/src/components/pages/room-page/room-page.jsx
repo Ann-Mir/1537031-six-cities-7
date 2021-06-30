@@ -8,12 +8,12 @@ import PropTypes from 'prop-types';
 import Reviews from '../../reviews/reviews';
 import NearPlaces from '../../near-places/near-places';
 import PropertyDescription from '../../property-description/property-description';
-import {fetchOffer, fetchOffersNearby} from "../../../store/api-actions";
-import {connect, useDispatch} from "react-redux";
-import LoadWrapper from "../../load-wrapper/load-wrapper";
+import {fetchOffer, fetchOffersNearby} from '../../../store/api-actions';
+import {connect, useDispatch} from 'react-redux';
+import LoadWrapper from '../../load-wrapper/load-wrapper';
 
 function RoomPage(props) {
-  const { id, offers, currentOffer, onReviewSubmit, isOfferLoaded, areLoadedOffersNearby, offersNearby } = props;
+  const { id, currentOffer, onReviewSubmit, isOfferLoaded, areLoadedOffersNearby, offersNearby } = props;
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -37,15 +37,11 @@ function RoomPage(props) {
                       <Reviews offerId={id} currentOffer={currentOffer} reviews={reviews} onReviewSubmit={onReviewSubmit} />
                     </div>
                   </div>
-                  {/*<section className="property__map map">*/}
-                  <LoadWrapper isDataLoaded={areLoadedOffersNearby}>
-                    <section className="property__map map">
+                  <section className="property__map map">
+                    <LoadWrapper isDataLoaded={areLoadedOffersNearby}>
                       <Map place={currentOffer.city} offers={offersNearby}/>
-                    </section>
-                  </LoadWrapper>
-
-                    {/*<Map place={currentOffer.city} offers={offers}/>*/}
-                  {/*</section>*/}
+                    </LoadWrapper>
+                  </section>
                 </section>
                 <div className="container">
                   <LoadWrapper isDataLoaded={areLoadedOffersNearby}>

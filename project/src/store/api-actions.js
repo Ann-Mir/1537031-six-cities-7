@@ -30,8 +30,9 @@ export const fetchComments = (id) => (dispatch, _getState, api) => {
       const comments = data.map((comment) => adaptCommentToClient(comment));
       dispatch(ActionCreator.loadComments(comments))
     })
-    .then(() => dispatch(ActionCreator.setAreReviewsLoaded(true)))
+    //.then(() => dispatch(ActionCreator.setAreReviewsLoaded(true)))
     .catch(() => dispatch(ActionCreator.loadComments([])))
+    .finally(() => dispatch(ActionCreator.setAreReviewsLoaded(true)))
 };
 
 export const fetchOffersNearby = (id) => (dispatch, _getState, api) => {
@@ -41,8 +42,9 @@ export const fetchOffersNearby = (id) => (dispatch, _getState, api) => {
       const offers = data.map((offer) => adaptOfferToClient(offer));
       dispatch(ActionCreator.loadOffersNearby(offers))
     })
-    .then(() => dispatch(ActionCreator.setAreLoadedOffersNearby(true)))
+    //.then(() => dispatch(ActionCreator.setAreLoadedOffersNearby(true)))
     .catch(() => dispatch(ActionCreator.loadOffersNearby([])))
+    .finally(() => dispatch(ActionCreator.setAreLoadedOffersNearby(true)))
 };
 
 export const checkAuth = () => (dispatch, _getState, api) => (
