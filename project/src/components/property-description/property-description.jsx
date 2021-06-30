@@ -22,7 +22,7 @@ function PropertyDescription({ offer }) {
   const ratingWidth = getRating(rating);
 
   return (
-    <div>
+    <React.Fragment>
       <div className={`property__mark ${isPremium ? '' : 'visually-hidden'}`}>
         <span>Premium</span>
       </div>
@@ -70,7 +70,7 @@ function PropertyDescription({ offer }) {
           </p>
         </div>
       </div>
-    </div>
+    </React.Fragment>
   );
 }
 

@@ -11,6 +11,7 @@ export const ActionType = {
   LOAD_COMMENTS: 'comments/loadComments',
   LOAD_OFFERS_NEARBY: 'offers/loadOffersNearby',
   SET_IS_DATA_LOADED: 'cities/isLoaded',
+  SET_IS_OFFER_LOADED: 'offers/setIsOfferLoaded',
 };
 
 export const ActionCreator = {
@@ -59,6 +60,10 @@ export const ActionCreator = {
   }),
   setIsDataLoaded: (isLoaded) => ({
     type: ActionType.SET_IS_DATA_LOADED,
+    payload: isLoaded,
+  }),
+  setIsOfferLoaded: (isLoaded) => ({
+    type: ActionType.SET_IS_OFFER_LOADED,
     payload: isLoaded,
   }),
 };

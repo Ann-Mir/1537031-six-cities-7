@@ -39,9 +39,8 @@ function App({ offers, authorizationStatus, isDataLoaded }) {
         <Route
           exact
           path={AppRoute.ROOM}
-          render={({ match }) => <RoomPage
+          render={({ match }) => <RoomPage id={match.params.id}
             offers={offers.slice(0, MAX_ROOMS_PER_PAGE)}
-            currentOffer={offers.find((item) => item.id === Number(match.params.id))}
             onReviewSubmit={() => {}}
           />}
         />

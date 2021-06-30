@@ -13,13 +13,15 @@ export const fetchOffers = () => (dispatch, _getState, api) => (
     })
 );
 
-export const fetchOffer = (id) => (dispatch, _getState, api) => (
+export const fetchOffer = (id) => (dispatch, _getState, api) => {
+  dispatch(ActionCreator.setIsOfferLoaded(false));
   api.get(`/hotels/${id}`)
     .then(({data}) => {
       const offer = adaptOfferToClient(data);
       dispatch(ActionCreator.loadOffer(offer));
     })
-);
+    .then(() => dispatch(ActionCreator.setIsOfferLoaded(true)))
+};
 
 export const fetchComments = (id) => (dispatch, _getState, api) => (
   api.get(`comments/${id}`)

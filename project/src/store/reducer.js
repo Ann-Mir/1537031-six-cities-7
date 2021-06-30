@@ -9,6 +9,7 @@ const initialState = {
   currentOffer: null,
   authorizationStatus: AuthorizationStatus.UNKNOWN,
   isDataLoaded: false,
+  isOfferLoaded: false,
   username: '',
   comments: [],
   offersNearby: [],
@@ -72,6 +73,11 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         isDataLoaded: action.payload,
+      };
+    case ActionType.SET_IS_OFFER_LOADED:
+      return {
+        ...state,
+        isOfferLoaded: action.payload,
       };
     default:
       return state;
