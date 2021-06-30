@@ -5,8 +5,8 @@ import offerPropTypes from '../../offer.prop';
 import LocationsList from '../../locations-list/locations-list';
 import {LOCATIONS} from '../../../const'
 import { connect } from 'react-redux';
-import Cities from "../../cities/cities";
-import LoadingScreen from "../../loading-screen/loadingScreen";
+import Cities from '../../cities/cities';
+import LoadWrapper from '../../load-wrapper/load-wrapper';
 
 function MainPage({ currentOffers, city, activeSortType, isDataLoaded }) {
   return (
@@ -21,21 +21,9 @@ function MainPage({ currentOffers, city, activeSortType, isDataLoaded }) {
             <LocationsList locations={LOCATIONS}/>
           </section>
         </div>
-        {
-          isDataLoaded
-          && <Cities currentOffers={currentOffers} activeSortType={activeSortType} city={city}/>
-          || <LoadingScreen />
-        }
-
-        {/*<div className="cities">*/}
-        {/*  {currentOffers.length > 0*/}
-        {/*  && <PlacesWrapper*/}
-        {/*        currentOffers={currentOffers}*/}
-        {/*        city={city}*/}
-        {/*        activeSortType={activeSortType}*/}
-        {/*      />*/}
-        {/*  || <MainEmpty city={city}/>}*/}
-        {/*</div>*/}
+        <LoadWrapper isDataLoaded={isDataLoaded}>
+          <Cities currentOffers={currentOffers} activeSortType={activeSortType} city={city}/>
+        </LoadWrapper>
       </main>
     </div>
   );
