@@ -10,6 +10,8 @@ const initialState = {
   authorizationStatus: AuthorizationStatus.UNKNOWN,
   isDataLoaded: false,
   isOfferLoaded: false,
+  areReviewsLoaded: false,
+  areLoadedOffersNearby: false,
   username: '',
   comments: [],
   offersNearby: [],
@@ -78,6 +80,16 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         isOfferLoaded: action.payload,
+      };
+    case ActionType.SET_ARE_REVIEWS_LOADED:
+      return {
+        ...state,
+        areReviewsLoaded: action.payload,
+      };
+    case ActionType.SET_ARE_LOADED_OFFERS_NEARBY:
+      return {
+        ...state,
+        areReviewsLoaded: action.payload,
       };
     default:
       return state;

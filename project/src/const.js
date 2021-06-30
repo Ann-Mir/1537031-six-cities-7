@@ -83,4 +83,8 @@ export const SortTypes = {
   TOP: 'Top rated first',
 };
 
+export const MAX_OFFERS_NEARBY_COUNT = 3;
+
+export const MAX_REVIEWS_COUNT = 10;
+
 export const DEFAULT_SORT_TYPE = SortTypes.POPULAR;

@@ -33,7 +33,7 @@ function RoomPage(props) {
                   <div className="property__container container">
                     <div className="property__wrapper">
                       <PropertyDescription offer={currentOffer} />
-                      <Reviews currentOffer={currentOffer} reviews={reviews} onReviewSubmit={onReviewSubmit} />
+                      <Reviews offerId={id} currentOffer={currentOffer} reviews={reviews} onReviewSubmit={onReviewSubmit} />
                     </div>
                   </div>
                   <section className="property__map map">

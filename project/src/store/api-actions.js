@@ -1,6 +1,6 @@
 import {ActionCreator} from './action';
 import {AuthorizationStatus, APIRoute, AppRoute} from '../const';
-import {adaptOfferToClient} from '../adapter/adapter';
+import {adaptCommentToClient, adaptOfferToClient} from '../adapter/adapter';
 
 export const fetchOffers = () => (dispatch, _getState, api) => (
   api.get(APIRoute.OFFERS)
@@ -23,23 +23,28 @@ export const fetchOffer = (id) => (dispatch, _getState, api) => {
     .then(() => dispatch(ActionCreator.setIsOfferLoaded(true)))
 };
 
-export const fetchComments = (id) => (dispatch, _getState, api) => (
-  api.get(`comments/${id}`)
+export const fetchComments = (id) => (dispatch, _getState, api) => {
+  dispatch(ActionCreator.setAreReviewsLoaded(false));
+  api.get(`/comments/${id}`)
     .then(({data}) => {
-      const comments = data.map((comment) => adaptOfferToClient(comment));
+      const comments = data.map((comment) => adaptCommentToClient(comment));
       dispatch(ActionCreator.loadComments(comments))
     })
+    .then(() => dispatch(ActionCreator.setAreReviewsLoaded(true)))
     .catch(() => dispatch(ActionCreator.loadComments([])))
-);
+};
 
-export const fetchOffersNearby = (id) => (dispatch, _getState, api) => (
-  api.get(`hotels/${id}/nearby`)
+export const fetchOffersNearby = (id) => (dispatch, _getState, api) => {
+  dispatch(ActionCreator.setAreLoadedOffersNearby(false));
+  api.get(`/hotels/${id}/nearby`)
     .then(({data}) => {
       const offers = data.map((offer) => adaptOfferToClient(offer));
+      console.log(offers);
       dispatch(ActionCreator.loadOffersNearby(offers))
     })
+    .then(() => dispatch(ActionCreator.setAreLoadedOffersNearby(true)))
     .catch(() => dispatch(ActionCreator.loadOffersNearby([])))
-);
+};
 
 export const checkAuth = () => (dispatch, _getState, api) => (
   api.get(APIRoute.LOGIN)
