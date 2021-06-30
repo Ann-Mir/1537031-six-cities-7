@@ -4,7 +4,7 @@ import RatingOptions from '../rating-options/rating-options';
 import offerPropTypes from '../offer.prop';
 
 function ReviewForm(props) {
-  const { offer, onReviewSubmit } = props;
+  const { offerId, onReviewSubmit } = props;
   const [rating, setRating] = React.useState(0);
   const [reviewText, setReviewText] = React.useState('');
   return (
@@ -14,7 +14,7 @@ function ReviewForm(props) {
       method="post"
       onSubmit={(evt) => {
         evt.preventDefault();
-        onReviewSubmit(offer, rating, reviewText)
+        onReviewSubmit(offerId, rating, reviewText)
       }}
     >
       <label className="reviews__label form__label" htmlFor="review">Your review</label>

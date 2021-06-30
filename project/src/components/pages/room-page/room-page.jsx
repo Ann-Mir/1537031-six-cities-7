@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import Header from '../../header/header';
 import PropertyGallery from '../../property-gallery/property-gallery';
 import reviews from '../../../mocks/reviews';
@@ -21,7 +21,6 @@ function RoomPage(props) {
     dispatch(fetchOffersNearby(id));
   }, [id, dispatch]);
 
-
   return (
     <div className="page">
       <Header />
@@ -29,26 +28,26 @@ function RoomPage(props) {
         {
           currentOffer
           && <main className="page__main page__main--property">
-                <section className="property">
-                  <PropertyGallery images={currentOffer.images}/>
-                  <div className="property__container container">
-                    <div className="property__wrapper">
-                      <PropertyDescription offer={currentOffer} />
-                      <Reviews offerId={id} currentOffer={currentOffer} reviews={reviews} onReviewSubmit={onReviewSubmit} />
-                    </div>
+              <section className="property">
+                <PropertyGallery images={currentOffer.images}/>
+                <div className="property__container container">
+                  <div className="property__wrapper">
+                    <PropertyDescription offer={currentOffer} />
+                    <Reviews offerId={id} currentOffer={currentOffer} reviews={reviews} onReviewSubmit={onReviewSubmit} />
                   </div>
-                  <section className="property__map map">
-                    <LoadWrapper isDataLoaded={areLoadedOffersNearby}>
-                      <Map place={currentOffer.city} offers={offersNearby}/>
-                    </LoadWrapper>
-                  </section>
-                </section>
-                <div className="container">
-                  <LoadWrapper isDataLoaded={areLoadedOffersNearby}>
-                    <NearPlaces offers={offersNearby} />
-                  </LoadWrapper>
                 </div>
-              </main>
+                <section className="property__map map">
+                  <LoadWrapper isDataLoaded={areLoadedOffersNearby}>
+                    <Map place={currentOffer.city} offers={offersNearby}/>
+                  </LoadWrapper>
+                </section>
+              </section>
+              <div className="container">
+                <LoadWrapper isDataLoaded={areLoadedOffersNearby}>
+                  <NearPlaces offers={offersNearby} />
+                </LoadWrapper>
+              </div>
+            </main>
         }
       </LoadWrapper>
     </div>

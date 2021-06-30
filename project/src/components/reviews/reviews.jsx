@@ -24,7 +24,7 @@ function Reviews({ offerId, currentOffer, comments, areReviewsLoaded, onReviewSu
         </ul>
         {
           authorizationStatus === AuthorizationStatus.AUTH
-          && <ReviewForm offer={currentOffer} onReviewSubmit={onReviewSubmit}/>
+          && <ReviewForm offerId={offerId} onReviewSubmit={onReviewSubmit}/>
         }
       </section>
     </LoadWrapper>

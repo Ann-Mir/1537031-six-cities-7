@@ -21,6 +21,9 @@ export const fetchOffer = (id) => (dispatch, _getState, api) => {
       dispatch(ActionCreator.loadOffer(offer));
     })
     .then(() => dispatch(ActionCreator.setIsOfferLoaded(true)))
+    .catch(() => {
+      dispatch(ActionCreator.redirectToRoute(AppRoute.NOT_FOUND));
+    })
 };
 
 export const fetchComments = (id) => (dispatch, _getState, api) => {
