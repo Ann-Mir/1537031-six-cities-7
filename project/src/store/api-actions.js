@@ -39,7 +39,6 @@ export const fetchOffersNearby = (id) => (dispatch, _getState, api) => {
   api.get(`/hotels/${id}/nearby`)
     .then(({data}) => {
       const offers = data.map((offer) => adaptOfferToClient(offer));
-      console.log(offers);
       dispatch(ActionCreator.loadOffersNearby(offers))
     })
     .then(() => dispatch(ActionCreator.setAreLoadedOffersNearby(true)))

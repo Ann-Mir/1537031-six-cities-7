@@ -8,18 +8,19 @@ import PropTypes from 'prop-types';
 import Reviews from '../../reviews/reviews';
 import NearPlaces from '../../near-places/near-places';
 import PropertyDescription from '../../property-description/property-description';
-import {fetchOffer} from "../../../store/api-actions";
+import {fetchOffer, fetchOffersNearby} from "../../../store/api-actions";
 import {connect, useDispatch} from "react-redux";
 import LoadWrapper from "../../load-wrapper/load-wrapper";
-import LoadingScreen from "../../loading-screen/loadingScreen";
 
 function RoomPage(props) {
-  const { id, offers, currentOffer, onReviewSubmit, isOfferLoaded } = props;
-  //const { images, city  } = currentOffer;
+  const { id, offers, currentOffer, onReviewSubmit, isOfferLoaded, areLoadedOffersNearby, offersNearby } = props;
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchOffer(id));
-  }, [id])
+    dispatch(fetchOffersNearby(id));
+  }, [id, dispatch]);
+
 
   return (
     <div className="page">
@@ -36,12 +37,20 @@ function RoomPage(props) {
                       <Reviews offerId={id} currentOffer={currentOffer} reviews={reviews} onReviewSubmit={onReviewSubmit} />
                     </div>
                   </div>
-                  <section className="property__map map">
-                    <Map place={currentOffer && currentOffer.city} offers={offers}/>
-                  </section>
+                  {/*<section className="property__map map">*/}
+                  <LoadWrapper isDataLoaded={areLoadedOffersNearby}>
+                    <section className="property__map map">
+                      <Map place={currentOffer.city} offers={offersNearby}/>
+                    </section>
+                  </LoadWrapper>
+
+                    {/*<Map place={currentOffer.city} offers={offers}/>*/}
+                  {/*</section>*/}
                 </section>
                 <div className="container">
-                  <NearPlaces offers={offers} />
+                  <LoadWrapper isDataLoaded={areLoadedOffersNearby}>
+                    <NearPlaces offers={offersNearby} />
+                  </LoadWrapper>
                 </div>
               </main>
         }
@@ -60,6 +69,8 @@ RoomPage.propTypes = {
 const mapStateToProps = (state) => ({
   currentOffer: state.currentOffer,
   isOfferLoaded: state.isOfferLoaded,
+  areLoadedOffersNearby: state.areLoadedOffersNearby,
+  offersNearby: state.offersNearby,
 });
 
 export {RoomPage};
