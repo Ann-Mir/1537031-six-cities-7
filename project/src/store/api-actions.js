@@ -6,9 +6,8 @@ export const fetchOffers = () => (dispatch, _getState, api) => (
   api.get(APIRoute.OFFERS)
     .then(({data}) => {
       const offers = data.map((offer) => adaptOfferToClient(offer));
-      return offers;
+      dispatch(ActionCreator.loadOffers(offers))
     })
-    .then((offers) => dispatch(ActionCreator.loadOffers(offers)))
     .catch(() => {
       dispatch(ActionCreator.loadOffers([]));
     })
@@ -18,18 +17,16 @@ export const fetchOffer = (id) => (dispatch, _getState, api) => (
   api.get(`/hotels/${id}`)
     .then(({data}) => {
       const offer = adaptOfferToClient(data);
-      return offer;
+      dispatch(ActionCreator.loadOffer(offer));
     })
-    .then((offer) => dispatch(ActionCreator.loadOffer(offer)))
 );
 
 export const fetchComments = (id) => (dispatch, _getState, api) => (
   api.get(`comments/${id}`)
     .then(({data}) => {
       const comments = data.map((comment) => adaptOfferToClient(comment));
-      return comments;
+      dispatch(ActionCreator.loadComments(comments))
     })
-    .then((comments) => dispatch(ActionCreator.loadComments(comments)))
     .catch(() => dispatch(ActionCreator.loadComments([])))
 );
 
@@ -37,9 +34,8 @@ export const fetchOffersNearby = (id) => (dispatch, _getState, api) => (
   api.get(`hotels/${id}/nearby`)
     .then(({data}) => {
       const offers = data.map((offer) => adaptOfferToClient(offer));
-      return offers;
+      dispatch(ActionCreator.loadOffersNearby(offers))
     })
-    .then((offers) => dispatch(ActionCreator.loadOffersNearby(offers)))
     .catch(() => dispatch(ActionCreator.loadOffersNearby([])))
 );
 
