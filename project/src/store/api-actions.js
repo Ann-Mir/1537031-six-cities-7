@@ -1,5 +1,5 @@
 import {ActionCreator} from './action';
-import {AuthorizationStatus, APIRoute, AppRoute} from '../const';
+import {AuthorizationStatus, APIRoute, AppRoute, RESPONSE_SUCCESS} from '../const';
 import {adaptCommentToClient, adaptOfferToClient} from '../adapter/adapter';
 
 export const fetchOffers = () => (dispatch, _getState, api) => (
@@ -51,11 +51,18 @@ export const fetchOffersNearby = (id) => (dispatch, _getState, api) => {
 export const sendComment = ({id, comment, rating}) => (dispatch, _getState, api) => {
   dispatch(ActionCreator.setAreReviewsLoaded(false));
   api.post(`/comments/${id}`, {comment, rating})
-    .then(({data}) => {
-      const comments = data.map(adaptCommentToClient);
-      dispatch(ActionCreator.loadComments(comments));
+    .then(({status, data}) => {
+      if (status === RESPONSE_SUCCESS) {
+        dispatch(ActionCreator.setHasPostedComment(true));
+        const comments = data.map(adaptCommentToClient);
+        dispatch(ActionCreator.loadComments(comments));
+      } else {
+        dispatch(ActionCreator.setHasPostedComment(false));
+      }
     })
-    .catch(() => dispatch(ActionCreator.loadComments([])))
+    .catch(() => {
+      dispatch(ActionCreator.setHasPostedComment(false));
+    })
     .finally(() => dispatch(ActionCreator.setAreReviewsLoaded(true)))
 };
 

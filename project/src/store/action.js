@@ -14,6 +14,7 @@ export const ActionType = {
   SET_IS_OFFER_LOADED: 'offers/setIsOfferLoaded',
   SET_ARE_REVIEWS_LOADED: 'offers/setAreReviewsLoaded',
   SET_ARE_LOADED_OFFERS_NEARBY: 'offers/setAreLoadedOffersNearby',
+  SET_HAS_POSTED_COMMENT: 'comments/setHasPostedComment',
 };
 
 export const ActionCreator = {
@@ -76,4 +77,8 @@ export const ActionCreator = {
     type: ActionType.SET_ARE_LOADED_OFFERS_NEARBY,
     payload: areLoaded,
   }),
+  setHasPostedComment: (hasPosted) => ({
+    type: ActionType.SET_HAS_POSTED_COMMENT,
+    payload: hasPosted,
+  })
 };

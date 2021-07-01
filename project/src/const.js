@@ -95,3 +95,5 @@ export const MAX_IMAGES_COUNT = 6;
 export const MIN_REVIEW_LENGTH = 50;
 
 export const MAX_REVIEW_LENGTH = 300;
+
+export const RESPONSE_SUCCESS = 200;

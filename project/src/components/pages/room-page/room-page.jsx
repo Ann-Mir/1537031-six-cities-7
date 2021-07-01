@@ -38,7 +38,7 @@ function RoomPage(props) {
                 </div>
                 <section className="property__map map">
                   <LoadWrapper isDataLoaded={areLoadedOffersNearby}>
-                    <Map place={currentOffer.city} offers={offersNearby}/>
+                    <Map place={currentOffer.city} offers={[...offersNearby, currentOffer]}/>
                   </LoadWrapper>
                 </section>
               </section>

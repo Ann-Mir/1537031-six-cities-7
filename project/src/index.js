@@ -26,7 +26,7 @@ const store = createStore(
 );
 
 // store.dispatch(checkAuth());
-store.dispatch(fetchOffers());
+// store.dispatch(fetchOffers());
 
 
 ReactDOM.render(

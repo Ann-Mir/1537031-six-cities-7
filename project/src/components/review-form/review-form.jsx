@@ -2,20 +2,33 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import RatingOptions from '../rating-options/rating-options';
 import offerPropTypes from '../offer.prop';
-import {MAX_REVIEW_LENGTH, MIN_REVIEW_LENGTH} from '../../const';
+import {AuthorizationStatus, MAX_REVIEW_LENGTH, MIN_REVIEW_LENGTH} from '../../const';
+import {connect, useDispatch} from "react-redux";
+import {sendComment} from "../../store/api-actions";
 
-function ReviewForm(props) {
-  const { offerId, onReviewSubmit } = props;
+function ReviewForm({ offerId, authorizationStatus, hasPostedComment }) {
+  //const { offerId, onReviewSubmit } = props;
   const [rating, setRating] = React.useState(0);
   const [review, setReviewText] = React.useState('');
   const [isDisabled, setIsDisabled] = React.useState(true);
 
 
+  const dispatch = useDispatch();
+
   const handleFormChange = (evt) => {
-    setIsDisabled(review.length >= MIN_REVIEW_LENGTH
+    setIsDisabled(!(review.length >= MIN_REVIEW_LENGTH
       && review.length <= MAX_REVIEW_LENGTH
-      && rating > 0);
+      && rating > 0));
   };
+
+  const handleFormSubmit = (evt) => {
+    evt.preventDefault();
+    if (isDisabled || authorizationStatus !== AuthorizationStatus.AUTH) {
+      return;
+    }
+    setIsDisabled(true);
+    dispatch(sendComment({id: offerId, comment: review, rating: rating}));
+  }
 
   return (
     <form
@@ -23,10 +36,7 @@ function ReviewForm(props) {
       action="#"
       method="post"
       onChange={handleFormChange}
-      onSubmit={(evt) => {
-        evt.preventDefault();
-        onReviewSubmit(offerId, rating, review)
-      }}
+      onSubmit={handleFormSubmit}
     >
       <label className="reviews__label form__label" htmlFor="review">Your review</label>
       <RatingOptions setRating={setRating}/>
@@ -36,6 +46,8 @@ function ReviewForm(props) {
         name="review"
         placeholder="Tell how was your stay, what you like and what can be improved"
         onChange={(evt) => setReviewText(evt.target.value)}
+        minLength={MIN_REVIEW_LENGTH}
+        maxLength={MAX_REVIEW_LENGTH}
       />
       <div className="reviews__button-wrapper">
         <p className="reviews__help">
@@ -53,4 +65,10 @@ ReviewForm.propTypes = {
   onReviewSubmit: PropTypes.func.isRequired,
 };
 
-export default ReviewForm;
+const mapStateToProps = (state) => ({
+  authorizationStatus: state.authorizationStatus,
+  hasPostedComment: state.hasPostedComment,
+});
+
+export {ReviewForm};
+export default connect(mapStateToProps)(ReviewForm);
