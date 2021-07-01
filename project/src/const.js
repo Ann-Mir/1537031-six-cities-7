@@ -89,3 +89,5 @@ export const MAX_OFFERS_NEARBY_COUNT = 3;
 export const MAX_REVIEWS_COUNT = 10;
 
 export const DEFAULT_SORT_TYPE = SortTypes.POPULAR;
+
+export const MAX_IMAGES_COUNT = 6;
