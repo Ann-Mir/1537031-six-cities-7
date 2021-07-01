@@ -48,6 +48,17 @@ export const fetchOffersNearby = (id) => (dispatch, _getState, api) => {
     .finally(() => dispatch(ActionCreator.setAreLoadedOffersNearby(true)))
 };
 
+export const sendComment = ({id, comment, rating}) => (dispatch, _getState, api) => {
+  dispatch(ActionCreator.setAreReviewsLoaded(false));
+  api.post(`/comments/${id}`, {comment, rating})
+    .then(({data}) => {
+      const comments = data.map(adaptCommentToClient);
+      dispatch(ActionCreator.loadComments(comments));
+    })
+    .catch(() => dispatch(ActionCreator.loadComments([])))
+    .finally(() => dispatch(ActionCreator.setAreReviewsLoaded(true)))
+};
+
 export const checkAuth = () => (dispatch, _getState, api) => (
   api.get(APIRoute.LOGIN)
     .then(() => dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH)))
