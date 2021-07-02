@@ -12,7 +12,13 @@ const initialState = {
   isOfferLoaded: false,
   areReviewsLoaded: false,
   areLoadedOffersNearby: false,
-  username: '',
+  user: {
+    avatarUrl: '',
+    email: '',
+    id: null,
+    isPro: false,
+    name: '',
+  },
   comments: [],
   offersNearby: [],
   hasPostedComment: {
@@ -59,7 +65,13 @@ const reducer = (state = initialState, action) => {
     case ActionType.SET_USER:
       return {
         ...state,
-        username: action.payload.email,
+        user: {
+          avatarUrl: action.payload.avatarUrl,
+          email: action.payload.email,
+          id: action.payload.id,
+          isPro: action.payload.isPro,
+          name: action.payload.name,
+        },
       };
     case ActionType.LOAD_COMMENTS:
       return {
