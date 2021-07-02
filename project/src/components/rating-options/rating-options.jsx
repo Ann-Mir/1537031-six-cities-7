@@ -2,7 +2,7 @@ import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import {ratingStarsOptions} from '../../settings';
 
-function RatingOptions({ setRating }) {
+function RatingOptions({ rating, setRating }) {
   return (
     <div className="reviews__rating-form form__rating">
       {ratingStarsOptions.map(({value, title}) => {
@@ -15,6 +15,7 @@ function RatingOptions({ setRating }) {
               id={`${value}-stars`}
               type="radio"
               onChange={(evt) => setRating(Number(evt.target.value))}
+              checked={rating === value}
             />
             <label htmlFor={`${value}-stars`} className="reviews__rating-label form__rating-label" title={title}>
               <svg className="form__star-image" style={{width: '37', height: '33'}}>

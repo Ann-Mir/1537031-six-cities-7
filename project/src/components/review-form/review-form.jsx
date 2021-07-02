@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import RatingOptions from '../rating-options/rating-options';
-import offerPropTypes from '../offer.prop';
 import {AuthorizationStatus, MAX_REVIEW_LENGTH, MIN_REVIEW_LENGTH} from '../../const';
 import {connect, useDispatch} from 'react-redux';
 import {sendComment} from '../../store/api-actions';
@@ -27,8 +26,24 @@ function ReviewForm({ offerId, authorizationStatus, hasPostedComment }) {
       return;
     }
     setIsDisabled(true);
-    dispatch(sendComment({id: offerId, comment: review, rating: rating}));
-  }
+    dispatch(sendComment({id: offerId, comment: review, rating: rating}))
+      .then(() => {
+        if (hasPostedComment.hasPosted) {
+          setReviewText('');
+          setRating(0);
+        } else {
+          setReviewText(hasPostedComment.comment);
+          setRating(hasPostedComment.rating);
+        }
+      })
+      .catch(() => {
+        setReviewText(review);
+        setRating(rating);
+      })
+      .finally(() => {
+        setIsDisabled(false);
+      })
+  };
 
   return (
     <form
@@ -39,7 +54,7 @@ function ReviewForm({ offerId, authorizationStatus, hasPostedComment }) {
       onSubmit={handleFormSubmit}
     >
       <label className="reviews__label form__label" htmlFor="review">Your review</label>
-      <RatingOptions setRating={setRating}/>
+      <RatingOptions rating={rating} setRating={setRating}/>
       <textarea
         className="reviews__textarea form__textarea"
         id="review"
@@ -48,6 +63,8 @@ function ReviewForm({ offerId, authorizationStatus, hasPostedComment }) {
         onChange={(evt) => setReviewText(evt.target.value)}
         minLength={MIN_REVIEW_LENGTH}
         maxLength={MAX_REVIEW_LENGTH}
+        value={review}
+        style={!hasPostedComment.hasPosted ? {borderColor: 'red'} : {}}
       />
       <div className="reviews__button-wrapper">
         <p className="reviews__help">
@@ -61,7 +78,13 @@ function ReviewForm({ offerId, authorizationStatus, hasPostedComment }) {
 }
 
 ReviewForm.propTypes = {
-  offer: offerPropTypes,
+  offerId: PropTypes.string.isRequired,
+  authorizationStatus: PropTypes.string.isRequired,
+  hasPostedComment: PropTypes.shape({
+    hasPosted: PropTypes.bool,
+    comment: PropTypes.string,
+    rating: PropTypes.number,
+  })
 };
 
 const mapStateToProps = (state) => ({

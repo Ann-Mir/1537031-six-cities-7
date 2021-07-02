@@ -15,7 +15,11 @@ const initialState = {
   username: '',
   comments: [],
   offersNearby: [],
-  hasPostedComment: true,
+  hasPostedComment: {
+    hasPosted: true,
+    comment: '',
+    rating: 0,
+  }
 };
 
 const reducer = (state = initialState, action) => {
@@ -95,7 +99,11 @@ const reducer = (state = initialState, action) => {
     case ActionType.SET_HAS_POSTED_COMMENT:
       return {
         ...state,
-        hasPostedComment: action.payload,
+        hasPostedComment: {
+          hasPosted: action.payload.hasPosted,
+          comment: action.payload.comment,
+          rating: action.payload.rating,
+        },
       };
     default:
       return state;

@@ -40,7 +40,7 @@ export const fetchComments = (id) => (dispatch, _getState, api) => {
 export const fetchOffersNearby = (id) => (dispatch, _getState, api) => {
   dispatch(ActionCreator.setAreLoadedOffersNearby(false));
   api.get(`/hotels/${id}/nearby`)
-    .then(({data}) => {
+    .then(({ data }) => {
       const offers = data.map((offer) => adaptOfferToClient(offer));
       dispatch(ActionCreator.loadOffersNearby(offers))
     })
@@ -50,20 +50,20 @@ export const fetchOffersNearby = (id) => (dispatch, _getState, api) => {
 
 export const sendComment = ({id, comment, rating}) => (dispatch, _getState, api) => {
   dispatch(ActionCreator.setAreReviewsLoaded(false));
-  api.post(`/comments/${id}`, {comment, rating})
-    .then(({status, data}) => {
-      if (status === RESPONSE_SUCCESS) {
-        dispatch(ActionCreator.setHasPostedComment(true));
+  return api.post(`/comments/${id}`, {comment, rating})
+    .then((response) => {
+      const { status, data } = response;
+      if (status !== RESPONSE_SUCCESS) {
+        dispatch(ActionCreator.setHasPostedComment({hasPosted: false, comment: comment, rating: rating}));
+      } else {
         const comments = data.map(adaptCommentToClient);
         dispatch(ActionCreator.loadComments(comments));
-      } else {
-        dispatch(ActionCreator.setHasPostedComment(false));
+        dispatch(ActionCreator.setAreReviewsLoaded(true));
       }
     })
     .catch(() => {
-      dispatch(ActionCreator.setHasPostedComment(false));
+
     })
-    .finally(() => dispatch(ActionCreator.setAreReviewsLoaded(true)))
 };
 
 export const checkAuth = () => (dispatch, _getState, api) => (
