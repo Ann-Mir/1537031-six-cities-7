@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import RatingOptions from '../rating-options/rating-options';
 import offerPropTypes from '../offer.prop';
 import {AuthorizationStatus, MAX_REVIEW_LENGTH, MIN_REVIEW_LENGTH} from '../../const';
-import {connect, useDispatch} from "react-redux";
-import {sendComment} from "../../store/api-actions";
+import {connect, useDispatch} from 'react-redux';
+import {sendComment} from '../../store/api-actions';
 
 function ReviewForm({ offerId, authorizationStatus, hasPostedComment }) {
 

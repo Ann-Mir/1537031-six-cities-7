@@ -6,9 +6,10 @@ import {fetchOffer} from '../../../store/api-actions';
 import {connect, useDispatch} from 'react-redux';
 import LoadWrapper from '../../load-wrapper/load-wrapper';
 import PropertyWrapper from '../../property-wrapper/property-wrapper';
+import {useParams} from 'react-router';
 
-function RoomPage({ id, currentOffer, isOfferLoaded }) {
-
+function RoomPage({ currentOffer, isOfferLoaded }) {
+  const { id } = useParams();
   const dispatch = useDispatch();
 
   useEffect(() => {

@@ -2,7 +2,6 @@ import React, {useEffect} from 'react';
 import PropertyGallery from '../property-gallery/property-gallery';
 import PropertyDescription from '../property-description/property-description';
 import Reviews from '../reviews/reviews';
-import reviews from '../../mocks/reviews';
 import {AuthorizationStatus} from '../../const';
 import ReviewForm from '../review-form/review-form';
 import LoadWrapper from '../load-wrapper/load-wrapper';
