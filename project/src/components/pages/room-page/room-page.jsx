@@ -33,7 +33,6 @@ RoomPage.propTypes = {
   currentOffer: offerPropTypes,
 };
 
-
 const mapStateToProps = (state) => ({
   currentOffer: state.currentOffer,
   isOfferLoaded: state.isOfferLoaded,

@@ -1,4 +1,6 @@
 import React, {useEffect} from 'react';
+import PropTypes from 'prop-types';
+import offerPropTypes from '../offer.prop';
 import PropertyGallery from '../property-gallery/property-gallery';
 import PropertyDescription from '../property-description/property-description';
 import Reviews from '../reviews/reviews';
@@ -9,6 +11,7 @@ import Map from '../map/map';
 import NearPlaces from '../near-places/near-places';
 import {connect, useDispatch} from 'react-redux';
 import {fetchOffersNearby} from '../../store/api-actions';
+import {ActionCreator} from "../../store/action";
 
 
 function PropertyWrapper({ id, currentOffer, areLoadedOffersNearby, offersNearby, authorizationStatus }) {
@@ -16,6 +19,7 @@ function PropertyWrapper({ id, currentOffer, areLoadedOffersNearby, offersNearby
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchOffersNearby(id));
+    dispatch(ActionCreator.setActiveOffer(Number(+id)));
   }, [id, dispatch]);
 
   return (
@@ -49,6 +53,14 @@ function PropertyWrapper({ id, currentOffer, areLoadedOffersNearby, offersNearby
   );
 }
 
+
+PropertyWrapper.propTypes = {
+  id: PropTypes.string.isRequired,
+  currentOffer: offerPropTypes,
+  areLoadedOffersNearby: PropTypes.bool.isRequired,
+  offersNearby: PropTypes.arrayOf(offerPropTypes),
+  authorizationStatus: PropTypes.string.isRequired,
+}
 
 const mapStateToProps = (state) => ({
   areLoadedOffersNearby: state.areLoadedOffersNearby,

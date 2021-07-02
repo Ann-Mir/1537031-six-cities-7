@@ -1,4 +1,6 @@
 import React, {useEffect} from 'react';
+import PropTypes from 'prop-types';
+import reviewPropTypes from '../review.prop';
 import ReviewsItem from '../reviews-item/reviews-item';
 import {fetchComments} from '../../store/api-actions';
 import {connect, useDispatch} from 'react-redux';
@@ -26,6 +28,12 @@ function Reviews({ offerId, comments, areReviewsLoaded }) {
   );
 }
 
+
+Reviews.propTypes = {
+  offerId: PropTypes.string.isRequired,
+  comments: PropTypes.arrayOf(reviewPropTypes),
+  areReviewsLoaded: PropTypes.bool.isRequired,
+};
 
 const mapStateToProps = (state) => ({
   comments: state.comments.slice().splice(0, MAX_REVIEWS_COUNT),

@@ -8,7 +8,7 @@ import offerPropTypes from '../offer.prop';
 import {CARD_SETTINGS, CardTypes} from '../../settings';
 
 
-function PlaceCard({ offer, cardType, onMouseEnter, onMouseLeave }) {
+function PlaceCard({ offer, cardType, onMouseEnter, onMouseLeave}) {
   const {
     id,
     previewImage,
