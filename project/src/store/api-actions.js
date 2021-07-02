@@ -14,13 +14,13 @@ export const fetchOffers = () => (dispatch, _getState, api) => (
 );
 
 export const fetchOffer = (id) => (dispatch, _getState, api) => {
-  dispatch(ActionCreator.setIsOfferLoaded(false));
+  dispatch(ActionCreator.setOfferLoadingStatus(false));
   api.get(`/hotels/${id}`)
     .then(({data}) => {
       const offer = adaptOfferToClient(data);
       dispatch(ActionCreator.loadOffer(offer));
     })
-    .then(() => dispatch(ActionCreator.setIsOfferLoaded(true)))
+    .then(() => dispatch(ActionCreator.setOfferLoadingStatus(true)))
     .catch(() => {
       dispatch(ActionCreator.redirectToRoute(AppRoute.NOT_FOUND));
     })

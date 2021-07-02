@@ -65,7 +65,7 @@ export const ActionCreator = {
     type: ActionType.SET_IS_DATA_LOADED,
     payload: isLoaded,
   }),
-  setIsOfferLoaded: (isLoaded) => ({
+  setOfferLoadingStatus: (isLoaded) => ({
     type: ActionType.SET_IS_OFFER_LOADED,
     payload: isLoaded,
   }),
