@@ -7,7 +7,7 @@ import {connect, useDispatch} from "react-redux";
 import {sendComment} from "../../store/api-actions";
 
 function ReviewForm({ offerId, authorizationStatus, hasPostedComment }) {
-  //const { offerId, onReviewSubmit } = props;
+
   const [rating, setRating] = React.useState(0);
   const [review, setReviewText] = React.useState('');
   const [isDisabled, setIsDisabled] = React.useState(true);
@@ -62,7 +62,6 @@ function ReviewForm({ offerId, authorizationStatus, hasPostedComment }) {
 
 ReviewForm.propTypes = {
   offer: offerPropTypes,
-  onReviewSubmit: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({

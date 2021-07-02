@@ -39,10 +39,7 @@ function App({ offers, authorizationStatus, isDataLoaded }) {
         <Route
           exact
           path={AppRoute.ROOM}
-          render={({ match }) => <RoomPage id={match.params.id}
-            offers={offers.slice(0, MAX_ROOMS_PER_PAGE)}
-            onReviewSubmit={() => {}}
-          />}
+          render={({ match }) => <RoomPage id={match.params.id} />}
         />
         <Route>
           <NotFoundPage />
