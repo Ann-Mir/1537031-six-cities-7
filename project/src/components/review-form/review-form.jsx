@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import RatingOptions from '../rating-options/rating-options';
-import {AuthorizationStatus, MAX_REVIEW_LENGTH, MIN_REVIEW_LENGTH} from '../../const';
+import {MAX_REVIEW_LENGTH, MIN_REVIEW_LENGTH} from '../../const';
 import {connect, useDispatch} from 'react-redux';
 import {sendComment} from '../../store/api-actions';
 
-function ReviewForm({ offerId, authorizationStatus, hasPostedComment }) {
+function ReviewForm({ offerId, hasPostedComment }) {
 
   const [rating, setRating] = React.useState(0);
   const [review, setReviewText] = React.useState('');
@@ -22,7 +22,7 @@ function ReviewForm({ offerId, authorizationStatus, hasPostedComment }) {
 
   const handleFormSubmit = (evt) => {
     evt.preventDefault();
-    if (isDisabled || authorizationStatus !== AuthorizationStatus.AUTH) {
+    if (isDisabled) {
       return;
     }
     setIsDisabled(true);
@@ -79,7 +79,6 @@ function ReviewForm({ offerId, authorizationStatus, hasPostedComment }) {
 
 ReviewForm.propTypes = {
   offerId: PropTypes.string.isRequired,
-  authorizationStatus: PropTypes.string.isRequired,
   hasPostedComment: PropTypes.shape({
     hasPosted: PropTypes.bool,
     comment: PropTypes.string,
@@ -88,7 +87,6 @@ ReviewForm.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  authorizationStatus: state.authorizationStatus,
   hasPostedComment: state.hasPostedComment,
 });
 
