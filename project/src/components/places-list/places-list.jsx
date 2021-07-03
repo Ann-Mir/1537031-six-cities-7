@@ -16,7 +16,7 @@ function PlacesList ({ offers, activeSortType, setActiveOffer }) {
                                   key={offer.id}
                                   setActiveOffer={setActiveOffer}
                                   cardType={CardTypes.MAIN}
-                                  onMouseEnter={() => setActiveOffer(offer.id)}
+                                  onMouseEnter={() => setActiveOffer(+offer.id)}
                                   onMouseLeave={() => setActiveOffer(null)}
                                 />)}
     </div>

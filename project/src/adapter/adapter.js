@@ -24,7 +24,7 @@ export const adaptOfferToClient = (offer) => {
 
 
 export const adaptCommentToClient = (comment) => {
-  const adaptedComment ={
+  const adaptedComment = {
     ...comment,
     user: {
       ...comment.user,
@@ -37,4 +37,19 @@ export const adaptCommentToClient = (comment) => {
   delete adaptedComment.user.is_pro;
 
   return adaptedComment;
-}
+};
+
+
+export const adaptUserToClient = (user) => {
+  const adaptedUser = {
+    ...user,
+    avatarUrl: user.avatar_url,
+    isPro: user.is_pro,
+  };
+
+  delete adaptedUser.avatar_url;
+  delete adaptedUser.is_pro;
+
+  return adaptedUser;
+};
+

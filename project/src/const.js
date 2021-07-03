@@ -1,4 +1,5 @@
 export const AppRoute = {
+  NOT_FOUND: '/not-found',
   LOGIN: '/login',
   FAVORITES: '/favorites',
   ROOM: '/offers/:id',
@@ -83,4 +84,16 @@ export const SortTypes = {
   TOP: 'Top rated first',
 };
 
+export const MAX_OFFERS_NEARBY_COUNT = 3;
+
+export const MAX_REVIEWS_COUNT = 10;
+
 export const DEFAULT_SORT_TYPE = SortTypes.POPULAR;
+
+export const MAX_IMAGES_COUNT = 6;
+
+export const MIN_REVIEW_LENGTH = 50;
+
+export const MAX_REVIEW_LENGTH = 300;
+
+export const RESPONSE_SUCCESS = 200;

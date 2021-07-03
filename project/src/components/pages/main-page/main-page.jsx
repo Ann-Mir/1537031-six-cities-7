@@ -1,14 +1,21 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
 import Header from '../../header/header';
 import offerPropTypes from '../../offer.prop';
 import LocationsList from '../../locations-list/locations-list';
 import {LOCATIONS} from '../../../const'
-import { connect } from 'react-redux';
-import Cities from "../../cities/cities";
-import LoadingScreen from "../../loading-screen/loadingScreen";
+import {connect, useDispatch} from 'react-redux';
+import Cities from '../../cities/cities';
+import LoadWrapper from '../../load-wrapper/load-wrapper';
+import {fetchOffers} from '../../../store/api-actions';
 
 function MainPage({ currentOffers, city, activeSortType, isDataLoaded }) {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchOffers());
+  }, [dispatch]);
+
   return (
     <div className="page page--gray page--main">
       <Header />
@@ -21,21 +28,9 @@ function MainPage({ currentOffers, city, activeSortType, isDataLoaded }) {
             <LocationsList locations={LOCATIONS}/>
           </section>
         </div>
-        {
-          isDataLoaded
-          && <Cities currentOffers={currentOffers} activeSortType={activeSortType} city={city}/>
-          || <LoadingScreen />
-        }
-
-        {/*<div className="cities">*/}
-        {/*  {currentOffers.length > 0*/}
-        {/*  && <PlacesWrapper*/}
-        {/*        currentOffers={currentOffers}*/}
-        {/*        city={city}*/}
-        {/*        activeSortType={activeSortType}*/}
-        {/*      />*/}
-        {/*  || <MainEmpty city={city}/>}*/}
-        {/*</div>*/}
+        <LoadWrapper isDataLoaded={isDataLoaded}>
+          <Cities currentOffers={currentOffers} activeSortType={activeSortType} city={city}/>
+        </LoadWrapper>
       </main>
     </div>
   );

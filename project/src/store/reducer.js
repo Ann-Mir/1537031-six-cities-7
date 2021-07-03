@@ -9,9 +9,23 @@ const initialState = {
   currentOffer: null,
   authorizationStatus: AuthorizationStatus.UNKNOWN,
   isDataLoaded: false,
-  username: '',
+  isOfferLoaded: false,
+  areReviewsLoaded: false,
+  areLoadedOffersNearby: false,
+  user: {
+    avatarUrl: '',
+    email: '',
+    id: null,
+    isPro: false,
+    name: '',
+  },
   comments: [],
   offersNearby: [],
+  hasPostedComment: {
+    hasPosted: true,
+    comment: '',
+    rating: 0,
+  }
 };
 
 const reducer = (state = initialState, action) => {
@@ -51,7 +65,13 @@ const reducer = (state = initialState, action) => {
     case ActionType.SET_USER:
       return {
         ...state,
-        username: action.payload.email,
+        user: {
+          avatarUrl: action.payload.avatarUrl,
+          email: action.payload.email,
+          id: action.payload.id,
+          isPro: action.payload.isPro,
+          name: action.payload.name,
+        },
       };
     case ActionType.LOAD_COMMENTS:
       return {
@@ -72,6 +92,30 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         isDataLoaded: action.payload,
+      };
+    case ActionType.SET_IS_OFFER_LOADED:
+      return {
+        ...state,
+        isOfferLoaded: action.payload,
+      };
+    case ActionType.SET_ARE_REVIEWS_LOADED:
+      return {
+        ...state,
+        areReviewsLoaded: action.payload,
+      };
+    case ActionType.SET_ARE_LOADED_OFFERS_NEARBY:
+      return {
+        ...state,
+        areLoadedOffersNearby: action.payload,
+      };
+    case ActionType.SET_HAS_POSTED_COMMENT:
+      return {
+        ...state,
+        hasPostedComment: {
+          hasPosted: action.payload.hasPosted,
+          comment: action.payload.comment,
+          rating: action.payload.rating,
+        },
       };
     default:
       return state;

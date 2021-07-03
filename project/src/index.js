@@ -8,7 +8,7 @@ import {composeWithDevTools} from 'redux-devtools-extension';
 import App from './components/app/app';
 import {reducer} from './store/reducer';
 import {ActionCreator} from './store/action';
-import {checkAuth, fetchOffers} from './store/api-actions';
+import {checkAuth} from './store/api-actions';
 import {AuthorizationStatus} from './const';
 import {redirect} from './store/middlewares/redirect';
 
@@ -25,8 +25,8 @@ const store = createStore(
   ),
 );
 
-// store.dispatch(checkAuth());
-store.dispatch(fetchOffers());
+store.dispatch(checkAuth());
+// store.dispatch(fetchOffers());
 
 
 ReactDOM.render(

@@ -1,9 +1,8 @@
-import React from "react";
-import PlacesWrapper from "../places-wrapper/places-wrapper";
-import MainEmpty from "../main-empty/main-empty";
-import PropTypes from "prop-types";
-import offerPropTypes from "../offer.prop";
-import { connect } from "react-redux";
+import React from 'react';
+import PlacesWrapper from '../places-wrapper/places-wrapper';
+import MainEmpty from '../main-empty/main-empty';
+import PropTypes from 'prop-types';
+import offerPropTypes from '../offer.prop';
 
 
 function Cities({ currentOffers, city, activeSortType }) {
