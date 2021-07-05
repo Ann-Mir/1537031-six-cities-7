@@ -4,6 +4,7 @@ import RatingOptions from '../rating-options/rating-options';
 import {MAX_REVIEW_LENGTH, MIN_REVIEW_LENGTH} from '../../const';
 import {connect, useDispatch} from 'react-redux';
 import {sendComment} from '../../store/api-actions';
+import ReviewText from "../review-text/review-text";
 
 function ReviewForm({ offerId, hasPostedComment }) {
 
@@ -45,6 +46,10 @@ function ReviewForm({ offerId, hasPostedComment }) {
       })
   };
 
+  const handleTextChange = (evt) => {
+    setReviewText(evt.target.value);
+  };
+
   return (
     <form
       className="reviews__form form"
@@ -55,23 +60,26 @@ function ReviewForm({ offerId, hasPostedComment }) {
     >
       <label className="reviews__label form__label" htmlFor="review">Your review</label>
       <RatingOptions rating={rating} setRating={setRating}/>
-      <textarea
-        className="reviews__textarea form__textarea"
-        id="review"
-        name="review"
-        placeholder="Tell how was your stay, what you like and what can be improved"
-        onChange={(evt) => setReviewText(evt.target.value)}
-        minLength={MIN_REVIEW_LENGTH}
-        maxLength={MAX_REVIEW_LENGTH}
-        value={review}
-        style={!hasPostedComment.hasPosted ? {borderColor: 'red'} : {}}
-      />
+      <ReviewText value={review} onChange={handleTextChange} hasPostedComment={hasPostedComment}/>
+      {/*<textarea*/}
+      {/*  className="reviews__textarea form__textarea"*/}
+      {/*  id="review"*/}
+      {/*  name="review"*/}
+      {/*  placeholder="Tell how was your stay, what you like and what can be improved"*/}
+      {/*  onChange={handleTextChange}*/}
+      {/*  minLength={MIN_REVIEW_LENGTH}*/}
+      {/*  maxLength={MAX_REVIEW_LENGTH}*/}
+      {/*  value={review}*/}
+      {/*  style={!hasPostedComment.hasPosted ? {borderColor: 'red'} : {}}*/}
+      {/*/>*/}
       <div className="reviews__button-wrapper">
         <p className="reviews__help">
           To submit review please make sure to set <span className="reviews__star">rating</span> and describe your stay
           with at least <b className="reviews__text-amount">50 characters</b>.
         </p>
-        <button className="reviews__submit form__submit button" type="submit" disabled={isDisabled}>Submit</button>
+        <button className="reviews__submit form__submit button" type="submit" disabled={isDisabled}>
+          Submit
+        </button>
       </div>
     </form>
   );
