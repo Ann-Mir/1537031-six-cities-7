@@ -1,6 +1,6 @@
 import React from 'react';
-import {MAX_REVIEW_LENGTH, MIN_REVIEW_LENGTH} from "../../const";
-import {connect} from "react-redux";
+import PropTypes from 'prop-types';
+import {MAX_REVIEW_LENGTH, MIN_REVIEW_LENGTH} from '../../const';
 
 
 function ReviewText({ onChange, value, hasPostedComment }) {
@@ -20,5 +20,15 @@ function ReviewText({ onChange, value, hasPostedComment }) {
 }
 
 
-export default ReviewText;
+ReviewText.propTypes = {
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  hasPostedComment: PropTypes.shape({
+    hasPosted: PropTypes.bool,
+    comment: PropTypes.string,
+    rating: PropTypes.number,
+  }),
+};
 
+
+export default React.memo(ReviewText);

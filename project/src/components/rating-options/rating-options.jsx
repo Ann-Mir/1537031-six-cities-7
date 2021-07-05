@@ -2,7 +2,7 @@ import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import {ratingStarsOptions} from '../../settings';
 
-function RatingOptions({ rating, setRating }) {
+function RatingOptions({ rating, onChange }) {
   return (
     <div className="reviews__rating-form form__rating">
       {ratingStarsOptions.map(({value, title}) => {
@@ -14,7 +14,7 @@ function RatingOptions({ rating, setRating }) {
               value={value}
               id={`${value}-stars`}
               type="radio"
-              onChange={(evt) => setRating(Number(evt.target.value))}
+              onChange={onChange}
               checked={rating === value}
             />
             <label htmlFor={`${value}-stars`} className="reviews__rating-label form__rating-label" title={title}>
@@ -30,7 +30,9 @@ function RatingOptions({ rating, setRating }) {
 }
 
 RatingOptions.propTypes = {
-  setRating: PropTypes.func.isRequired,
+  rating: PropTypes.number.isRequired,
+  onChange: PropTypes.func.isRequired,
 };
 
-export default RatingOptions;
+
+export default React.memo(RatingOptions);
