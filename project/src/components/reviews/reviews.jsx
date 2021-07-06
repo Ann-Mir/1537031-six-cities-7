@@ -31,13 +31,13 @@ function Reviews({ offerId, comments, areReviewsLoaded }) {
 
 Reviews.propTypes = {
   offerId: PropTypes.string.isRequired,
-  comments: PropTypes.arrayOf(reviewPropTypes),
+  comments: PropTypes.arrayOf(reviewPropTypes).isRequired,
   areReviewsLoaded: PropTypes.bool.isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  comments: state.comments.slice().splice(0, MAX_REVIEWS_COUNT),
-  areReviewsLoaded: state.areReviewsLoaded,
+const mapStateToProps = ({DATA}) => ({
+  comments: DATA.comments.slice().splice(0, MAX_REVIEWS_COUNT),
+  areReviewsLoaded: DATA.areReviewsLoaded,
 });
 
 

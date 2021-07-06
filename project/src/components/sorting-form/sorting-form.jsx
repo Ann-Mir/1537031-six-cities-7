@@ -2,8 +2,6 @@ import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import SortingOptionsList from '../sorting-options-list/sorting-options-list';
 import {connect} from 'react-redux';
-import offerPropTypes from "../offer.prop";
-import {PlacesList} from "../places-list/places-list";
 
 
 function SortingForm({ activeSortType }) {
@@ -36,8 +34,8 @@ SortingForm.propTypes = {
   activeSortType: PropTypes.string.isRequired,
 };
 
-const mapStateToProps = ({ activeSortType}) =>({
-  activeSortType: activeSortType
+const mapStateToProps = ({ UI }) =>({
+  activeSortType: UI.activeSortType
 });
 
 

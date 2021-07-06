@@ -62,10 +62,10 @@ PropertyWrapper.propTypes = {
   authorizationStatus: PropTypes.string.isRequired,
 }
 
-const mapStateToProps = (state) => ({
-  areLoadedOffersNearby: state.areLoadedOffersNearby,
-  offersNearby: state.offersNearby,
-  authorizationStatus: state.authorizationStatus,
+const mapStateToProps = ({USER, DATA}) => ({
+  areLoadedOffersNearby: DATA.areLoadedOffersNearby,
+  offersNearby: DATA.offersNearby,
+  authorizationStatus: USER.authorizationStatus,
 });
 
 

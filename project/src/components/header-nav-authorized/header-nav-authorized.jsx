@@ -41,7 +41,6 @@ function HeaderNavAuthorized({ username, avatarUrl }) {
 
 
 HeaderNavAuthorized.propTypes = {
-  logoutApp: PropTypes.func.isRequired,
   username: PropTypes.string.isRequired,
 };
 

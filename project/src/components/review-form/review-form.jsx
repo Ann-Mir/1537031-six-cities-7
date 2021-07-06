@@ -87,8 +87,8 @@ ReviewForm.propTypes = {
   }),
 };
 
-const mapStateToProps = (state) => ({
-  hasPostedComment: state.hasPostedComment,
+const mapStateToProps = ({UI}) => ({
+  hasPostedComment: UI.hasPostedComment,
 });
 
 

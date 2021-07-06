@@ -63,8 +63,8 @@ Map.propTypes = {
   activeOfferId: PropTypes.number,
 };
 
-const mapStateToProps = ({ activeOfferId }) => ({
-  activeOfferId: activeOfferId
+const mapStateToProps = ({ UI }) => ({
+  activeOfferId: UI.activeOfferId,
 });
 
 

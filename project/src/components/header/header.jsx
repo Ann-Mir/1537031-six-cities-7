@@ -6,9 +6,8 @@ import PropTypes from 'prop-types';
 import {AuthorizationStatus} from '../../const';
 import HeaderNavAuthorized from '../header-nav-authorized/header-nav-authorized';
 import HeaderNavGuest from '../header-nav-guest/header-nav-guest';
-import {logout} from '../../store/api-actions';
 
-function Header({ username, avatarUrl, authorizationStatus, logoutApp }) {
+function Header({ username, avatarUrl, authorizationStatus }) {
   return (
     <header className="header">
       <div className="container">
@@ -20,7 +19,7 @@ function Header({ username, avatarUrl, authorizationStatus, logoutApp }) {
             <ul className="header__nav-list">
               {
                 authorizationStatus === AuthorizationStatus.AUTH
-                && <HeaderNavAuthorized logoutApp={logoutApp} username={username} avatarUrl={avatarUrl}/>
+                && <HeaderNavAuthorized username={username} avatarUrl={avatarUrl}/>
                 || <HeaderNavGuest />
               }
             </ul>
@@ -33,21 +32,15 @@ function Header({ username, avatarUrl, authorizationStatus, logoutApp }) {
 
 Header.propTypes = {
   authorizationStatus: PropTypes.string.isRequired,
-  logoutApp: PropTypes.func.isRequired,
   username: PropTypes.string,
 };
 
-const mapStateToProps = (state) => ({
-  authorizationStatus: state.authorizationStatus,
-  username: state.user.name,
-  avatarUrl: state.user.avatarUrl,
+const mapStateToProps = ({USER}) => ({
+  authorizationStatus: USER.authorizationStatus,
+  username: USER.user.name,
+  avatarUrl: USER.user.avatarUrl,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  logoutApp() {
-    dispatch(logout());
-  },
-});
 
 export {Header};
-export default connect(mapStateToProps, mapDispatchToProps)(Header)
+export default connect(mapStateToProps)(Header)

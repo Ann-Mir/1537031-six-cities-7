@@ -1,18 +1,20 @@
 import React from 'react';
 import LocationsOption from '../locations-option/locations-option';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import {connect, useDispatch} from 'react-redux';
 import {setCity} from '../../store/action';
 
 
-function LocationsList ({ locations, city, setCity }) {
+function LocationsList ({ locations, city }) {
+
+  const dispatch = useDispatch();
 
   const handleClick = (evt) => {
     const {textContent} = evt.target;
     if (city === textContent) {
       return;
     }
-    setCity(textContent);
+    dispatch(setCity(textContent));
   }
 
   return (
@@ -37,19 +39,12 @@ LocationsList.propTypes = {
     name: PropTypes.string.isRequired,
   }).isRequired),
   city: PropTypes.string.isRequired,
-  setCity: PropTypes.func.isRequired,
 };
 
 
-const mapDispatchToProps = (dispatch) => ({
-  setCity(city) {
-    dispatch(setCity(city));
-  },
-});
-
-const mapStateToProps = ({ city }) => ({
-  city: city,
+const mapStateToProps = ({ UI }) => ({
+  city: UI.city,
 });
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(LocationsList);
+export default connect(mapStateToProps)(LocationsList);

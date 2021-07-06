@@ -43,14 +43,14 @@ MainPage.propTypes = {
   isDataLoaded: PropTypes.bool.isRequired,
 };
 
-const mapStateToProps = (state) => {
-  const city = state.city;
-  const currentOffers = state.offers.filter((offer) => offer.city.name === city);
+const mapStateToProps = ({DATA, UI}) => {
+  const city = UI.city;
+  const currentOffers = DATA.offers.filter((offer) => offer.city.name === city);
   return {
     currentOffers: currentOffers,
     city: city,
-    activeSortType: state.activeSortType,
-    isDataLoaded: state.isDataLoaded,
+    activeSortType: UI.activeSortType,
+    isDataLoaded: DATA.isDataLoaded,
   }
 };
 
