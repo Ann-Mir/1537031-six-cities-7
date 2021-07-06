@@ -2,7 +2,7 @@ import React from 'react';
 import LocationsOption from '../locations-option/locations-option';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import {ActionCreator} from '../../store/action';
+import {setCity} from '../../store/action';
 
 
 function LocationsList ({ locations, city, setCity }) {
@@ -43,7 +43,7 @@ LocationsList.propTypes = {
 
 const mapDispatchToProps = (dispatch) => ({
   setCity(city) {
-    dispatch(ActionCreator.setCity(city));
+    dispatch(setCity(city));
   },
 });
 

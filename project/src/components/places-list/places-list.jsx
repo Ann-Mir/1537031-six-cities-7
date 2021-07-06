@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import offerPropTypes from '../offer.prop';
 import {CardTypes} from '../../settings';
 import {getSortedOffers} from '../../utils/common';
-import {ActionCreator} from '../../store/action';
+import {setActiveOffer} from '../../store/action';
 import {connect} from 'react-redux';
 
 function PlacesList ({ offers, activeSortType, setActiveOffer }) {
@@ -31,7 +31,7 @@ PlacesList.propTypes = {
 
 const mapDispatchToProps = (dispatch) => ({
   setActiveOffer(activeOfferId) {
-    dispatch(ActionCreator.setActiveOffer(activeOfferId));
+    dispatch(setActiveOffer(activeOfferId));
   },
 });
 

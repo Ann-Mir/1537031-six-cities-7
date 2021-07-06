@@ -11,7 +11,7 @@ import Map from '../map/map';
 import NearPlaces from '../near-places/near-places';
 import {connect, useDispatch} from 'react-redux';
 import {fetchOffersNearby} from '../../store/api-actions';
-import {ActionCreator} from "../../store/action";
+import {setActiveOffer} from '../../store/action';
 
 
 function PropertyWrapper({ id, currentOffer, areLoadedOffersNearby, offersNearby, authorizationStatus }) {
@@ -19,7 +19,7 @@ function PropertyWrapper({ id, currentOffer, areLoadedOffersNearby, offersNearby
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchOffersNearby(id));
-    dispatch(ActionCreator.setActiveOffer(Number(+id)));
+    dispatch(setActiveOffer(Number(+id)));
   }, [id, dispatch]);
 
   return (
