@@ -1,3 +1,5 @@
+import {createAction} from '@reduxjs/toolkit';
+
 export const ActionType = {
   SET_CITY: 'cities/setCity',
   SET_SORT_TYPE: 'setSortType',
@@ -17,82 +19,64 @@ export const ActionType = {
   SET_HAS_POSTED_COMMENT: 'comments/setHasPostedComment',
 };
 
-export const setCity = (city) => ({
-  type: ActionType.SET_CITY,
+export const setCity = createAction(ActionType.SET_CITY, (city) => ({
   payload: city,
-});
+}));
 
-export const setSortType = (sortType) => ({
-  type: ActionType.SET_SORT_TYPE,
+export const setSortType = createAction(ActionType.SET_SORT_TYPE, (sortType) => ({
   payload: sortType,
-});
+}));
 
-export const setActiveOffer = (activeOfferId) => ({
-  type: ActionType.SET_ACTIVE_OFFER,
+export const setActiveOffer = createAction(ActionType.SET_ACTIVE_OFFER, (activeOfferId) => ({
   payload: activeOfferId,
-});
+}));
 
-export const loadOffers = (offers) => ({
-  type: ActionType.LOAD_OFFERS,
+export const loadOffers = createAction(ActionType.LOAD_OFFERS, (offers) => ({
   payload: offers,
-});
+}));
 
-export const loadOffer = (offer) => ({
-  type: ActionType.LOAD_OFFER,
+export const loadOffer = createAction(ActionType.LOAD_OFFER, (offer) => ({
   payload: offer,
-});
+}));
 
-export const requireAuthorization = (status) => ({
-  type: ActionType.REQUIRED_AUTHORIZATION,
+export const requireAuthorization = createAction(ActionType.REQUIRED_AUTHORIZATION, (status) => ({
   payload: status,
-});
+}));
 
-export const logout = () => ({
-  type: ActionType.LOGOUT,
-});
+export const logout = createAction(ActionType.LOGOUT);
 
-export const redirectToRoute = (url) => ({
-  type: ActionType.REDIRECT_TO_ROUTE,
+export const redirectToRoute = createAction(ActionType.REDIRECT_TO_ROUTE, (url) => ({
   payload: url,
-});
+}));
 
-export const setUser = (userData) => ({
-  type: ActionType.SET_USER,
+export const setUser = createAction(ActionType.SET_USER, (userData) => ({
   payload: userData,
-});
+}));
 
-export const loadComments = (comments) => ({
-  type: ActionType.LOAD_COMMENTS,
+export const loadComments = createAction(ActionType.LOAD_COMMENTS, (comments) => ({
   payload: comments,
-});
+}));
 
-export const loadOffersNearby = (offers) => ({
-  type: ActionType.LOAD_OFFERS_NEARBY,
+export const loadOffersNearby = createAction(ActionType.LOAD_OFFERS_NEARBY, (offers) => ({
   payload: offers,
-});
+}));
 
-export const setIsDataLoaded = (isLoaded) => ({
-  type: ActionType.SET_IS_DATA_LOADED,
+export const setIsDataLoaded = createAction(ActionType.SET_IS_DATA_LOADED, (isLoaded) => ({
   payload: isLoaded,
-});
+}));
 
-export const setOfferLoadingStatus = (isLoaded) => ({
-  type: ActionType.SET_IS_OFFER_LOADED,
+export const setOfferLoadingStatus = createAction(ActionType.SET_IS_OFFER_LOADED, (isLoaded) => ({
   payload: isLoaded,
-});
+}));
 
-export const setAreReviewsLoaded = (areLoaded) => ({
-  type: ActionType.SET_ARE_REVIEWS_LOADED,
+export const setAreReviewsLoaded = createAction(ActionType.SET_ARE_REVIEWS_LOADED, (areLoaded) => ({
   payload: areLoaded,
-});
+}));
 
-export const setAreLoadedOffersNearby = (areLoaded) => ({
-  type: ActionType.SET_ARE_LOADED_OFFERS_NEARBY,
+export const setAreLoadedOffersNearby = createAction(ActionType.SET_ARE_LOADED_OFFERS_NEARBY, (areLoaded) => ({
   payload: areLoaded,
-});
+}));
 
-export const setHasPostedComment = (hasPosted) => ({
-  type: ActionType.SET_HAS_POSTED_COMMENT,
+export const setHasPostedComment = createAction(ActionType.SET_HAS_POSTED_COMMENT, (hasPosted) => ({
   payload: hasPosted,
-});
-
+}));
