@@ -5,6 +5,7 @@ import {MAX_REVIEW_LENGTH, MIN_REVIEW_LENGTH} from '../../const';
 import {connect, useDispatch} from 'react-redux';
 import {sendComment} from '../../store/api-actions';
 import ReviewText from '../review-text/review-text';
+import {getHasPostedComment} from "../../store/ui/selectors";
 
 function ReviewForm({ offerId, hasPostedComment }) {
 
@@ -87,8 +88,8 @@ ReviewForm.propTypes = {
   }),
 };
 
-const mapStateToProps = ({UI}) => ({
-  hasPostedComment: UI.hasPostedComment,
+const mapStateToProps = (state) => ({
+  hasPostedComment: getHasPostedComment(state),
 });
 
 

@@ -6,7 +6,7 @@ import {useDispatch} from "react-redux";
 import {logout} from "../../store/action";
 
 
-function HeaderNavAuthorized({ username, avatarUrl }) {
+function HeaderNavAuthorized({ email, avatarUrl }) {
 
   const dispatch = useDispatch();
 
@@ -22,7 +22,7 @@ function HeaderNavAuthorized({ username, avatarUrl }) {
             <div className="header__avatar-wrapper user__avatar-wrapper">
               <img src={avatarUrl} alt={'avatar'} style={{borderRadius: '50%'}}/>
             </div>
-            <span className="header__user-name user__name">{username}</span>
+            <span className="header__user-name user__name">{email}</span>
           </Link>
         </li>
         <li className="header__nav-item">
@@ -41,7 +41,7 @@ function HeaderNavAuthorized({ username, avatarUrl }) {
 
 
 HeaderNavAuthorized.propTypes = {
-  username: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
 };
 
 

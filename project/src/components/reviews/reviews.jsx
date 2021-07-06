@@ -6,6 +6,7 @@ import {fetchComments} from '../../store/api-actions';
 import {connect, useDispatch} from 'react-redux';
 import LoadWrapper from '../load-wrapper/load-wrapper';
 import {MAX_REVIEWS_COUNT} from '../../const';
+import {getAreReviewsLoadedStatus, getComments} from "../../store/data/selectors";
 
 
 function Reviews({ offerId, comments, areReviewsLoaded }) {
@@ -35,9 +36,9 @@ Reviews.propTypes = {
   areReviewsLoaded: PropTypes.bool.isRequired,
 };
 
-const mapStateToProps = ({DATA}) => ({
-  comments: DATA.comments.slice().splice(0, MAX_REVIEWS_COUNT),
-  areReviewsLoaded: DATA.areReviewsLoaded,
+const mapStateToProps = (state) => ({
+  comments: getComments(state).slice().splice(0, MAX_REVIEWS_COUNT),
+  areReviewsLoaded: getAreReviewsLoadedStatus(state),
 });
 
 

@@ -12,6 +12,8 @@ import NearPlaces from '../near-places/near-places';
 import {connect, useDispatch} from 'react-redux';
 import {fetchOffersNearby} from '../../store/api-actions';
 import {setActiveOffer} from '../../store/action';
+import {getAreLoadedOffersNearbyStatus, getOffersNearby} from "../../store/data/selectors";
+import {getAuthorizationStatus} from "../../store/user/selectors";
 
 
 function PropertyWrapper({ id, currentOffer, areLoadedOffersNearby, offersNearby, authorizationStatus }) {
@@ -62,10 +64,10 @@ PropertyWrapper.propTypes = {
   authorizationStatus: PropTypes.string.isRequired,
 }
 
-const mapStateToProps = ({USER, DATA}) => ({
-  areLoadedOffersNearby: DATA.areLoadedOffersNearby,
-  offersNearby: DATA.offersNearby,
-  authorizationStatus: USER.authorizationStatus,
+const mapStateToProps = (state) => ({
+  areLoadedOffersNearby: getAreLoadedOffersNearbyStatus(state),
+  offersNearby: getOffersNearby(state),
+  authorizationStatus: getAuthorizationStatus(state),
 });
 
 

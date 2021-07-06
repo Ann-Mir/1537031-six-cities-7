@@ -7,6 +7,7 @@ import useMap from '../../hooks/useMap';
 import PropTypes from 'prop-types';
 import offerPropTypes from '../offer.prop';
 import {connect} from 'react-redux';
+import {getActiveOfferId} from "../../store/ui/selectors";
 
 
 function Map({place, offers, activeOfferId}) {
@@ -63,8 +64,8 @@ Map.propTypes = {
   activeOfferId: PropTypes.number,
 };
 
-const mapStateToProps = ({ UI }) => ({
-  activeOfferId: UI.activeOfferId,
+const mapStateToProps = (state) => ({
+  activeOfferId: getActiveOfferId(state),
 });
 
 

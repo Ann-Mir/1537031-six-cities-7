@@ -6,6 +6,7 @@ import offerPropTypes from '../../offer.prop';
 import {connect} from 'react-redux';
 import FavoriteOffersWrapper from '../../favorite-offers-wrapper/favorite-offers-wrapper';
 import FavoriteOffersEmptyWrapper from '../../favorite-offers-empty-wrapper/favorite-offers-empty-wrapper';
+import {getOffers} from "../../../store/data/selectors";
 
 function FavoritesPage({ offers }) {
 
@@ -27,8 +28,8 @@ FavoritesPage.propTypes = {
   offers: PropTypes.arrayOf(offerPropTypes).isRequired,
 };
 
-const mapStateToProps = ({ DATA }) => ({
-  offers: DATA.offers,
+const mapStateToProps = (state) => ({
+  offers: getOffers(state),
 });
 
 export { FavoritesPage };

@@ -6,8 +6,9 @@ import PropTypes from 'prop-types';
 import {AuthorizationStatus} from '../../const';
 import HeaderNavAuthorized from '../header-nav-authorized/header-nav-authorized';
 import HeaderNavGuest from '../header-nav-guest/header-nav-guest';
+import {getAuthorizationStatus, getUserAvatar, getUserEmail, getUserName} from "../../store/user/selectors";
 
-function Header({ username, avatarUrl, authorizationStatus }) {
+function Header({ email, avatarUrl, authorizationStatus }) {
   return (
     <header className="header">
       <div className="container">
@@ -19,7 +20,7 @@ function Header({ username, avatarUrl, authorizationStatus }) {
             <ul className="header__nav-list">
               {
                 authorizationStatus === AuthorizationStatus.AUTH
-                && <HeaderNavAuthorized username={username} avatarUrl={avatarUrl}/>
+                && <HeaderNavAuthorized email={email} avatarUrl={avatarUrl}/>
                 || <HeaderNavGuest />
               }
             </ul>
@@ -32,13 +33,13 @@ function Header({ username, avatarUrl, authorizationStatus }) {
 
 Header.propTypes = {
   authorizationStatus: PropTypes.string.isRequired,
-  username: PropTypes.string,
+  email: PropTypes.string,
 };
 
-const mapStateToProps = ({USER}) => ({
-  authorizationStatus: USER.authorizationStatus,
-  username: USER.user.name,
-  avatarUrl: USER.user.avatarUrl,
+const mapStateToProps = (state) => ({
+  authorizationStatus: getAuthorizationStatus(state),
+  email: getUserEmail(state),
+  avatarUrl: getUserAvatar(state),
 });
 
 

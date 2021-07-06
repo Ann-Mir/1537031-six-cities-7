@@ -9,7 +9,7 @@ const initialState = {
     hasPosted: true,
     comment: '',
     rating: 0,
-  }
+  },
 };
 
 const ui = (state = initialState, action) => {

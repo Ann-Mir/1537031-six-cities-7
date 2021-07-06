@@ -3,6 +3,7 @@ import LocationsOption from '../locations-option/locations-option';
 import PropTypes from 'prop-types';
 import {connect, useDispatch} from 'react-redux';
 import {setCity} from '../../store/action';
+import {getCity} from "../../store/ui/selectors";
 
 
 function LocationsList ({ locations, city }) {
@@ -42,8 +43,8 @@ LocationsList.propTypes = {
 };
 
 
-const mapStateToProps = ({ UI }) => ({
-  city: UI.city,
+const mapStateToProps = (state) => ({
+  city: getCity(state),
 });
 
 

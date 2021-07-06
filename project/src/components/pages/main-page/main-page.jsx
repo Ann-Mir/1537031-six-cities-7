@@ -8,6 +8,8 @@ import {connect, useDispatch} from 'react-redux';
 import Cities from '../../cities/cities';
 import LoadWrapper from '../../load-wrapper/load-wrapper';
 import {fetchOffers} from '../../../store/api-actions';
+import {getActiveSortType, getCity} from "../../../store/ui/selectors";
+import {getIsDataLoadedStatus, getOffers} from "../../../store/data/selectors";
 
 function MainPage({ currentOffers, city, activeSortType, isDataLoaded }) {
   const dispatch = useDispatch();
@@ -43,14 +45,14 @@ MainPage.propTypes = {
   isDataLoaded: PropTypes.bool.isRequired,
 };
 
-const mapStateToProps = ({DATA, UI}) => {
-  const city = UI.city;
-  const currentOffers = DATA.offers.filter((offer) => offer.city.name === city);
+const mapStateToProps = (state) => {
+  const city = getCity(state);
+  const currentOffers = getOffers(state).filter((offer) => offer.city.name === city);
   return {
     currentOffers: currentOffers,
     city: city,
-    activeSortType: UI.activeSortType,
-    isDataLoaded: DATA.isDataLoaded,
+    activeSortType: getActiveSortType(state),
+    isDataLoaded: getIsDataLoadedStatus(state),
   }
 };
 

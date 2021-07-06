@@ -7,6 +7,7 @@ import {connect, useDispatch} from 'react-redux';
 import LoadWrapper from '../../load-wrapper/load-wrapper';
 import PropertyWrapper from '../../property-wrapper/property-wrapper';
 import {useParams} from 'react-router';
+import {getCurrentOffer, getIsOfferLoadedStatus} from "../../../store/data/selectors";
 
 function RoomPage({ currentOffer, isOfferLoaded }) {
   const { id } = useParams();
@@ -33,9 +34,9 @@ RoomPage.propTypes = {
   currentOffer: offerPropTypes,
 };
 
-const mapStateToProps = ({DATA}) => ({
-  currentOffer: DATA.currentOffer,
-  isOfferLoaded: DATA.isOfferLoaded,
+const mapStateToProps = (state) => ({
+  currentOffer: getCurrentOffer(state),
+  isOfferLoaded: getIsOfferLoadedStatus(state),
 });
 
 
