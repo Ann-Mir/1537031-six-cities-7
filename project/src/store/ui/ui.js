@@ -1,5 +1,11 @@
-import {ActionType} from '../action';
+import {
+  setActiveOffer,
+  setCity,
+  setHasPostedComment,
+  setSortType,
+} from '../action';
 import {DEFAULT_CITY, DEFAULT_SORT_TYPE} from '../../const';
+import {createReducer} from '@reduxjs/toolkit';
 
 const initialState = {
   city: DEFAULT_CITY,
@@ -12,35 +18,26 @@ const initialState = {
   },
 };
 
-const ui = (state = initialState, action) => {
-  switch (action.type) {
-    case ActionType.SET_CITY:
-      return {
-        ...state,
-        city: action.payload,
+
+const ui = createReducer(initialState, (builder) => {
+  builder
+    .addCase(setCity, (state, action) => {
+      state.city = action.payload;
+    })
+    .addCase(setSortType, (state, action) => {
+      state.activeSortType = action.payload;
+    })
+    .addCase(setActiveOffer, (state, action) => {
+      state.activeOfferId = action.payload;
+    })
+    .addCase(setHasPostedComment, (state, action) => {
+      state.hasPostedComment = {
+        hasPosted: action.payload.hasPosted,
+        comment: action.payload.comment,
+        rating: action.payload.rating,
       };
-    case ActionType.SET_SORT_TYPE:
-      return {
-        ...state,
-        activeSortType: action.payload,
-      };
-    case ActionType.SET_ACTIVE_OFFER:
-      return {
-        ...state,
-        activeOfferId: action.payload,
-      };
-    case ActionType.SET_HAS_POSTED_COMMENT:
-      return {
-        ...state,
-        hasPostedComment: {
-          hasPosted: action.payload.hasPosted,
-          comment: action.payload.comment,
-          rating: action.payload.rating,
-        },
-      };
-    default:
-      return state;
-  }
-};
+    })
+});
+
 
 export {ui};

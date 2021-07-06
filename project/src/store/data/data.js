@@ -1,4 +1,14 @@
-import {ActionType} from '../action';
+import {
+  loadComments,
+  loadOffer,
+  loadOffers,
+  loadOffersNearby,
+  setAreLoadedOffersNearby,
+  setAreReviewsLoaded,
+  setIsDataLoaded,
+  setOfferLoadingStatus
+} from '../action';
+import {createReducer} from '@reduxjs/toolkit';
 
 const initialState = {
   offers: [],
@@ -11,52 +21,34 @@ const initialState = {
   areLoadedOffersNearby: false,
 };
 
-const data = (state = initialState, action) => {
-  switch (action.type) {
-    case ActionType.LOAD_OFFERS:
-      return {
-        ...state,
-        offers: action.payload,
-        isDataLoaded: true,
-      };
-    case ActionType.LOAD_COMMENTS:
-      return {
-        ...state,
-        comments: action.payload,
-      };
-    case ActionType.LOAD_OFFERS_NEARBY:
-      return {
-        ...state,
-        offersNearby: action.payload,
-      };
-    case ActionType.LOAD_OFFER:
-      return {
-        ...state,
-        currentOffer: action.payload,
-      };
-    case ActionType.SET_IS_DATA_LOADED:
-      return {
-        ...state,
-        isDataLoaded: action.payload,
-      };
-    case ActionType.SET_IS_OFFER_LOADED:
-      return {
-        ...state,
-        isOfferLoaded: action.payload,
-      };
-    case ActionType.SET_ARE_REVIEWS_LOADED:
-      return {
-        ...state,
-        areReviewsLoaded: action.payload,
-      };
-    case ActionType.SET_ARE_LOADED_OFFERS_NEARBY:
-      return {
-        ...state,
-        areLoadedOffersNearby: action.payload,
-      };
-    default:
-      return state;
-  }
-};
+
+const data = createReducer(initialState, (builder) => {
+  builder
+    .addCase(loadOffers, (state, action) => {
+      state.isDataLoaded = true;
+      state.offers = action.payload;
+    })
+    .addCase(loadComments, (state, action) => {
+        state.comments = action.payload;
+      })
+    .addCase(loadOffersNearby, (state, action) => {
+        state.offersNearby = action.payload;
+      })
+    .addCase(loadOffer, (state, action) => {
+      state.currentOffer = action.payload;
+    })
+    .addCase(setIsDataLoaded, (state, action) => {
+      state.isDataLoaded = action.payload;
+    })
+    .addCase(setOfferLoadingStatus, (state, action) => {
+      state.isOfferLoaded = action.payload;
+    })
+    .addCase(setAreReviewsLoaded, (state, action) => {
+      state.areReviewsLoaded = action.payload;
+    })
+    .addCase(setAreLoadedOffersNearby, (state, action) => {
+      state.areLoadedOffersNearby = action.payload;
+    })
+});
 
 export {data};
