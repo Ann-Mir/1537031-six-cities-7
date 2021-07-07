@@ -42,14 +42,14 @@ function PlaceCard({ offer, cardType }) {
         <span>Premium</span>
       </div>
       <div className={`${CARD_SETTINGS[cardType].IMAGE_WRAPPER_CLASS} place-card__image-wrapper`}>
-        <a href="#">
+        <Link to={{ pathname: generatePath(AppRoute.ROOM, { id })}}>
           <img
             className="place-card__image"
             src={previewImage}
             style={{width: CARD_SETTINGS[cardType].CARD_WIDTH, height: CARD_SETTINGS[cardType].CARD_HEIGHT}}
             alt="Place image"
           />
-        </a>
+        </Link>
       </div>
       <div className={`${CARD_SETTINGS[cardType].CARD_INFO_CLASS} place-card__info`}>
         <div className="place-card__price-wrapper">
