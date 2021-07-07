@@ -3,6 +3,7 @@ import {
   loadOffer,
   loadOffers,
   loadOffersNearby,
+  logout as logoutUser,
   redirectToRoute,
   requireAuthorization,
   setAreLoadedOffersNearby,
@@ -80,9 +81,11 @@ export const sendComment = ({id, comment, rating}) => (dispatch, _getState, api)
 
 export const checkAuth = () => (dispatch, _getState, api) => (
   api.get(APIRoute.LOGIN)
-    .then(({data}) => dispatch(setUser(adaptUserToClient(data))))
-    .then(() => dispatch(requireAuthorization(AuthorizationStatus.AUTH)))
-    .catch(() => {})
+    .then(({data}) => {
+      dispatch(setUser(adaptUserToClient(data)));
+      dispatch(requireAuthorization(AuthorizationStatus.AUTH));
+    })
+    .catch(() => dispatch(requireAuthorization(AuthorizationStatus.NO_AUTH)))
 );
 
 export const login = ({login: email, password}) => (dispatch, _getState, api) => (
@@ -98,6 +101,6 @@ export const login = ({login: email, password}) => (dispatch, _getState, api) =>
 export const logout = () => (dispatch, _getState, api) => (
   api.delete(APIRoute.LOGOUT)
     .then(() => localStorage.removeItem('token'))
-    .then(() => dispatch(logout()))
+    .then(() => dispatch(logoutUser()))
     .then(() => dispatch(redirectToRoute(AppRoute.ROOT)))
 );
