@@ -17,6 +17,24 @@ export const LOGO_SETTINGS = {
   }
 };
 
+export const BookmarkButtonTypes = {
+  CARD: 'CARD',
+  ROOM: 'ROOM',
+};
+
+export const BOOKMARK_BUTTON_SETTING = {
+  'CARD': {
+    CLASS_MIX: 'place-card',
+    WIDTH: 18,
+    HEIGHT: 19,
+  },
+  'ROOM': {
+    CLASS_MIX: 'property',
+    WIDTH: 31,
+    HEIGHT: 33,
+  }
+};
+
 export const ratingStarsOptions = [
   {
     value: 5,

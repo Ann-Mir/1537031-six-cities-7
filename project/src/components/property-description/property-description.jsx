@@ -3,10 +3,13 @@ import {capitalizeFirstLetter, getRating} from '../../utils/render';
 import FeaturesList from '../feautes-list/features-list';
 import PropertyOwner from '../property-owner/property-owner';
 import offerPropTypes from '../offer.prop';
+import BookmarkButton from '../bookmark-button/bookmark-button';
+import {BookmarkButtonTypes} from '../../settings';
 
 
 function PropertyDescription({ offer }) {
   const {
+    id,
     isPremium,
     title,
     rating,
@@ -17,6 +20,7 @@ function PropertyDescription({ offer }) {
     goods,
     host,
     description,
+    isFavorite,
   } = offer;
   const ratingWidth = getRating(rating);
 
@@ -29,12 +33,7 @@ function PropertyDescription({ offer }) {
         <h1 className="property__name">
           {title}
         </h1>
-        <button className="property__bookmark-button button" type="button">
-          <svg className="property__bookmark-icon" style={{width: '31', height: '33'}}>
-            <use xlinkHref="#icon-bookmark"></use>
-          </svg>
-          <span className="visually-hidden">To bookmarks</span>
-        </button>
+        <BookmarkButton buttonType={BookmarkButtonTypes.ROOM} isFavorite={isFavorite} offerId={id} />
       </div>
       <div className="property__rating rating">
         <div className="property__stars rating__stars">
