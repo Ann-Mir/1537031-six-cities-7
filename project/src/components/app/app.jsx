@@ -1,7 +1,7 @@
 import React from 'react';
 import PrivateRoute from '../private-route/private-route';
 import MainPage from '../pages/main-page/main-page';
-import {AppRoute} from '../../const';
+import {AppRoute, AuthorizationStatus} from '../../const';
 import {Switch, Route, Router as BrowserRouter} from 'react-router-dom';
 import FavoritesPage from '../pages/favorites-page/favorites-page';
 import LoginPage from '../pages/login-page/login-page';
@@ -19,11 +19,19 @@ function App() {
         </Route>
         <PrivateRoute
           exact
+          allowedStatus={AuthorizationStatus.AUTH}
           path={AppRoute.FAVORITES}
+          redirect={AppRoute.LOGIN}
           render={() => <FavoritesPage />}>
         </PrivateRoute>
         <Route exact path={AppRoute.LOGIN}>
-          <LoginPage />
+          <PrivateRoute
+            exact
+            allowedStatus={AuthorizationStatus.NO_AUTH}
+            path={AppRoute.LOGIN}
+            redirect={AppRoute.ROOT}
+            render={() => <LoginPage />}>
+          </PrivateRoute>
         </Route>
         <Route
           exact

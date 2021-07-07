@@ -6,7 +6,7 @@ import {AppRoute, AuthorizationStatus} from '../../const';
 import {getAuthorizationStatus} from '../../store/user/selectors';
 
 
-function PrivateRoute({ render, path, exact }) {
+function PrivateRoute({ render, path, exact, allowedStatus, redirect }) {
 
   const authorizationStatus = useSelector(getAuthorizationStatus);
 
@@ -15,9 +15,9 @@ function PrivateRoute({ render, path, exact }) {
       path={path}
       exact={exact}
       render={(routeProps) => (
-        authorizationStatus === AuthorizationStatus.AUTH
+        authorizationStatus === allowedStatus
           ? render(routeProps)
-          : <Redirect to={AppRoute.LOGIN} />
+          : <Redirect to={redirect} />
       )}
     />
   );
