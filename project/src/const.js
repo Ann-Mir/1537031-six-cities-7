@@ -18,6 +18,7 @@ export const APIRoute = {
   NEARBY: '/nearby',
   LOGIN: '/login',
   LOGOUT: '/logout',
+  FAVORITE: '/favorite/',
 };
 
 export const MARKER_DEFAULT = 'img/pin.svg';

@@ -10,7 +10,7 @@ import {
   setAreReviewsLoaded,
   setHasPostedComment,
   setOfferLoadingStatus,
-  setUser
+  setUser, updateOffer
 } from './action';
 import {AuthorizationStatus, APIRoute, AppRoute, RESPONSE_SUCCESS} from '../const';
 import {adaptCommentToClient, adaptOfferToClient, adaptUserToClient} from '../adapter/adapter';
@@ -103,4 +103,10 @@ export const logout = () => (dispatch, _getState, api) => (
     .then(() => localStorage.removeItem('token'))
     .then(() => dispatch(logoutUser()))
     .then(() => dispatch(redirectToRoute(AppRoute.ROOT)))
+);
+
+export const addToFavorites = ({hotel_id: offerId, status: status}) => (dispatch, _getState, api) => (
+  api.post(`${APIRoute.FAVORITE}${offerId}/${status}`)
+    .then(({data}) => dispatch(updateOffer(adaptOfferToClient(data))))
+    .catch(() => dispatch(redirectToRoute(APIRoute.LOGIN)))
 );

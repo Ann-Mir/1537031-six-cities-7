@@ -17,6 +17,7 @@ export const ActionType = {
   SET_ARE_REVIEWS_LOADED: 'offers/setAreReviewsLoaded',
   SET_ARE_LOADED_OFFERS_NEARBY: 'offers/setAreLoadedOffersNearby',
   SET_HAS_POSTED_COMMENT: 'comments/setHasPostedComment',
+  UPDATE_OFFER: 'offers/updateOffer',
 };
 
 export const setCity = createAction(ActionType.SET_CITY, (city) => ({
@@ -79,4 +80,8 @@ export const setAreLoadedOffersNearby = createAction(ActionType.SET_ARE_LOADED_O
 
 export const setHasPostedComment = createAction(ActionType.SET_HAS_POSTED_COMMENT, (hasPosted) => ({
   payload: hasPosted,
+}));
+
+export const updateOffer = createAction(ActionType.UPDATE_OFFER, (offer) => ({
+  payload: offer,
 }));
