@@ -1,16 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {Link} from 'react-router-dom';
 
 function LocationsOption({ name , isActive, onClick }) {
 
   return (
     <li className="locations__item">
-      <a
+      <Link
         className={`locations__item-link tabs__item ${isActive ? 'tabs__item--active' : ''}`}
         onClick={onClick}
-        href="#">
+      >
         <span>{name}</span>
-      </a>
+      </Link>
     </li>
   );
 }

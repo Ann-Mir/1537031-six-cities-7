@@ -2,6 +2,9 @@ import React, {useRef} from 'react';
 import Header from '../../header/header';
 import {login} from '../../../store/api-actions';
 import {useDispatch} from 'react-redux';
+import {Link} from 'react-router-dom';
+import {AppRoute} from '../../../const';
+import {setCity} from '../../../store/action';
 
 function LoginPage() {
   const loginRef = useRef();
@@ -14,6 +17,10 @@ function LoginPage() {
       login: loginRef.current.value,
       password: passwordRef.current.value.trim(),
     }));
+  };
+
+  const handleClick = () => {
+    dispatch(setCity('Amsterdam'));
   };
 
   return (
@@ -62,9 +69,9 @@ function LoginPage() {
           </section>
           <section className="locations locations--login locations--current">
             <div className="locations__item">
-              <a className="locations__item-link" href="#">
+              <Link className="locations__item-link" to={AppRoute.ROOT} onClick={handleClick}>
                 <span>Amsterdam</span>
-              </a>
+              </Link>
             </div>
           </section>
         </div>
