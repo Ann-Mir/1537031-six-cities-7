@@ -2,12 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import RatingOptions from '../rating-options/rating-options';
 import {MAX_REVIEW_LENGTH, MIN_REVIEW_LENGTH} from '../../const';
-import {connect, useDispatch} from 'react-redux';
+import {connect, useDispatch, useSelector} from 'react-redux';
 import {sendComment} from '../../store/api-actions';
 import ReviewText from '../review-text/review-text';
-import {getHasPostedComment} from "../../store/ui/selectors";
+import {getHasPostedComment, getPostedComment, getPostedRating} from '../../store/ui/selectors';
 
-function ReviewForm({ offerId, hasPostedComment }) {
+function ReviewForm({ offerId }) {
+
+  const hasPostedComment = useSelector(getHasPostedComment);
 
   const [rating, setRating] = React.useState(0);
   const [review, setReviewText] = React.useState('');
@@ -34,8 +36,8 @@ function ReviewForm({ offerId, hasPostedComment }) {
           setReviewText('');
           setRating(0);
         } else {
-          setReviewText(hasPostedComment.comment);
-          setRating(hasPostedComment.rating);
+          setReviewText(useSelector(getPostedComment));
+          setRating(useSelector(getPostedRating));
         }
       })
       .catch(() => {
@@ -81,17 +83,7 @@ function ReviewForm({ offerId, hasPostedComment }) {
 
 ReviewForm.propTypes = {
   offerId: PropTypes.string.isRequired,
-  hasPostedComment: PropTypes.shape({
-    hasPosted: PropTypes.bool,
-    comment: PropTypes.string,
-    rating: PropTypes.number,
-  }),
 };
 
-const mapStateToProps = (state) => ({
-  hasPostedComment: getHasPostedComment(state),
-});
 
-
-export {ReviewForm};
-export default connect(mapStateToProps)(ReviewForm);
+export default ReviewForm;

@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {capitalizeFirstLetter, getRating} from '../../utils/render';
 import FeaturesList from '../feautes-list/features-list';
 import PropertyOwner from '../property-owner/property-owner';

@@ -5,6 +5,7 @@ import PlaceCard from '../place-card/place-card';
 import {CardTypes} from '../../settings';
 
 function NearPlacesList({ nearOffers }) {
+
   return (
     <div className="near-places__list places__list">
       {

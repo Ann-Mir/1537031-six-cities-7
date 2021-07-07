@@ -6,9 +6,11 @@ import {AppRoute} from '../../const';
 import generatePath from 'react-router/modules/generatePath';
 import offerPropTypes from '../offer.prop';
 import {CARD_SETTINGS, CardTypes} from '../../settings';
+import {useDispatch} from 'react-redux';
+import {setActiveOffer} from '../../store/action';
 
 
-function PlaceCard({ offer, cardType, onMouseEnter, onMouseLeave}) {
+function PlaceCard({ offer, cardType }) {
   const {
     id,
     previewImage,
@@ -20,11 +22,21 @@ function PlaceCard({ offer, cardType, onMouseEnter, onMouseLeave}) {
     rating } = offer;
   const ratingWidth = getRating(rating);
 
+  const dispatch = useDispatch();
+
+  const handleMouseEnter = () => {
+    dispatch(setActiveOffer(+id));
+  };
+
+  const handleMouseLeave = () => {
+    dispatch(setActiveOffer(null));
+  }
+
   return (
     <article
       className={`${CARD_SETTINGS[cardType].CLASS_MIX} place-card`}
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
       <div className={`place-card__mark ${isPremium ? '' : 'visually-hidden'}`}>
         <span>Premium</span>
@@ -75,8 +87,6 @@ function PlaceCard({ offer, cardType, onMouseEnter, onMouseLeave}) {
 PlaceCard.propTypes = {
   offer: offerPropTypes,
   cardType: PropTypes.oneOf(Object.keys(CardTypes)).isRequired,
-  onMouseEnter: PropTypes.func,
-  onMouseLeave: PropTypes.func,
 };
 
 export default PlaceCard;

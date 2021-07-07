@@ -25,6 +25,13 @@ const user = createReducer(initialState, (builder) => {
     })
     .addCase(logout, (state, action) => {
       state.authorizationStatus = AuthorizationStatus.NO_AUTH;
+      state.user = {
+        avatarUrl: '',
+        email: '',
+        id: null,
+        isPro: false,
+        name: '',
+      }
     })
     .addCase(setUser, (state, action) => {
       state.user = {

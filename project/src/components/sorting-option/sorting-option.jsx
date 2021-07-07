@@ -1,12 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {connect, useDispatch} from 'react-redux';
+import {connect, useDispatch, useSelector} from 'react-redux';
 import {SortTypes} from '../../const';
 import {setSortType} from '../../store/action';
-import {getActiveSortType} from "../../store/ui/selectors";
+import {getActiveSortType} from '../../store/ui/selectors';
 
 
-function SortingOption({ sortingType, activeSortType, handleSortTypeClick }) {
+function SortingOption({ sortingType, handleSortTypeClick }) {
+
+  const activeSortType = useSelector(getActiveSortType);
 
   const dispatch = useDispatch();
 
@@ -29,14 +31,8 @@ function SortingOption({ sortingType, activeSortType, handleSortTypeClick }) {
 
 SortingOption.propTypes = {
   sortingType: PropTypes.string.isRequired,
-  activeSortType: PropTypes.string.isRequired,
   handleSortTypeClick: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  activeSortType: getActiveSortType(state),
-});
 
-
-export {SortingOption};
-export default connect(mapStateToProps)(SortingOption);
+export default SortingOption;

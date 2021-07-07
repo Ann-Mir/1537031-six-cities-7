@@ -4,6 +4,7 @@ import {LOGO_SETTINGS} from '../../settings';
 import {AppRoute} from '../../const';
 
 function Logo({ logoType }) {
+
   return (
     <Link className={`${LOGO_SETTINGS[logoType].CLASS_MIX}__logo-link`} to={AppRoute.ROOT}>
       <img

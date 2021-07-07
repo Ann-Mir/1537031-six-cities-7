@@ -1,16 +1,17 @@
 import React, {useEffect, useRef} from 'react';
 import leaflet from 'leaflet';
 import {MARKER_CURRENT, MARKER_DEFAULT} from '../../const';
-
 import 'leaflet/dist/leaflet.css';
 import useMap from '../../hooks/useMap';
 import PropTypes from 'prop-types';
 import offerPropTypes from '../offer.prop';
-import {connect} from 'react-redux';
-import {getActiveOfferId} from "../../store/ui/selectors";
+import {useSelector} from 'react-redux';
+import {getActiveOfferId} from '../../store/ui/selectors';
 
 
-function Map({place, offers, activeOfferId}) {
+function Map({ place, offers }) {
+
+  const activeOfferId = useSelector(getActiveOfferId);
   const mapRef = useRef(null);
   const map = useMap(mapRef, place);
 
@@ -44,7 +45,7 @@ function Map({place, offers, activeOfferId}) {
         markers.clearLayers();
       }
     }
-  }, [map, offers, place]);
+  }, [map, offers, place, activeOfferId]);
 
   return (
       <div style={{height: '100%'}} ref={mapRef}></div>
@@ -64,10 +65,5 @@ Map.propTypes = {
   activeOfferId: PropTypes.number,
 };
 
-const mapStateToProps = (state) => ({
-  activeOfferId: getActiveOfferId(state),
-});
 
-
-export { Map };
-export default connect(mapStateToProps)(Map);
+export default Map;

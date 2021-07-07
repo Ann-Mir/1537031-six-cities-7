@@ -1,13 +1,14 @@
 import React from 'react';
 import LocationsOption from '../locations-option/locations-option';
 import PropTypes from 'prop-types';
-import {connect, useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {setCity} from '../../store/action';
-import {getCity} from "../../store/ui/selectors";
+import {getCity} from '../../store/ui/selectors';
 
 
-function LocationsList ({ locations, city }) {
+function LocationsList ({ locations }) {
 
+  const city = useSelector(getCity);
   const dispatch = useDispatch();
 
   const handleClick = (evt) => {
@@ -39,13 +40,8 @@ LocationsList.propTypes = {
     }).isRequired,
     name: PropTypes.string.isRequired,
   }).isRequired),
-  city: PropTypes.string.isRequired,
 };
 
 
-const mapStateToProps = (state) => ({
-  city: getCity(state),
-});
 
-
-export default connect(mapStateToProps)(LocationsList);
+export default LocationsList;

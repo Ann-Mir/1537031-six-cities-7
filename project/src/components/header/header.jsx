@@ -1,14 +1,19 @@
 import React from 'react';
 import Logo from '../logo/logo';
 import {LogoTypes} from '../../settings';
-import {connect} from 'react-redux';
-import PropTypes from 'prop-types';
+import {useSelector} from 'react-redux';
 import {AuthorizationStatus} from '../../const';
 import HeaderNavAuthorized from '../header-nav-authorized/header-nav-authorized';
 import HeaderNavGuest from '../header-nav-guest/header-nav-guest';
-import {getAuthorizationStatus, getUserAvatar, getUserEmail, getUserName} from "../../store/user/selectors";
+import {getAuthorizationStatus, getUserAvatar, getUserEmail} from '../../store/user/selectors';
 
-function Header({ email, avatarUrl, authorizationStatus }) {
+
+function Header() {
+
+  const authorizationStatus = useSelector(getAuthorizationStatus);
+  const email = useSelector(getUserEmail);
+  const avatarUrl = useSelector(getUserAvatar);
+
   return (
     <header className="header">
       <div className="container">
@@ -31,17 +36,5 @@ function Header({ email, avatarUrl, authorizationStatus }) {
   );
 }
 
-Header.propTypes = {
-  authorizationStatus: PropTypes.string.isRequired,
-  email: PropTypes.string,
-};
 
-const mapStateToProps = (state) => ({
-  authorizationStatus: getAuthorizationStatus(state),
-  email: getUserEmail(state),
-  avatarUrl: getUserAvatar(state),
-});
-
-
-export {Header};
-export default connect(mapStateToProps)(Header)
+export default Header;

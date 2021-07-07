@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import {AppRoute} from '../../const';
-import {useDispatch} from "react-redux";
-import {logout} from "../../store/action";
+import {useDispatch} from 'react-redux';
+import {logout} from '../../store/action';
 
 
 function HeaderNavAuthorized({ email, avatarUrl }) {
@@ -45,4 +45,4 @@ HeaderNavAuthorized.propTypes = {
 };
 
 
-export default HeaderNavAuthorized;
+export default React.memo(HeaderNavAuthorized);

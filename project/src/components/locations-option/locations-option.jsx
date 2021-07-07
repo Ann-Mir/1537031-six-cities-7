@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 function LocationsOption({ name , isActive, onClick }) {
+
   return (
     <li className="locations__item">
       <a
@@ -22,4 +23,4 @@ LocationsOption.propTypes = {
 };
 
 
-export default LocationsOption;
+export default React.memo(LocationsOption);
