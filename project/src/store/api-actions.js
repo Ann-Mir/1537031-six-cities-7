@@ -28,7 +28,7 @@ export const fetchOffers = () => (dispatch, _getState, api) => (
 
 export const fetchOffer = (id) => (dispatch, _getState, api) => {
   dispatch(setOfferLoadingStatus(false));
-  api.get(`/hotels/${id}`)
+  api.get(`${APIRoute.OFFERS}${id}`)
     .then(({data}) => {
       const offer = adaptOfferToClient(data);
       dispatch(loadOffer(offer));
@@ -41,7 +41,7 @@ export const fetchOffer = (id) => (dispatch, _getState, api) => {
 
 export const fetchComments = (id) => (dispatch, _getState, api) => {
   dispatch(setAreReviewsLoaded(false));
-  api.get(`/comments/${id}`)
+  api.get(`${APIRoute.REVIEWS}${id}`)
     .then(({data}) => {
       const comments = data.map((comment) => adaptCommentToClient(comment));
       dispatch(loadComments(comments))
@@ -52,7 +52,7 @@ export const fetchComments = (id) => (dispatch, _getState, api) => {
 
 export const fetchOffersNearby = (id) => (dispatch, _getState, api) => {
   dispatch(setAreLoadedOffersNearby(false));
-  api.get(`/hotels/${id}/nearby`)
+  api.get(`${APIRoute.OFFERS}${id}${APIRoute.NEARBY}`)
     .then(({ data }) => {
       const offers = data.map((offer) => adaptOfferToClient(offer));
       dispatch(loadOffersNearby(offers))
@@ -63,7 +63,7 @@ export const fetchOffersNearby = (id) => (dispatch, _getState, api) => {
 
 export const sendComment = ({id, comment, rating}) => (dispatch, _getState, api) => {
   dispatch(setAreReviewsLoaded(false));
-  return api.post(`/comments/${id}`, {comment, rating})
+  return api.post(`${APIRoute.REVIEWS}${id}`, {comment, rating})
     .then((response) => {
       const { status, data } = response;
       if (status !== RESPONSE_SUCCESS) {
