@@ -6,12 +6,12 @@ function LocationsOption({ name , isActive, onClick }) {
 
   return (
     <li className="locations__item">
-      <Link
+      <a
         className={`locations__item-link tabs__item ${isActive ? 'tabs__item--active' : ''}`}
         onClick={onClick}
       >
         <span>{name}</span>
-      </Link>
+      </a>
     </li>
   );
 }

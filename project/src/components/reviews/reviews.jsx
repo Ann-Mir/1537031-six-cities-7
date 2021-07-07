@@ -1,9 +1,8 @@
 import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
-import reviewPropTypes from '../review.prop';
 import ReviewsItem from '../reviews-item/reviews-item';
 import {fetchComments} from '../../store/api-actions';
-import {connect, useDispatch, useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import LoadWrapper from '../load-wrapper/load-wrapper';
 import {getAreReviewsLoadedStatus, getComments, getCommentsToRender} from '../../store/data/selectors';
 
@@ -12,7 +11,9 @@ function Reviews({ offerId }) {
 
   const areReviewsLoaded = useSelector(getAreReviewsLoadedStatus);
   const commentsCount = useSelector(getComments).length;
-  const comments = useSelector(getCommentsToRender);
+  const comments = useSelector(getCommentsToRender).slice().sort((firstComment, secondComment) => {
+    return new Date(secondComment.date) - new Date(firstComment.date);
+  });
 
   const dispatch = useDispatch();
 
