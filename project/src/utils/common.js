@@ -42,7 +42,9 @@ export const isCheckedAuth = (authorizationStatus) => {
 export const updateOffers = (offers, updatedOffer) => {
   const { id } = updatedOffer;
   const index = offers.findIndex((item) => item.id === id);
-  offers[index].isFavorite = updatedOffer.isFavorite;
+  if (index !== -1) {
+    offers[index].isFavorite = updatedOffer.isFavorite;
+  }
   return offers;
 };
 
