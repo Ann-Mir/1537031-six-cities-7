@@ -1,10 +1,15 @@
 import {
   loadComments,
   loadOffer,
-  loadOffers, loadOffersNearby,
-  redirectToRoute, requireAuthorization, setAreLoadedOffersNearby,
-  setAreReviewsLoaded, setHasPostedComment,
-  setOfferLoadingStatus, setUser
+  loadOffers,
+  loadOffersNearby,
+  redirectToRoute,
+  requireAuthorization,
+  setAreLoadedOffersNearby,
+  setAreReviewsLoaded,
+  setHasPostedComment,
+  setOfferLoadingStatus,
+  setUser
 } from './action';
 import {AuthorizationStatus, APIRoute, AppRoute, RESPONSE_SUCCESS} from '../const';
 import {adaptCommentToClient, adaptOfferToClient, adaptUserToClient} from '../adapter/adapter';
