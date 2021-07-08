@@ -1,15 +1,21 @@
 import React, {useEffect} from 'react';
-import PropTypes from 'prop-types';
 import Header from '../../header/header';
-import offerPropTypes from '../../offer.prop';
 import LocationsList from '../../locations-list/locations-list';
 import {LOCATIONS} from '../../../const'
-import {connect, useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import Cities from '../../cities/cities';
 import LoadWrapper from '../../load-wrapper/load-wrapper';
 import {fetchOffers} from '../../../store/api-actions';
+import {getActiveSortType, getCity} from '../../../store/ui/selectors';
+import {getCurrentOffers, getIsDataLoadedStatus} from '../../../store/data/selectors';
 
-function MainPage({ currentOffers, city, activeSortType, isDataLoaded }) {
+function MainPage() {
+
+  const city = useSelector(getCity);
+  const currentOffers = useSelector(getCurrentOffers);
+  const activeSortType = useSelector(getActiveSortType);
+  const isDataLoaded = useSelector(getIsDataLoadedStatus);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -36,23 +42,5 @@ function MainPage({ currentOffers, city, activeSortType, isDataLoaded }) {
   );
 }
 
-MainPage.propTypes = {
-  currentOffers: PropTypes.arrayOf(offerPropTypes).isRequired,
-  city: PropTypes.string.isRequired,
-  activeSortType: PropTypes.string.isRequired,
-  isDataLoaded: PropTypes.bool.isRequired,
-};
 
-const mapStateToProps = (state) => {
-  const city = state.city;
-  const currentOffers = state.offers.filter((offer) => offer.city.name === city);
-  return {
-    currentOffers: currentOffers,
-    city: city,
-    activeSortType: state.activeSortType,
-    isDataLoaded: state.isDataLoaded,
-  }
-};
-
-
-export default connect(mapStateToProps)(MainPage);
+export default MainPage;

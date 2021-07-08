@@ -35,7 +35,22 @@ export const getSortedOffers = (offers, sortingType) => {
   }
 };
 
-
 export const isCheckedAuth = (authorizationStatus) => {
   return authorizationStatus === AuthorizationStatus.UNKNOWN;
+};
+
+export const updateOffers = (offers, updatedOffer) => {
+  const { id } = updatedOffer;
+  const index = offers.findIndex((item) => item.id === id);
+  if (index !== -1) {
+    offers[index].isFavorite = updatedOffer.isFavorite;
+  }
+  return offers;
+};
+
+export const updateOfferIsFavorite = (currentOffer, updatedOffer) => {
+  if (currentOffer.id === updatedOffer.id) {
+    currentOffer.isFavorite = updatedOffer.isFavorite;
+  }
+  return currentOffer;
 };

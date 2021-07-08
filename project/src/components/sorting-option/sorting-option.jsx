@@ -1,14 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
+import {connect, useDispatch, useSelector} from 'react-redux';
 import {SortTypes} from '../../const';
-import {ActionCreator} from '../../store/action';
+import {setSortType} from '../../store/action';
+import {getActiveSortType} from '../../store/ui/selectors';
 
 
-function SortingOption({ sortingType, activeSortType, handleSortTypeClick, setSortType}) {
+function SortingOption({ sortingType, handleSortTypeClick }) {
+
+  const activeSortType = useSelector(getActiveSortType);
+
+  const dispatch = useDispatch();
 
   const handleSortOptionClick = () => {
-    setSortType(SortTypes[sortingType]);
+    dispatch(setSortType(SortTypes[sortingType]));
     handleSortTypeClick();
   };
 
@@ -26,22 +31,8 @@ function SortingOption({ sortingType, activeSortType, handleSortTypeClick, setSo
 
 SortingOption.propTypes = {
   sortingType: PropTypes.string.isRequired,
-  activeSortType: PropTypes.string.isRequired,
   handleSortTypeClick: PropTypes.func.isRequired,
-  setSortType: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  activeSortType: state.activeSortType,
-});
 
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    setSortType: sortingType => dispatch(ActionCreator.setSortType(sortingType))
-  }
-}
-
-
-export {SortingOption};
-export default connect(mapStateToProps, mapDispatchToProps)(SortingOption);
+export default SortingOption;

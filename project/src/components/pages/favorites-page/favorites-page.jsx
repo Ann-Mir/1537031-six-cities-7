@@ -3,11 +3,14 @@ import PropTypes from 'prop-types';
 import Header from '../../header/header';
 import Footer from '../../footer/footer';
 import offerPropTypes from '../../offer.prop';
-import {connect} from 'react-redux';
+import {useSelector} from 'react-redux';
 import FavoriteOffersWrapper from '../../favorite-offers-wrapper/favorite-offers-wrapper';
 import FavoriteOffersEmptyWrapper from '../../favorite-offers-empty-wrapper/favorite-offers-empty-wrapper';
+import {getOffers} from '../../../store/data/selectors';
 
-function FavoritesPage({ offers }) {
+function FavoritesPage() {
+
+  const offers = useSelector(getOffers);
 
   const favoriteOffers = offers.filter((offer) => offer.isFavorite);
   return (
@@ -23,13 +26,5 @@ function FavoritesPage({ offers }) {
   );
 }
 
-FavoritesPage.propTypes = {
-  offers: PropTypes.arrayOf(offerPropTypes).isRequired,
-};
 
-const mapStateToProps = ({ offers }) => ({
-  offers: offers,
-});
-
-export { FavoritesPage };
-export default connect(mapStateToProps)(FavoritesPage);
+export default FavoritesPage;

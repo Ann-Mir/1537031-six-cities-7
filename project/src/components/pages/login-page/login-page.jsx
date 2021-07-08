@@ -1,19 +1,26 @@
 import React, {useRef} from 'react';
-import PropTypes from 'prop-types';
 import Header from '../../header/header';
 import {login} from '../../../store/api-actions';
-import {connect} from 'react-redux';
+import {useDispatch} from 'react-redux';
+import {Link} from 'react-router-dom';
+import {AppRoute} from '../../../const';
+import {setCity} from '../../../store/action';
 
-function LoginPage({ onSubmit }) {
+function LoginPage() {
   const loginRef = useRef();
   const passwordRef = useRef();
+  const dispatch = useDispatch();
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    onSubmit({
+    dispatch(login({
       login: loginRef.current.value,
-      password: passwordRef.current.value,
-    })
+      password: passwordRef.current.value.trim(),
+    }));
+  };
+
+  const handleClick = () => {
+    dispatch(setCity('Amsterdam'));
   };
 
   return (
@@ -62,9 +69,9 @@ function LoginPage({ onSubmit }) {
           </section>
           <section className="locations locations--login locations--current">
             <div className="locations__item">
-              <a className="locations__item-link" href="#">
+              <Link className="locations__item-link" to={AppRoute.ROOT} onClick={handleClick}>
                 <span>Amsterdam</span>
-              </a>
+              </Link>
             </div>
           </section>
         </div>
@@ -74,15 +81,5 @@ function LoginPage({ onSubmit }) {
 }
 
 
-LoginPage.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-};
+export default LoginPage;
 
-const mapDispatchToProps = (dispatch) => ({
-  onSubmit(authData) {
-    dispatch(login(authData));
-  },
-});
-
-export {LoginPage};
-export default connect(null, mapDispatchToProps)(LoginPage);

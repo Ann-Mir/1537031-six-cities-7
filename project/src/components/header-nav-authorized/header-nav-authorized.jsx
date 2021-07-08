@@ -2,9 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import {AppRoute} from '../../const';
+import {useDispatch} from 'react-redux';
+import {logout} from '../../store/api-actions';
 
 
-function HeaderNavAuthorized({ username, avatarUrl, logoutApp }) {
+function HeaderNavAuthorized({ email, avatarUrl }) {
+
+  const dispatch = useDispatch();
+
+  const handleClick = () => {
+    dispatch(logout());
+  };
+
   return (
     <nav className="header__nav">
       <ul className="header__nav-list">
@@ -13,16 +22,13 @@ function HeaderNavAuthorized({ username, avatarUrl, logoutApp }) {
             <div className="header__avatar-wrapper user__avatar-wrapper">
               <img src={avatarUrl} alt={'avatar'} style={{borderRadius: '50%'}}/>
             </div>
-            <span className="header__user-name user__name">{username}</span>
+            <span className="header__user-name user__name">{email}</span>
           </Link>
         </li>
         <li className="header__nav-item">
           <Link
             className="header__nav-link"
-            onClick={(evt) => {
-              evt.preventDefault();
-              logoutApp();
-            }}
+            onClick={handleClick}
             to={AppRoute.ROOT}
           >
             <span className="header__signout">Sign out</span>
@@ -35,8 +41,7 @@ function HeaderNavAuthorized({ username, avatarUrl, logoutApp }) {
 
 
 HeaderNavAuthorized.propTypes = {
-  logoutApp: PropTypes.func.isRequired,
-  username: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
 };
 
 

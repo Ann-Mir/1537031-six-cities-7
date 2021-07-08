@@ -2,10 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import RatingOptions from '../rating-options/rating-options';
 import {MAX_REVIEW_LENGTH, MIN_REVIEW_LENGTH} from '../../const';
-import {connect, useDispatch} from 'react-redux';
+import {connect, useDispatch, useSelector} from 'react-redux';
 import {sendComment} from '../../store/api-actions';
+import ReviewText from '../review-text/review-text';
+import {getHasPostedComment, getPostedComment, getPostedRating} from '../../store/ui/selectors';
 
-function ReviewForm({ offerId, hasPostedComment }) {
+function ReviewForm({ offerId }) {
+
+  const hasPostedComment = useSelector(getHasPostedComment);
 
   const [rating, setRating] = React.useState(0);
   const [review, setReviewText] = React.useState('');
@@ -32,8 +36,8 @@ function ReviewForm({ offerId, hasPostedComment }) {
           setReviewText('');
           setRating(0);
         } else {
-          setReviewText(hasPostedComment.comment);
-          setRating(hasPostedComment.rating);
+          setReviewText(useSelector(getPostedComment));
+          setRating(useSelector(getPostedRating));
         }
       })
       .catch(() => {
@@ -45,6 +49,14 @@ function ReviewForm({ offerId, hasPostedComment }) {
       })
   };
 
+  const handleTextChange = React.useCallback((evt) => {
+    setReviewText(evt.target.value);
+  },[]);
+
+  const handleRatingChange = React.useCallback((evt) => {
+    setRating(Number(evt.target.value));
+  }, []);
+
   return (
     <form
       className="reviews__form form"
@@ -54,24 +66,16 @@ function ReviewForm({ offerId, hasPostedComment }) {
       onSubmit={handleFormSubmit}
     >
       <label className="reviews__label form__label" htmlFor="review">Your review</label>
-      <RatingOptions rating={rating} setRating={setRating}/>
-      <textarea
-        className="reviews__textarea form__textarea"
-        id="review"
-        name="review"
-        placeholder="Tell how was your stay, what you like and what can be improved"
-        onChange={(evt) => setReviewText(evt.target.value)}
-        minLength={MIN_REVIEW_LENGTH}
-        maxLength={MAX_REVIEW_LENGTH}
-        value={review}
-        style={!hasPostedComment.hasPosted ? {borderColor: 'red'} : {}}
-      />
+      <RatingOptions rating={rating} onChange={handleRatingChange}/>
+      <ReviewText value={review} onChange={handleTextChange} hasPostedComment={hasPostedComment}/>
       <div className="reviews__button-wrapper">
         <p className="reviews__help">
           To submit review please make sure to set <span className="reviews__star">rating</span> and describe your stay
           with at least <b className="reviews__text-amount">50 characters</b>.
         </p>
-        <button className="reviews__submit form__submit button" type="submit" disabled={isDisabled}>Submit</button>
+        <button className="reviews__submit form__submit button" type="submit" disabled={isDisabled}>
+          Submit
+        </button>
       </div>
     </form>
   );
@@ -79,16 +83,7 @@ function ReviewForm({ offerId, hasPostedComment }) {
 
 ReviewForm.propTypes = {
   offerId: PropTypes.string.isRequired,
-  hasPostedComment: PropTypes.shape({
-    hasPosted: PropTypes.bool,
-    comment: PropTypes.string,
-    rating: PropTypes.number,
-  })
 };
 
-const mapStateToProps = (state) => ({
-  hasPostedComment: state.hasPostedComment,
-});
 
-export {ReviewForm};
-export default connect(mapStateToProps)(ReviewForm);
+export default ReviewForm;

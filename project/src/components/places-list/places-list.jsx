@@ -4,20 +4,15 @@ import PropTypes from 'prop-types';
 import offerPropTypes from '../offer.prop';
 import {CardTypes} from '../../settings';
 import {getSortedOffers} from '../../utils/common';
-import {ActionCreator} from '../../store/action';
-import {connect} from 'react-redux';
 
-function PlacesList ({ offers, activeSortType, setActiveOffer }) {
+function PlacesList ({ offers, activeSortType }) {
 
   return (
     <div className="cities__places-list places__list tabs__content">
       {getSortedOffers(offers, activeSortType).map((offer) => <PlaceCard
                                   offer={offer}
                                   key={offer.id}
-                                  setActiveOffer={setActiveOffer}
                                   cardType={CardTypes.MAIN}
-                                  onMouseEnter={() => setActiveOffer(+offer.id)}
-                                  onMouseLeave={() => setActiveOffer(null)}
                                 />)}
     </div>
   );
@@ -26,16 +21,9 @@ function PlacesList ({ offers, activeSortType, setActiveOffer }) {
 PlacesList.propTypes = {
   offers: PropTypes.arrayOf(offerPropTypes).isRequired,
   activeSortType: PropTypes.string.isRequired,
-  setActiveOffer: PropTypes.func.isRequired,
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  setActiveOffer(activeOfferId) {
-    dispatch(ActionCreator.setActiveOffer(activeOfferId));
-  },
-});
 
+export default PlacesList;
 
-export { PlacesList };
-export default connect(null, mapDispatchToProps)(PlacesList);
 

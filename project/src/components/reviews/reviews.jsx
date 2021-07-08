@@ -1,14 +1,19 @@
 import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
-import reviewPropTypes from '../review.prop';
 import ReviewsItem from '../reviews-item/reviews-item';
 import {fetchComments} from '../../store/api-actions';
-import {connect, useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import LoadWrapper from '../load-wrapper/load-wrapper';
-import {MAX_REVIEWS_COUNT} from '../../const';
+import {getAreReviewsLoadedStatus, getComments, getCommentsToRender} from '../../store/data/selectors';
 
 
-function Reviews({ offerId, comments, areReviewsLoaded }) {
+function Reviews({ offerId }) {
+
+  const areReviewsLoaded = useSelector(getAreReviewsLoadedStatus);
+  const commentsCount = useSelector(getComments).length;
+  const comments = useSelector(getCommentsToRender).slice().sort((firstComment, secondComment) => {
+    return new Date(secondComment.date) - new Date(firstComment.date);
+  });
 
   const dispatch = useDispatch();
 
@@ -19,7 +24,7 @@ function Reviews({ offerId, comments, areReviewsLoaded }) {
   return (
     <LoadWrapper isDataLoaded={areReviewsLoaded}>
         <h2 className="reviews__title">
-          Reviews &middot; <span className="reviews__amount">{comments.length}</span>
+          Reviews &middot; <span className="reviews__amount">{commentsCount}</span>
         </h2>
         <ul className="reviews__list">
           {comments.map((comment) => <ReviewsItem key={comment.id} review={comment}/>)}
@@ -31,15 +36,7 @@ function Reviews({ offerId, comments, areReviewsLoaded }) {
 
 Reviews.propTypes = {
   offerId: PropTypes.string.isRequired,
-  comments: PropTypes.arrayOf(reviewPropTypes),
-  areReviewsLoaded: PropTypes.bool.isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  comments: state.comments.slice().splice(0, MAX_REVIEWS_COUNT),
-  areReviewsLoaded: state.areReviewsLoaded,
-});
 
-
-export {Reviews};
-export default connect(mapStateToProps)(Reviews);
+export default Reviews;

@@ -1,14 +1,19 @@
 import React from 'react';
 import Logo from '../logo/logo';
 import {LogoTypes} from '../../settings';
-import {connect} from 'react-redux';
-import PropTypes from 'prop-types';
+import {useSelector} from 'react-redux';
 import {AuthorizationStatus} from '../../const';
 import HeaderNavAuthorized from '../header-nav-authorized/header-nav-authorized';
 import HeaderNavGuest from '../header-nav-guest/header-nav-guest';
-import {logout} from '../../store/api-actions';
+import {getAuthorizationStatus, getUserAvatar, getUserEmail} from '../../store/user/selectors';
 
-function Header({ username, avatarUrl, authorizationStatus, logoutApp }) {
+
+function Header() {
+
+  const authorizationStatus = useSelector(getAuthorizationStatus);
+  const email = useSelector(getUserEmail);
+  const avatarUrl = useSelector(getUserAvatar);
+
   return (
     <header className="header">
       <div className="container">
@@ -20,7 +25,7 @@ function Header({ username, avatarUrl, authorizationStatus, logoutApp }) {
             <ul className="header__nav-list">
               {
                 authorizationStatus === AuthorizationStatus.AUTH
-                && <HeaderNavAuthorized logoutApp={logoutApp} username={username} avatarUrl={avatarUrl}/>
+                && <HeaderNavAuthorized email={email} avatarUrl={avatarUrl}/>
                 || <HeaderNavGuest />
               }
             </ul>
@@ -31,23 +36,5 @@ function Header({ username, avatarUrl, authorizationStatus, logoutApp }) {
   );
 }
 
-Header.propTypes = {
-  authorizationStatus: PropTypes.string.isRequired,
-  logoutApp: PropTypes.func.isRequired,
-  username: PropTypes.string,
-};
 
-const mapStateToProps = (state) => ({
-  authorizationStatus: state.authorizationStatus,
-  username: state.user.name,
-  avatarUrl: state.user.avatarUrl,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  logoutApp() {
-    dispatch(logout());
-  },
-});
-
-export {Header};
-export default connect(mapStateToProps, mapDispatchToProps)(Header)
+export default Header;

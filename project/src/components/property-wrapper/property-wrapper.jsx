@@ -9,17 +9,23 @@ import ReviewForm from '../review-form/review-form';
 import LoadWrapper from '../load-wrapper/load-wrapper';
 import Map from '../map/map';
 import NearPlaces from '../near-places/near-places';
-import {connect, useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {fetchOffersNearby} from '../../store/api-actions';
-import {ActionCreator} from "../../store/action";
+import {setActiveOffer} from '../../store/action';
+import {getAreLoadedOffersNearbyStatus, getOffersNearby} from '../../store/data/selectors';
+import {getAuthorizationStatus} from '../../store/user/selectors';
 
 
-function PropertyWrapper({ id, currentOffer, areLoadedOffersNearby, offersNearby, authorizationStatus }) {
+function PropertyWrapper({ id, currentOffer }) {
+
+  const areLoadedOffersNearby = useSelector(getAreLoadedOffersNearbyStatus);
+  const offersNearby = useSelector(getOffersNearby);
+  const authorizationStatus = useSelector(getAuthorizationStatus);
 
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchOffersNearby(id));
-    dispatch(ActionCreator.setActiveOffer(Number(+id)));
+    dispatch(setActiveOffer(Number(+id)));
   }, [id, dispatch]);
 
   return (
@@ -57,17 +63,7 @@ function PropertyWrapper({ id, currentOffer, areLoadedOffersNearby, offersNearby
 PropertyWrapper.propTypes = {
   id: PropTypes.string.isRequired,
   currentOffer: offerPropTypes,
-  areLoadedOffersNearby: PropTypes.bool.isRequired,
-  offersNearby: PropTypes.arrayOf(offerPropTypes),
-  authorizationStatus: PropTypes.string.isRequired,
-}
-
-const mapStateToProps = (state) => ({
-  areLoadedOffersNearby: state.areLoadedOffersNearby,
-  offersNearby: state.offersNearby,
-  authorizationStatus: state.authorizationStatus,
-});
+};
 
 
-export {PropertyWrapper};
-export default connect(mapStateToProps)(PropertyWrapper);
+export default PropertyWrapper;
