@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import {LOGO_SETTINGS} from '../../settings';
 import {AppRoute} from '../../const';
@@ -16,5 +17,10 @@ function Logo({ logoType }) {
     </Link>
   );
 }
+
+Logo.propTypes = {
+  logoType: PropTypes.string.isRequired,
+};
+
 
 export default Logo;

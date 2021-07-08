@@ -2,7 +2,7 @@ import {
   setActiveOffer,
   setCity,
   setHasPostedComment,
-  setSortType,
+  setSortType
 } from '../action';
 import {DEFAULT_CITY, DEFAULT_SORT_TYPE} from '../../const';
 import {createReducer} from '@reduxjs/toolkit';
@@ -36,7 +36,7 @@ const ui = createReducer(initialState, (builder) => {
         comment: action.payload.comment,
         rating: action.payload.rating,
       };
-    })
+    });
 });
 
 

@@ -17,16 +17,19 @@ function LocationsList ({ locations }) {
       return;
     }
     dispatch(setCity(textContent));
-  }
+  };
 
   return (
     <ul className="locations__list tabs__list">
-      {locations.map((location) => <LocationsOption
-        key={location.name}
-        name={location.name}
-        isActive={location.name === city}
-        onClick={handleClick}
-      />)}
+      {
+        locations.map((location) =>
+          <LocationsOption
+            key={location.name}
+            name={location.name}
+            isActive={location.name === city}
+            onClick={handleClick}
+          />)
+      }
     </ul>
   );
 }
@@ -41,7 +44,6 @@ LocationsList.propTypes = {
     name: PropTypes.string.isRequired,
   }).isRequired),
 };
-
 
 
 export default LocationsList;

@@ -22,7 +22,8 @@ function App() {
           allowedStatus={AuthorizationStatus.AUTH}
           path={AppRoute.FAVORITES}
           redirect={AppRoute.LOGIN}
-          render={() => <FavoritesPage />}>
+          render={() => <FavoritesPage />}
+        >
         </PrivateRoute>
         <Route exact path={AppRoute.LOGIN}>
           <PrivateRoute
@@ -30,7 +31,8 @@ function App() {
             allowedStatus={AuthorizationStatus.NO_AUTH}
             path={AppRoute.LOGIN}
             redirect={AppRoute.ROOT}
-            render={() => <LoginPage />}>
+            render={() => <LoginPage />}
+          >
           </PrivateRoute>
         </Route>
         <Route

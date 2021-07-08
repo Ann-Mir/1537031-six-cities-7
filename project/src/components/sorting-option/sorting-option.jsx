@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {connect, useDispatch, useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {SortTypes} from '../../const';
 import {setSortType} from '../../store/action';
 import {getActiveSortType} from '../../store/ui/selectors';

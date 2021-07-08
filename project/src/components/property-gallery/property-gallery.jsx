@@ -9,7 +9,7 @@ function PropertyGallery({ images }) {
       {images
         .slice()
         .splice(0, MAX_IMAGES_COUNT)
-        .map((image, i) => <PropertyImage key={i + image} image={image}/>)}
+        .map((image) => <PropertyImage key={image} image={image}/>)}
     </div>
   );
 }

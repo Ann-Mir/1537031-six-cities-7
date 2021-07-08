@@ -16,11 +16,11 @@ export const getFavoriteOffers = (state) => state[NameSpace.DATA].favoriteOffers
 
 export const getCurrentOffers = createSelector(
   [getOffers, getCity],
-  (offers, city) => offers.filter((offer) => offer.city.name === city)
+  (offers, city) => offers.filter((offer) => offer.city.name === city),
 );
 
 export const getCommentsToRender = createSelector(
   getComments,
-  items => items.slice(0, MAX_REVIEWS_COUNT)
+  items => items.slice(0, MAX_REVIEWS_COUNT),
 );
 

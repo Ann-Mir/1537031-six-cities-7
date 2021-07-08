@@ -1,30 +1,30 @@
 import React from 'react';
 import PlacesWrapper from '../places-wrapper/places-wrapper';
 import MainEmpty from '../main-empty/main-empty';
-import PropTypes from 'prop-types';
-import offerPropTypes from '../offer.prop';
+import {useSelector} from 'react-redux';
+import {getCurrentOffers} from '../../store/data/selectors';
+import {getCity} from '../../store/ui/selectors';
 
 
-function Cities({ currentOffers, city, activeSortType }) {
+function Cities() {
+
+  const currentOffers = useSelector(getCurrentOffers);
+  const city = useSelector(getCity);
+
   return (
     <div className="cities">
-      {currentOffers.length > 0
-      && <PlacesWrapper
-        currentOffers={currentOffers}
-        city={city}
-        activeSortType={activeSortType}
-      />
-      || <MainEmpty city={city}/>}
+      {
+        currentOffers.length > 0
+        &&
+        <PlacesWrapper
+          currentOffers={currentOffers}
+          city={city}
+        />
+        || <MainEmpty city={city}/>
+      }
     </div>
   );
 }
-
-
-Cities.propTypes = {
-  currentOffers: PropTypes.arrayOf(offerPropTypes).isRequired,
-  city: PropTypes.string.isRequired,
-  activeSortType: PropTypes.string.isRequired,
-};
 
 
 export default Cities;

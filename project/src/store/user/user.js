@@ -31,7 +31,7 @@ const user = createReducer(initialState, (builder) => {
         id: null,
         isPro: false,
         name: '',
-      }
+      };
     })
     .addCase(setUser, (state, action) => {
       state.user = {
@@ -40,8 +40,8 @@ const user = createReducer(initialState, (builder) => {
         id: action.payload.id,
         isPro: action.payload.isPro,
         name: action.payload.name,
-      }
-    })
+      };
+    });
 });
 
 export {user};

@@ -14,7 +14,7 @@ export const LOGO_SETTINGS = {
     CLASS_MIX: 'footer',
     WIDTH: 64,
     HEIGHT: 33,
-  }
+  },
 };
 
 export const BookmarkButtonTypes = {
@@ -32,7 +32,7 @@ export const BOOKMARK_BUTTON_SETTINGS = {
     CLASS_MIX: 'property',
     WIDTH: 31,
     HEIGHT: 33,
-  }
+  },
 };
 
 export const ratingStarsOptions = [
@@ -56,7 +56,7 @@ export const ratingStarsOptions = [
     value: 1,
     title: 'terribly',
   },
-]
+];
 
 export const RATING_STEP = 20;
 
@@ -102,5 +102,5 @@ export const CARD_SETTINGS = {
     CARD_INFO_CLASS: '',
     CARD_WIDTH: 260,
     CARD_HEIGHT: 200,
-  }
+  },
 };

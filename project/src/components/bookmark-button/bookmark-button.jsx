@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {BOOKMARK_BUTTON_SETTINGS} from '../../settings';
 import {useDispatch} from 'react-redux';
 import {addToFavorites} from '../../store/api-actions';
@@ -9,7 +10,7 @@ function BookmarkButton({ offerId, buttonType, isFavorite }) {
   const dispatch = useDispatch();
 
   const handleClick = () => {
-    dispatch(addToFavorites({hotel_id: offerId, status: Number(!isFavorite)}));
+    dispatch(addToFavorites({ offerId, status: Number(!isFavorite)}));
   };
 
   return (
@@ -28,5 +29,11 @@ function BookmarkButton({ offerId, buttonType, isFavorite }) {
     </button>
   );
 }
+
+BookmarkButton.propTypes = {
+  offerId: PropTypes.number.isRequired,
+  buttonType: PropTypes.string.isRequired,
+  isFavorite: PropTypes.bool.isRequired,
+};
 
 export default BookmarkButton;

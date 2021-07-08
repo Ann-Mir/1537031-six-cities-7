@@ -94,4 +94,4 @@ export const loadFavoriteOffers = createAction(ActionType.LOAD_FAVORITE_OFFERS, 
 
 export const setFavoriteOffersLoadingStatus = createAction(ActionType.SET_ARE_FAVORITE_OFFERS_LOADED, (status) => ({
   payload: status,
-}))
+}));

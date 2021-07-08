@@ -19,7 +19,7 @@ export const fetchOffers = () => (dispatch, _getState, api) => (
   api.get(APIRoute.OFFERS)
     .then(({data}) => {
       const offers = data.map((offer) => adaptOfferToClient(offer));
-      dispatch(loadOffers(offers))
+      dispatch(loadOffers(offers));
     })
     .catch(() => {
       dispatch(loadOffers([]));
@@ -36,7 +36,7 @@ export const fetchOffer = (id) => (dispatch, _getState, api) => {
     .then(() => dispatch(setOfferLoadingStatus(true)))
     .catch(() => {
       dispatch(redirectToRoute(AppRoute.NOT_FOUND));
-    })
+    });
 };
 
 export const fetchComments = (id) => (dispatch, _getState, api) => {
@@ -44,7 +44,7 @@ export const fetchComments = (id) => (dispatch, _getState, api) => {
   api.get(`${APIRoute.REVIEWS}${id}`)
     .then(({data}) => {
       const comments = data.map((comment) => adaptCommentToClient(comment));
-      dispatch(loadComments(comments))
+      dispatch(loadComments(comments));
     })
     .catch(() => dispatch(loadComments([])))
     .finally(() => dispatch(setAreReviewsLoaded(true)))
@@ -55,7 +55,7 @@ export const fetchOffersNearby = (id) => (dispatch, _getState, api) => {
   api.get(`${APIRoute.OFFERS}${id}${APIRoute.NEARBY}`)
     .then(({ data }) => {
       const offers = data.map((offer) => adaptOfferToClient(offer));
-      dispatch(loadOffersNearby(offers))
+      dispatch(loadOffersNearby(offers));
     })
     .catch(() => dispatch(loadOffersNearby([])))
     .finally(() => dispatch(setAreLoadedOffersNearby(true)))
@@ -102,14 +102,15 @@ export const logout = () => (dispatch, _getState, api) => (
   api.delete(APIRoute.LOGOUT)
     .then(() => localStorage.removeItem('token'))
     .then(() => dispatch(logoutUser()))
+    .then(() => dispatch(loadFavoriteOffers([])))
     .then(() => dispatch(redirectToRoute(AppRoute.ROOT)))
 );
 
-export const addToFavorites = ({hotel_id: offerId, status: status}) => (dispatch, _getState, api) => (
+export const addToFavorites = ({offerId, status}) => (dispatch, _getState, api) => {
   api.post(`${APIRoute.FAVORITE}${offerId}/${status}`)
     .then(({data}) => dispatch(updateOffer(adaptOfferToClient(data))))
     .catch(() => dispatch(redirectToRoute(APIRoute.LOGIN)))
-);
+};
 
 export const fetchFavoriteOffers = () => (dispatch, _getState, api) => {
   dispatch(setFavoriteOffersLoadingStatus(false));

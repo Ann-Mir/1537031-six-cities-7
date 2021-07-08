@@ -43,12 +43,12 @@ function Map({ place, offers }) {
 
       return () => {
         markers.clearLayers();
-      }
+      };
     }
   }, [map, offers, place, activeOfferId]);
 
   return (
-      <div style={{height: '100%'}} ref={mapRef}></div>
+    <div style={{height: '100%'}} ref={mapRef}></div>
   );
 }
 
@@ -62,7 +62,6 @@ Map.propTypes = {
     }).isRequired,
     name: PropTypes.string.isRequired,
   }).isRequired,
-  activeOfferId: PropTypes.number,
 };
 
 

@@ -20,24 +20,22 @@ export const getSortedOffers = (offers, sortingType) => {
       return offers;
     case SortTypes.LOW:
       return offers
-            .slice()
-            .sort((firstOffer, secondOffer) => firstOffer.price - secondOffer.price);
+        .slice()
+        .sort((firstOffer, secondOffer) => firstOffer.price - secondOffer.price);
     case SortTypes.HIGH:
       return offers
-            .slice()
-            .sort((firstOffer, secondOffer) => secondOffer.price - firstOffer.price);
+        .slice()
+        .sort((firstOffer, secondOffer) => secondOffer.price - firstOffer.price);
     case SortTypes.TOP:
       return offers
-            .slice()
-            .sort((firstOffer, secondOffer) => secondOffer.rating - firstOffer.rating);
+        .slice()
+        .sort((firstOffer, secondOffer) => secondOffer.rating - firstOffer.rating);
     default:
       return offers;
   }
 };
 
-export const isCheckedAuth = (authorizationStatus) => {
-  return authorizationStatus === AuthorizationStatus.UNKNOWN;
-};
+export const isCheckedAuth = (authorizationStatus) => authorizationStatus === AuthorizationStatus.UNKNOWN;
 
 export const updateOffers = (offers, updatedOffer) => {
   const { id } = updatedOffer;

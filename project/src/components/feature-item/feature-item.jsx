@@ -11,6 +11,6 @@ function FeatureItem({ feature }) {
 
 FeatureItem.propTypes = {
   feature: PropTypes.string.isRequired,
-}
+};
 
 export default FeatureItem;

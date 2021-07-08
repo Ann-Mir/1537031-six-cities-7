@@ -7,7 +7,8 @@ import PropTypes from 'prop-types';
 import offerPropTypes from '../offer.prop';
 
 
-function PlacesWrapper({ currentOffers, activeSortType, city }) {
+function PlacesWrapper({ currentOffers, city }) {
+
   return (
     <div className="cities__places-container container">
       <section className="cities__places places">
@@ -16,7 +17,6 @@ function PlacesWrapper({ currentOffers, activeSortType, city }) {
         <SortingForm />
         <PlacesList
           offers={currentOffers}
-          activeSortType={activeSortType}
         />
       </section>
       <div className="cities__right-section">
@@ -35,7 +35,6 @@ function PlacesWrapper({ currentOffers, activeSortType, city }) {
 PlacesWrapper.propTypes = {
   currentOffers: PropTypes.arrayOf(offerPropTypes).isRequired,
   city: PropTypes.string.isRequired,
-  activeSortType: PropTypes.string.isRequired,
 };
 
 export default PlacesWrapper;

@@ -15,6 +15,6 @@ function FeaturesList({ goods }) {
 
 FeaturesList.propTypes = {
   goods: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-}
+};
 
 export default FeaturesList;

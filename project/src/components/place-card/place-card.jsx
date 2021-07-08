@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import PropTypes from 'prop-types';
 import {capitalizeFirstLetter, getRating} from '../../utils/render';
 import {Link} from 'react-router-dom';
@@ -31,7 +31,7 @@ function PlaceCard({ offer, cardType }) {
 
   const handleMouseLeave = () => {
     dispatch(setActiveOffer(null));
-  }
+  };
 
   return (
     <article
@@ -48,7 +48,7 @@ function PlaceCard({ offer, cardType }) {
             className="place-card__image"
             src={previewImage}
             style={{width: CARD_SETTINGS[cardType].CARD_WIDTH, height: CARD_SETTINGS[cardType].CARD_HEIGHT}}
-            alt="Place image"
+            alt="Place"
           />
         </Link>
       </div>
@@ -85,4 +85,4 @@ PlaceCard.propTypes = {
   cardType: PropTypes.oneOf(Object.keys(CardTypes)).isRequired,
 };
 
-export default PlaceCard;
+export default memo(PlaceCard);
