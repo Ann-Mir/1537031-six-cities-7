@@ -109,7 +109,7 @@ export const logout = () => (dispatch, _getState, api) => (
 export const addToFavorites = ({offerId, status}) => (dispatch, _getState, api) => {
   api.post(`${APIRoute.FAVORITE}${offerId}/${status}`)
     .then(({data}) => dispatch(updateOffer(adaptOfferToClient(data))))
-    .catch(() => dispatch(redirectToRoute(APIRoute.LOGIN)))
+    .catch(() => {})
 };
 
 export const fetchFavoriteOffers = () => (dispatch, _getState, api) => {

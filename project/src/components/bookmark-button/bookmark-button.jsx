@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import PropTypes from 'prop-types';
 import {BOOKMARK_BUTTON_SETTINGS} from '../../settings';
 import {useDispatch} from 'react-redux';
@@ -12,6 +12,7 @@ function BookmarkButton({ offerId, buttonType, isFavorite }) {
   const handleClick = () => {
     dispatch(addToFavorites({ offerId, status: Number(!isFavorite)}));
   };
+
 
   return (
     <button
