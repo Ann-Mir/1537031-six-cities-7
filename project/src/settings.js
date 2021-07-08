@@ -22,7 +22,7 @@ export const BookmarkButtonTypes = {
   ROOM: 'ROOM',
 };
 
-export const BOOKMARK_BUTTON_SETTING = {
+export const BOOKMARK_BUTTON_SETTINGS = {
   'CARD': {
     CLASS_MIX: 'place-card',
     WIDTH: 18,
