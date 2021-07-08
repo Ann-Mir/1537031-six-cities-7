@@ -26,11 +26,15 @@ function PlaceCard({ offer, cardType }) {
   const dispatch = useDispatch();
 
   const handleMouseEnter = () => {
-    dispatch(setActiveOffer(+id));
+    if (cardType === CardTypes.MAIN) {
+      dispatch(setActiveOffer(+id));
+    }
   };
 
   const handleMouseLeave = () => {
-    dispatch(setActiveOffer(null));
+    if (cardType === CardTypes.MAIN) {
+      dispatch(setActiveOffer(null));
+    }
   };
 
   return (
