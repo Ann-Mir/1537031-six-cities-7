@@ -1,5 +1,5 @@
 import {
-  loadComments,
+  loadComments, loadFavoriteOffers,
   loadOffer,
   loadOffers,
   loadOffersNearby,
@@ -7,7 +7,7 @@ import {
   redirectToRoute,
   requireAuthorization,
   setAreLoadedOffersNearby,
-  setAreReviewsLoaded,
+  setAreReviewsLoaded, setFavoriteOffersLoadingStatus,
   setHasPostedComment,
   setOfferLoadingStatus,
   setUser, updateOffer
@@ -110,3 +110,13 @@ export const addToFavorites = ({hotel_id: offerId, status: status}) => (dispatch
     .then(({data}) => dispatch(updateOffer(adaptOfferToClient(data))))
     .catch(() => dispatch(redirectToRoute(APIRoute.LOGIN)))
 );
+
+export const fetchFavoriteOffers = () => (dispatch, _getState, api) => {
+  dispatch(setFavoriteOffersLoadingStatus(false));
+  api.get(APIRoute.FAVORITE)
+    .then(({ data }) => {
+      const offers = data.map((offer) => adaptOfferToClient(offer));
+      dispatch(loadFavoriteOffers(offers))
+    })
+    .catch(() => dispatch(loadFavoriteOffers([])))
+};

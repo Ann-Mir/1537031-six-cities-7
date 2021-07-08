@@ -18,6 +18,8 @@ export const ActionType = {
   SET_ARE_LOADED_OFFERS_NEARBY: 'offers/setAreLoadedOffersNearby',
   SET_HAS_POSTED_COMMENT: 'comments/setHasPostedComment',
   UPDATE_OFFER: 'offers/updateOffer',
+  LOAD_FAVORITE_OFFERS: 'offers/loadFavoriteOffers',
+  SET_ARE_FAVORITE_OFFERS_LOADED: 'offers/setAreFavoriteOffersLoaded',
 };
 
 export const setCity = createAction(ActionType.SET_CITY, (city) => ({
@@ -85,3 +87,11 @@ export const setHasPostedComment = createAction(ActionType.SET_HAS_POSTED_COMMEN
 export const updateOffer = createAction(ActionType.UPDATE_OFFER, (offer) => ({
   payload: offer,
 }));
+
+export const loadFavoriteOffers = createAction(ActionType.LOAD_FAVORITE_OFFERS, (offers) => ({
+  payload: offers,
+}));
+
+export const setFavoriteOffersLoadingStatus = createAction(ActionType.SET_ARE_FAVORITE_OFFERS_LOADED, (status) => ({
+  payload: status,
+}))

@@ -1,7 +1,7 @@
 import {NameSpace} from '../root-reducer';
 import {createSelector} from 'reselect';
 import {getCity} from '../ui/selectors';
-import {MAX_REVIEWS_COUNT} from "../../const";
+import {MAX_REVIEWS_COUNT} from '../../const';
 
 export const getOffers = (state) => state[NameSpace.DATA].offers;
 export const getComments = (state) => state[NameSpace.DATA].comments;
@@ -11,6 +11,8 @@ export const getIsDataLoadedStatus = (state) => state[NameSpace.DATA].isDataLoad
 export const getIsOfferLoadedStatus = (state) => state[NameSpace.DATA].isOfferLoaded;
 export const getAreReviewsLoadedStatus = (state) => state[NameSpace.DATA].areReviewsLoaded;
 export const getAreLoadedOffersNearbyStatus = (state) => state[NameSpace.DATA].areLoadedOffersNearby;
+export const getFavoriteOffersLoadingStatus = (state) => state[NameSpace.DATA].areFavoriteOffersLoaded;
+export const getFavoriteOffers = (state) => state[NameSpace.DATA].favoriteOffers;
 
 export const getCurrentOffers = createSelector(
   [getOffers, getCity],
