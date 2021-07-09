@@ -8,11 +8,14 @@ function SortingOptionsList({ handleSortTypeClick }) {
 
   return (
     <ul className="places__options places__options--custom places__options--opened">
-      {sortingOptions.map((option) => <SortingOption
-        key={option}
-        sortingType={option}
-        handleSortTypeClick={handleSortTypeClick}
-      />)}
+      {
+        sortingOptions.map((option) =>
+          <SortingOption
+            key={option}
+            sortingType={option}
+            handleSortTypeClick={handleSortTypeClick}
+          />)
+      }
     </ul>
   );
 }

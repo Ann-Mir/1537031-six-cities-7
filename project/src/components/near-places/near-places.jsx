@@ -1,5 +1,7 @@
 import React from 'react';
 import NearPlacesList from '../near-places-list/near-places-list';
+import PropTypes from 'prop-types';
+import offerPropTypes from '../offer.prop';
 
 
 function NearPlaces({ offers }) {
@@ -12,5 +14,9 @@ function NearPlaces({ offers }) {
   );
 }
 
+
+NearPlaces.propTypes = {
+  offers: PropTypes.arrayOf(offerPropTypes).isRequired,
+};
 
 export default NearPlaces;

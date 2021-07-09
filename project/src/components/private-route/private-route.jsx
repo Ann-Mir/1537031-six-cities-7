@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Route, Redirect} from 'react-router-dom';
 import {useSelector} from 'react-redux';
-import {AppRoute, AuthorizationStatus} from '../../const';
 import {getAuthorizationStatus} from '../../store/user/selectors';
 
 
@@ -27,6 +26,8 @@ PrivateRoute.propTypes = {
   exact: PropTypes.bool.isRequired,
   path: PropTypes.string.isRequired,
   render: PropTypes.func.isRequired,
+  allowedStatus: PropTypes.string.isRequired,
+  redirect: PropTypes.string.isRequired,
 };
 
 

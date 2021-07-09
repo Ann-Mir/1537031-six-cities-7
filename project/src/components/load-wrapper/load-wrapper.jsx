@@ -11,7 +11,7 @@ LoadWrapper.propTypes = {
   isDataLoaded: PropTypes.bool.isRequired,
   children: PropTypes.any,
   Spinner: PropTypes.func,
-}
+};
 
 
 export default LoadWrapper;

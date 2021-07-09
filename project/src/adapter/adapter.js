@@ -30,7 +30,7 @@ export const adaptCommentToClient = (comment) => {
       ...comment.user,
       avatarUrl: comment.user.avatar_url,
       isPro: comment.user.is_pro,
-    }
+    },
   };
 
   delete adaptedComment.user.avatar_url;

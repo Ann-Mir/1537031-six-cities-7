@@ -18,6 +18,6 @@ function NearPlacesList({ nearOffers }) {
 
 NearPlacesList.propTypes = {
   nearOffers: PropTypes.arrayOf(offerPropTypes).isRequired,
-}
+};
 
 export default NearPlacesList;

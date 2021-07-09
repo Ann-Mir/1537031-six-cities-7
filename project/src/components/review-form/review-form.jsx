@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import RatingOptions from '../rating-options/rating-options';
 import {MAX_REVIEW_LENGTH, MIN_REVIEW_LENGTH} from '../../const';
-import {connect, useDispatch, useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {sendComment} from '../../store/api-actions';
 import ReviewText from '../review-text/review-text';
-import {getHasPostedComment, getPostedComment, getPostedRating} from '../../store/ui/selectors';
+import {getHasPostedComment} from '../../store/ui/selectors';
 
 function ReviewForm({ offerId }) {
 
@@ -36,8 +36,8 @@ function ReviewForm({ offerId }) {
           setReviewText('');
           setRating(0);
         } else {
-          setReviewText(useSelector(getPostedComment));
-          setRating(useSelector(getPostedRating));
+          setReviewText(hasPostedComment.comment);
+          setRating(hasPostedComment.rating);
         }
       })
       .catch(() => {
@@ -46,7 +46,7 @@ function ReviewForm({ offerId }) {
       })
       .finally(() => {
         setIsDisabled(false);
-      })
+      });
   };
 
   const handleTextChange = React.useCallback((evt) => {

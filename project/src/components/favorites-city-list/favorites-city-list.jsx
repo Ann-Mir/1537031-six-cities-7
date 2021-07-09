@@ -7,12 +7,15 @@ import offerPropTypes from '../offer.prop';
 function FavoritesCityList({ favoriteOffersByCity }) {
   return (
     <div className="favorites__places">
-      {favoriteOffersByCity.map(
-        (offer) => <PlaceCard
-          key={offer.id}
-          offer={offer}
-          cardType={CardTypes.FAVORITES}
-        />)}
+      {
+        favoriteOffersByCity.map(
+          (offer) =>
+            <PlaceCard
+              key={offer.id}
+              offer={offer}
+              cardType={CardTypes.FAVORITES}
+            />)
+      }
     </div>
   );
 }

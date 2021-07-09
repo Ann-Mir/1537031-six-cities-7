@@ -20,24 +20,22 @@ export const getSortedOffers = (offers, sortingType) => {
       return offers;
     case SortTypes.LOW:
       return offers
-            .slice()
-            .sort((firstOffer, secondOffer) => firstOffer.price - secondOffer.price);
+        .slice()
+        .sort((firstOffer, secondOffer) => firstOffer.price - secondOffer.price);
     case SortTypes.HIGH:
       return offers
-            .slice()
-            .sort((firstOffer, secondOffer) => secondOffer.price - firstOffer.price);
+        .slice()
+        .sort((firstOffer, secondOffer) => secondOffer.price - firstOffer.price);
     case SortTypes.TOP:
       return offers
-            .slice()
-            .sort((firstOffer, secondOffer) => secondOffer.rating - firstOffer.rating);
+        .slice()
+        .sort((firstOffer, secondOffer) => secondOffer.rating - firstOffer.rating);
     default:
       return offers;
   }
 };
 
-export const isCheckedAuth = (authorizationStatus) => {
-  return authorizationStatus === AuthorizationStatus.UNKNOWN;
-};
+export const isCheckedAuth = (authorizationStatus) => authorizationStatus === AuthorizationStatus.UNKNOWN;
 
 export const updateOffers = (offers, updatedOffer) => {
   const { id } = updatedOffer;
@@ -48,8 +46,17 @@ export const updateOffers = (offers, updatedOffer) => {
   return offers;
 };
 
+export const removeOffer = (offers, offerToRemove) => {
+  const {id} = offerToRemove;
+  const index = offers.findIndex((item) => item.id === id);
+  if (index !== -1) {
+    offers.splice(index, 1);
+  }
+  return offers;
+}
+
 export const updateOfferIsFavorite = (currentOffer, updatedOffer) => {
-  if (currentOffer.id === updatedOffer.id) {
+  if (currentOffer && currentOffer.id === updatedOffer.id) {
     currentOffer.isFavorite = updatedOffer.isFavorite;
   }
   return currentOffer;

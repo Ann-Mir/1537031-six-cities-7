@@ -12,7 +12,7 @@ function useMap(mapRef, city) {
       const instance = leaflet.map(mapRef.current, {
         center: {
           lat: city.location.latitude,
-          lng: city.location.longitude
+          lng: city.location.longitude,
         },
         zoom: city.location.zoom,
       });
@@ -22,7 +22,7 @@ function useMap(mapRef, city) {
           'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
           {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
-          }
+          },
         )
         .addTo(instance);
 
@@ -31,6 +31,6 @@ function useMap(mapRef, city) {
   }, [mapRef, map, city]);
 
   return map;
-};
+}
 
 export default useMap;

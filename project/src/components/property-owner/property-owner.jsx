@@ -15,11 +15,11 @@ function PropertyOwner(props) {
         />
       </div>
       <span className="property__user-name">
-                    {name}
-                  </span>
+        {name}
+      </span>
       <span className={`property__user-status ${isPro ? '' : 'visually-hidden'}`}>
-                    Pro
-                  </span>
+        Pro
+      </span>
     </div>
   );
 }
@@ -30,7 +30,7 @@ PropertyOwner.propTypes = {
     avatarUrl: PropTypes.string.isRequired,
     isPro: PropTypes.bool.isRequired,
     name: PropTypes.string.isRequired,
-  })
+  }),
 };
 
 export default PropertyOwner;

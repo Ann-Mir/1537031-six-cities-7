@@ -42,6 +42,7 @@ function HeaderNavAuthorized({ email, avatarUrl }) {
 
 HeaderNavAuthorized.propTypes = {
   email: PropTypes.string.isRequired,
+  avatarUrl: PropTypes.string.isRequired,
 };
 
 
