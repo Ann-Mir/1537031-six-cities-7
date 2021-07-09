@@ -9,7 +9,7 @@ import {
   setOfferLoadingStatus, updateOffer
 } from '../action';
 import {createReducer} from '@reduxjs/toolkit';
-import {removeOffer, updateOfferIsFavorite, updateOffers} from '../../utils/common';
+import {filterOffers, updateOfferIsFavorite, updateOffers} from '../../utils/common';
 
 const initialState = {
   offers: [],
@@ -54,7 +54,7 @@ const data = createReducer(initialState, (builder) => {
     })
     .addCase(updateOffer, (state, action) => {
       state.offers = updateOffers(state.offers, action.payload);
-      state.favoriteOffers = removeOffer(state.favoriteOffers, action.payload);
+      state.favoriteOffers = filterOffers(state.favoriteOffers, action.payload);
       state.currentOffer = updateOfferIsFavorite(state.currentOffer, action.payload);
       state.offersNearby = updateOffers(state.offersNearby, action.payload);
     })

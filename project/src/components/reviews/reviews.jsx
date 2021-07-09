@@ -11,9 +11,7 @@ function Reviews({ offerId }) {
 
   const areReviewsLoaded = useSelector(getAreReviewsLoadedStatus);
   const commentsCount = useSelector(getComments).length;
-  const comments = useSelector(getCommentsToRender).slice().sort((firstComment, secondComment) => {
-    return new Date(secondComment.date) - new Date(firstComment.date);
-  });
+  const comments = useSelector(getCommentsToRender);
 
   const dispatch = useDispatch();
 
