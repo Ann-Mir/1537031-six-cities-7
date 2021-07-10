@@ -18,7 +18,7 @@ function ReviewForm({ offerId }) {
 
   const dispatch = useDispatch();
 
-  const handleFormChange = (evt) => {
+  const handleFormChange = () => {
     setIsDisabled(!(review.length >= MIN_REVIEW_LENGTH
       && review.length <= MAX_REVIEW_LENGTH
       && rating > 0));
@@ -45,7 +45,7 @@ function ReviewForm({ offerId }) {
         setRating(rating);
       })
       .finally(() => {
-        setIsDisabled(false);
+        setIsDisabled(true);
       });
   };
 
