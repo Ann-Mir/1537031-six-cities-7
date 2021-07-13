@@ -46,7 +46,12 @@ export const updateOffers = (offers, updatedOffer) => {
   return offers;
 };
 
-export const filterOffers = (offers, offerToRemove) => offers.filter((offer) => offer.id !== offerToRemove.id);
+export const updateFavoriteOffers = (offers, updatedOffer) => {
+  if (updatedOffer.isFavorite) {
+    return [...offers, updatedOffer];
+  }
+  return offers.filter((offer) => offer.id !== updatedOffer.id);
+};
 
 export const updateOfferIsFavorite = (currentOffer, updatedOffer) => {
   if (currentOffer && currentOffer.id === updatedOffer.id) {
