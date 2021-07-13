@@ -40,5 +40,71 @@ describe('Reducer: user', () => {
     expect(user(state, requiredAuthorizationAction))
       .toEqual({authorizationStatus: AuthorizationStatus.NO_AUTH});
   });
-});
 
+  it('should update user state with the passed data', () => {
+    const state = {
+      authorizationStatus: AuthorizationStatus.AUTH,
+      user: {
+        avatarUrl: '',
+        email: '',
+        id: null,
+        isPro: false,
+        name: '',
+      },
+    };
+
+    const userData = {
+      avatarUrl: '/img/1.png',
+      email: 'ted@mail.cpm',
+      id: 1,
+      isPro: true,
+      name: 'Ted',
+    };
+
+    const setUserAction = {
+      type: ActionType.SET_USER,
+      payload: userData,
+    };
+
+    expect(user(state, setUserAction))
+      .toEqual({
+        authorizationStatus: AuthorizationStatus.AUTH,
+        user: {
+          avatarUrl: '/img/1.png',
+          email: 'ted@mail.cpm',
+          id: 1,
+          isPro: true,
+          name: 'Ted',
+        },
+      });
+  });
+
+    it('should clean out user data upon logout', () => {
+      const state = {
+        authorizationStatus: AuthorizationStatus.AUTH,
+        user: {
+          avatarUrl: '/img/1.png',
+          email: 'ted@mail.cpm',
+          id: 1,
+          isPro: true,
+          name: 'Ted',
+        },
+      };
+
+      const logoutAction = {
+        type: ActionType.LOGOUT,
+      };
+
+      expect(user(state, logoutAction))
+        .toEqual({
+          authorizationStatus: AuthorizationStatus.NO_AUTH,
+          user: {
+            avatarUrl: '',
+            email: '',
+            id: null,
+            isPro: false,
+            name: '',
+          },
+        });
+    });
+});
