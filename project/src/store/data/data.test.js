@@ -1,7 +1,5 @@
 import {data} from './data';
-import {ui} from "../ui/ui";
-import {DEFAULT_CITY, DEFAULT_SORT_TYPE, SortTypes} from "../../const";
-import {ActionType, setActiveOffer, setCity, setHasPostedComment, setSortType, updateOffer} from "../action";
+import {ActionType} from '../action';
 
 
 const offers = [
