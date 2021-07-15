@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {SortTypes} from '../../const';
 import SortingOption from '../sorting-option/sorting-option';
 
-function SortingOptionsList({ handleSortTypeClick }) {
+function SortingOptionsList({ onSortTypeClick }) {
   const sortingOptions = Object.keys(SortTypes);
 
   return (
@@ -13,7 +13,7 @@ function SortingOptionsList({ handleSortTypeClick }) {
           <SortingOption
             key={option}
             sortingType={option}
-            handleSortTypeClick={handleSortTypeClick}
+            handleSortTypeClick={onSortTypeClick}
           />)
       }
     </ul>
@@ -22,7 +22,7 @@ function SortingOptionsList({ handleSortTypeClick }) {
 
 
 SortingOptionsList.propTypes = {
-  handleSortTypeClick: PropTypes.func.isRequired,
+  onSortTypeClick: PropTypes.func.isRequired,
 };
 
 export default SortingOptionsList;

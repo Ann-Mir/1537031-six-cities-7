@@ -3,8 +3,8 @@ import {getRating} from '../../utils/render';
 import {monthsByNumber} from '../../settings';
 import reviewPropTypes from '../review.prop';
 
-function ReviewsItem(props) {
-  const {comment, date, rating, user} = props.review;
+function ReviewsItem({ review }) {
+  const {comment, date, rating, user} = review;
   const { avatarUrl, name} = user;
   const ratingWidth = getRating(rating);
   const dateTime = date.slice(0, 10);
@@ -36,7 +36,7 @@ function ReviewsItem(props) {
         <p className="reviews__text">
           {comment}
         </p>
-        <time className="reviews__time" dateTime={dateTime}>{month} {year}</time>
+        <time className="reviews__time" data-testid="reviews__time" dateTime={dateTime}>{month} {year}</time>
       </div>
     </li>
   );

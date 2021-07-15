@@ -2,8 +2,6 @@ import MockAdapter from 'axios-mock-adapter';
 import {createAPI} from '../services/api';
 import {ActionType} from './action';
 import {
-  checkAuth,
-  login,
   fetchOffers,
   fetchOffer,
   fetchComments,
@@ -11,7 +9,7 @@ import {
   sendComment,
   addToFavorites, fetchFavoriteOffers
 } from './api-actions';
-import {APIRoute, AppRoute, AuthorizationStatus} from '../const';
+import {APIRoute} from '../const';
 import {adaptCommentToClient, adaptOfferToClient} from '../adapter/adapter';
 
 let api = null;

@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 
-function PropertyOwner(props) {
-  const { avatarUrl, isPro, name } = props.host;
+function PropertyOwner({ host }) {
+  const { avatarUrl, isPro, name } = host;
   return (
     <div className="property__host-user user">
       <div className="property__avatar-wrapper property__avatar-wrapper--pro user__avatar-wrapper">

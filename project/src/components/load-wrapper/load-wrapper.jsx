@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import LoadingScreen from '../loading-screen/loadingScreen';
+import LoadingScreen from '../loading-screen/loading-screen';
 
 
 function LoadWrapper({ isDataLoaded, children, Spinner = LoadingScreen }){
