@@ -46,14 +46,12 @@ export const updateOffers = (offers, updatedOffer) => {
   return offers;
 };
 
-export const removeOffer = (offers, offerToRemove) => {
-  const {id} = offerToRemove;
-  const index = offers.findIndex((item) => item.id === id);
-  if (index !== -1) {
-    offers.splice(index, 1);
+export const updateFavoriteOffers = (offers, updatedOffer) => {
+  if (updatedOffer.isFavorite) {
+    return [...offers, updatedOffer];
   }
-  return offers;
-}
+  return offers.filter((offer) => offer.id !== updatedOffer.id);
+};
 
 export const updateOfferIsFavorite = (currentOffer, updatedOffer) => {
   if (currentOffer && currentOffer.id === updatedOffer.id) {

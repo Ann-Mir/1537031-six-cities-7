@@ -27,7 +27,7 @@ function SortingForm() {
           <use xlinkHref="#icon-arrow-select"></use>
         </svg>
       </span>
-      {isSortOpen && <SortingOptionsList handleSortTypeClick={handleSortTypeClick}/>}
+      {isSortOpen && <SortingOptionsList onSortTypeClick={handleSortTypeClick}/>}
     </form>
   );
 }

@@ -8,6 +8,7 @@ function ReviewText({ onChange, value, hasPostedComment }) {
     <textarea
       className="reviews__textarea form__textarea"
       id="review"
+      data-testid="review"
       name="review"
       placeholder="Tell how was your stay, what you like and what can be improved"
       onChange={onChange}

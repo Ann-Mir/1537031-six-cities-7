@@ -17,6 +17,7 @@ function RatingOptions({ rating, onChange }) {
                 type="radio"
                 onChange={onChange}
                 checked={rating === value}
+                data-testid={`rating-option-${value}`}
               />
               <label htmlFor={`${value}-stars`} className="reviews__rating-label form__rating-label" title={title}>
                 <svg className="form__star-image" style={{width: '37', height: '33'}}>

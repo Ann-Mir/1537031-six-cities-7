@@ -38,7 +38,7 @@ function LoginPage() {
               onSubmit={handleSubmit}
             >
               <div className="login__input-wrapper form__input-wrapper">
-                <label className="visually-hidden">E-mail</label>
+                <label className="visually-hidden" htmlFor="email">E-mail</label>
                 <input
                   ref={loginRef}
                   className="login__input form__input"
@@ -46,10 +46,11 @@ function LoginPage() {
                   name="email"
                   placeholder="Email"
                   required=""
+                  id="email"
                 />
               </div>
               <div className="login__input-wrapper form__input-wrapper">
-                <label className="visually-hidden">Password</label>
+                <label className="visually-hidden" htmlFor="password">Password</label>
                 <input
                   ref={passwordRef}
                   className="login__input form__input"
@@ -57,6 +58,7 @@ function LoginPage() {
                   name="password"
                   placeholder="Password"
                   required=""
+                  id="password"
                 />
               </div>
               <button

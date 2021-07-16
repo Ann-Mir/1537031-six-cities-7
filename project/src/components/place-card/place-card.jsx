@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {capitalizeFirstLetter, getRating} from '../../utils/render';
 import {Link} from 'react-router-dom';
 import {AppRoute} from '../../const';
-import generatePath from 'react-router/modules/generatePath';
+import {generatePath} from 'react-router';
 import offerPropTypes from '../offer.prop';
 import {BookmarkButtonTypes, CARD_SETTINGS, CardTypes} from '../../settings';
 import {useDispatch} from 'react-redux';
