@@ -6,7 +6,7 @@ import {
   setAreLoadedOffersNearby,
   setAreReviewsLoaded, setFavoriteOffersLoadingStatus,
   setIsDataLoaded,
-  setOfferLoadingStatus, updateOffer
+  setOfferLoadingStatus, setReviewErrorStatus, updateOffer
 } from '../action';
 import {createReducer} from '@reduxjs/toolkit';
 import {updateFavoriteOffers, updateOfferIsFavorite, updateOffers} from '../../utils/common';

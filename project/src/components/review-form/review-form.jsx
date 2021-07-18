@@ -1,60 +1,64 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
 import RatingOptions from '../rating-options/rating-options';
-import {MAX_REVIEW_LENGTH, MIN_REVIEW_LENGTH} from '../../const';
+import {MAX_REVIEW_LENGTH, MIN_REVIEW_LENGTH, RESPONSE_SUCCESS, ToastMessages} from '../../const';
 import {useDispatch, useSelector} from 'react-redux';
 import {sendComment} from '../../store/api-actions';
 import ReviewText from '../review-text/review-text';
-import {getHasPostedComment} from '../../store/ui/selectors';
+import Toast from '../toast/toast';
+import {setAreReviewsLoaded} from '../../store/action';
 
 function ReviewForm({ offerId }) {
-
-  const hasPostedComment = useSelector(getHasPostedComment);
 
   const [rating, setRating] = React.useState(0);
   const [review, setReviewText] = React.useState('');
   const [isDisabled, setIsDisabled] = React.useState(true);
+  const [isSendingComment, setIsSendingComment] = React.useState(false);
 
+  const [isReviewInError, setIsReviewInError] = React.useState(false);
 
   const dispatch = useDispatch();
 
   const handleFormChange = () => {
+    setIsReviewInError(false);
     setIsDisabled(!(review.length >= MIN_REVIEW_LENGTH
       && review.length <= MAX_REVIEW_LENGTH
-      && rating > 0));
+      && rating > 0 && !isSendingComment));
   };
 
   const handleFormSubmit = (evt) => {
     evt.preventDefault();
-    if (isDisabled) {
+    if (isDisabled || isSendingComment) {
       return;
     }
+    setIsSendingComment(true);
     setIsDisabled(true);
+
     dispatch(sendComment({id: offerId, comment: review, rating: rating}))
       .then(() => {
-        if (hasPostedComment.hasPosted) {
-          setReviewText('');
-          setRating(0);
-        } else {
-          setReviewText(hasPostedComment.comment);
-          setRating(hasPostedComment.rating);
-        }
-      })
-      .catch(() => {
-        setReviewText(review);
-        setRating(rating);
-      })
-      .finally(() => {
+        setIsSendingComment(false);
+        setReviewText('');
+        setRating(0);
         setIsDisabled(true);
-      });
+        })
+      .catch(() => {
+        dispatch(setAreReviewsLoaded(true));
+        setIsReviewInError(true);
+        setIsSendingComment(false);
+        setIsDisabled(false);
+      })
   };
 
   const handleTextChange = React.useCallback((evt) => {
-    setReviewText(evt.target.value);
+    if (!isSendingComment) {
+      setReviewText(evt.target.value);
+    }
   },[]);
 
   const handleRatingChange = React.useCallback((evt) => {
-    setRating(Number(evt.target.value));
+    if (!isSendingComment) {
+      setRating(Number(evt.target.value));
+    }
   }, []);
 
   return (
@@ -65,9 +69,10 @@ function ReviewForm({ offerId }) {
       onChange={handleFormChange}
       onSubmit={handleFormSubmit}
     >
+      {isReviewInError && <Toast message={ToastMessages.REVIEW_ERROR} />}
       <label className="reviews__label form__label" htmlFor="review">Your review</label>
       <RatingOptions rating={rating} onChange={handleRatingChange}/>
-      <ReviewText value={review} onChange={handleTextChange} hasPostedComment={hasPostedComment}/>
+      <ReviewText value={review} onChange={handleTextChange} />
       <div className="reviews__button-wrapper">
         <p className="reviews__help">
           To submit review please make sure to set <span className="reviews__star">rating</span> and describe your stay

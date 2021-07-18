@@ -8,11 +8,10 @@ import {
   requireAuthorization,
   setAreLoadedOffersNearby,
   setAreReviewsLoaded, setFavoriteOffersLoadingStatus,
-  setHasPostedComment,
   setOfferLoadingStatus,
   setUser, updateOffer
 } from './action';
-import {AuthorizationStatus, APIRoute, AppRoute, RESPONSE_SUCCESS} from '../const';
+import {AuthorizationStatus, APIRoute, AppRoute} from '../const';
 import {adaptCommentToClient, adaptOfferToClient, adaptUserToClient} from '../adapter/adapter';
 
 export const fetchOffers = () => (dispatch, _getState, api) => (
@@ -34,7 +33,7 @@ export const fetchOffer = (id) => (dispatch, _getState, api) => {
       dispatch(loadOffer(offer));
     })
     .then(() => dispatch(setOfferLoadingStatus(true)))
-    .catch((err) => {
+    .catch(() => {
       dispatch(redirectToRoute(AppRoute.NOT_FOUND));
     });
 };
@@ -65,17 +64,10 @@ export const sendComment = ({id, comment, rating}) => (dispatch, _getState, api)
   dispatch(setAreReviewsLoaded(false));
   return api.post(`${APIRoute.REVIEWS}${id}`, {comment, rating})
     .then((response) => {
-      const { status, data } = response;
-      if (status !== RESPONSE_SUCCESS) {
-        dispatch(setHasPostedComment({hasPosted: false, comment: comment, rating: rating}));
-      } else {
-        const comments = data.map(adaptCommentToClient);
-        dispatch(loadComments(comments));
-        dispatch(setAreReviewsLoaded(true));
-      }
-    })
-    .catch((err) => {
-
+      const { data } = response;
+      const comments = data.map(adaptCommentToClient);
+      dispatch(loadComments(comments));
+      dispatch(setAreReviewsLoaded(true));
     })
 };
 
@@ -109,7 +101,7 @@ export const logout = () => (dispatch, _getState, api) => (
 export const addToFavorites = ({offerId, status}) => (dispatch, _getState, api) => {
   return api.post(`${APIRoute.FAVORITE}${offerId}/${status}`)
     .then(({data}) => dispatch(updateOffer(adaptOfferToClient(data))))
-    .catch(() => {})
+    .catch(() => dispatch(redirectToRoute(AppRoute.LOGIN)))
 };
 
 export const fetchFavoriteOffers = () => (dispatch, _getState, api) => {

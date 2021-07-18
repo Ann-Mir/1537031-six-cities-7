@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {MAX_REVIEW_LENGTH, MIN_REVIEW_LENGTH} from '../../const';
 
 
-function ReviewText({ onChange, value, hasPostedComment }) {
+function ReviewText({ onChange, value }) {
   return (
     <textarea
       className="reviews__textarea form__textarea"
@@ -15,7 +15,6 @@ function ReviewText({ onChange, value, hasPostedComment }) {
       minLength={MIN_REVIEW_LENGTH}
       maxLength={MAX_REVIEW_LENGTH}
       value={value}
-      style={!hasPostedComment.hasPosted ? {borderColor: 'red'} : {}}
     />
   );
 }
@@ -24,11 +23,6 @@ function ReviewText({ onChange, value, hasPostedComment }) {
 ReviewText.propTypes = {
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
-  hasPostedComment: PropTypes.shape({
-    hasPosted: PropTypes.bool,
-    comment: PropTypes.string,
-    rating: PropTypes.number,
-  }),
 };
 
 
