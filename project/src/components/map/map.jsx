@@ -2,7 +2,7 @@ import React, {useEffect, useRef} from 'react';
 import leaflet from 'leaflet';
 import {MARKER_CURRENT, MARKER_DEFAULT} from '../../const';
 import 'leaflet/dist/leaflet.css';
-import useMap from '../../hooks/useMap';
+import useMap from '../../hooks/use-map';
 import PropTypes from 'prop-types';
 import offerPropTypes from '../offer.prop';
 import {useSelector} from 'react-redux';
