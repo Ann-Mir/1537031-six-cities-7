@@ -7,7 +7,8 @@ import {
   fetchComments,
   fetchOffersNearby,
   sendComment,
-  addToFavorites, fetchFavoriteOffers
+  addToFavorites,
+  fetchFavoriteOffers
 } from './api-actions';
 import {APIRoute} from '../const';
 import {adaptCommentToClient, adaptOfferToClient} from '../adapter/adapter';
@@ -211,21 +212,10 @@ describe('Async operations', () => {
     return reviewSender(dispatch, () => {}, api)
 
       .then(() => {
-        expect(dispatch).toHaveBeenCalledTimes(3);
-
+        expect(dispatch).toHaveBeenCalledTimes(1);
         expect(dispatch).toHaveBeenNthCalledWith(1, {
-          type: ActionType.SET_ARE_REVIEWS_LOADED,
-          payload: false,
-        });
-
-        expect(dispatch).toHaveBeenNthCalledWith(2, {
           type: ActionType.LOAD_COMMENTS,
           payload: [adaptCommentToClient(fakeReview)],
-        });
-
-        expect(dispatch).toHaveBeenNthCalledWith(3, {
-          type: ActionType.SET_ARE_REVIEWS_LOADED,
-          payload: true,
         });
       });
   });

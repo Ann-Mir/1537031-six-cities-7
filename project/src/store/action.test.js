@@ -1,12 +1,19 @@
 import {
   ActionType,
-  loadComments, loadFavoriteOffers,
+  loadComments,
+  loadFavoriteOffers,
   loadOffer,
-  loadOffers, loadOffersNearby,
+  loadOffers,
+  loadOffersNearby,
   logout,
   redirectToRoute,
-  setActiveOffer, setAreLoadedOffersNearby, setAreReviewsLoaded,
-  setCity, setFavoriteOffersLoadingStatus, setHasPostedComment, setIsDataLoaded, setOfferLoadingStatus,
+  setActiveOffer,
+  setAreLoadedOffersNearby,
+  setAreReviewsLoaded,
+  setCity,
+  setFavoriteOffersLoadingStatus,
+  setIsDataLoaded,
+  setOfferLoadingStatus,
   setSortType,
   setUser, updateOffer
 } from './action';
@@ -210,19 +217,6 @@ describe('Actions', () => {
     };
 
     expect(setAreLoadedOffersNearby(isLoaded)).toEqual(expectedAction);
-  });
-
-  it('action creator for setting has posted comment status returns correct action', () => {
-    const hasPosted = {
-      status: true,
-    };
-
-    const expectedAction = {
-      type: ActionType.SET_HAS_POSTED_COMMENT,
-      payload: hasPosted,
-    };
-
-    expect(setHasPostedComment(hasPosted)).toEqual(expectedAction);
   });
 
   it('action creator for updating offer returns correct action', () => {
