@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 function LocationsOption({ name , isActive, onClick }) {
 
   return (
-    <li className="locations__item">
+    <li className="locations__item" data-testid="locations__item">
       <a
         className={`locations__item-link tabs__item ${isActive ? 'tabs__item--active' : ''}`}
         onClick={onClick}

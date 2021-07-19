@@ -22,7 +22,7 @@ function HeaderNavAuthorized({ email, avatarUrl }) {
             <div className="header__avatar-wrapper user__avatar-wrapper">
               <img src={avatarUrl} alt={'avatar'} style={{borderRadius: '50%'}}/>
             </div>
-            <span className="header__user-name user__name">{email}</span>
+            <span className="header__user-name user__name" data-testid="user-email">{email}</span>
           </Link>
         </li>
         <li className="header__nav-item">
@@ -31,7 +31,7 @@ function HeaderNavAuthorized({ email, avatarUrl }) {
             onClick={handleClick}
             to={AppRoute.ROOT}
           >
-            <span className="header__signout">Sign out</span>
+            <span className="header__signout" data-testid="signout">Sign out</span>
           </Link>
         </li>
       </ul>
