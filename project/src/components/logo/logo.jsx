@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Link, NavLink} from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 import {LOGO_SETTINGS} from '../../settings';
 import {AppRoute} from '../../const';
 
