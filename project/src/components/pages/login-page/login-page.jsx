@@ -47,6 +47,7 @@ function LoginPage() {
                   placeholder="Email"
                   required=""
                   id="email"
+                  data-testid="email"
                 />
               </div>
               <div className="login__input-wrapper form__input-wrapper">
@@ -59,6 +60,7 @@ function LoginPage() {
                   placeholder="Password"
                   required=""
                   id="password"
+                  data-testid="password"
                 />
               </div>
               <button
