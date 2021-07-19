@@ -2,7 +2,7 @@ import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import {ratingStarsOptions} from '../../settings';
 
-function RatingOptions({ rating, onChange }) {
+function RatingOptions({ rating, onChange, onInput }) {
   return (
     <div className="reviews__rating-form form__rating">
       {
@@ -16,6 +16,7 @@ function RatingOptions({ rating, onChange }) {
                 id={`${value}-stars`}
                 type="radio"
                 onChange={onChange}
+                onInput={onInput}
                 checked={rating === value}
                 data-testid={`rating-option-${value}`}
               />

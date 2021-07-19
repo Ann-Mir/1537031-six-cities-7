@@ -1,5 +1,6 @@
 import {
-  loadComments, loadFavoriteOffers,
+  loadComments,
+  loadFavoriteOffers,
   loadOffer,
   loadOffers,
   loadOffersNearby,
@@ -7,9 +8,11 @@ import {
   redirectToRoute,
   requireAuthorization,
   setAreLoadedOffersNearby,
-  setAreReviewsLoaded, setFavoriteOffersLoadingStatus,
+  setAreReviewsLoaded,
+  setFavoriteOffersLoadingStatus,
   setOfferLoadingStatus,
-  setUser, updateOffer
+  setUser,
+  updateOffer
 } from './action';
 import {AuthorizationStatus, APIRoute, AppRoute} from '../const';
 import {adaptCommentToClient, adaptOfferToClient, adaptUserToClient} from '../adapter/adapter';
@@ -61,13 +64,11 @@ export const fetchOffersNearby = (id) => (dispatch, _getState, api) => {
 };
 
 export const sendComment = ({id, comment, rating}) => (dispatch, _getState, api) => {
-  dispatch(setAreReviewsLoaded(false));
   return api.post(`${APIRoute.REVIEWS}${id}`, {comment, rating})
     .then((response) => {
       const { data } = response;
       const comments = data.map(adaptCommentToClient);
       dispatch(loadComments(comments));
-      dispatch(setAreReviewsLoaded(true));
     })
 };
 
