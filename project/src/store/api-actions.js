@@ -9,7 +9,6 @@ import {
   requireAuthorization,
   setAreLoadedOffersNearby,
   setAreReviewsLoaded,
-  setFavoriteOffersLoadingStatus,
   setOfferLoadingStatus,
   setUser,
   updateOffer

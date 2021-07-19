@@ -49,6 +49,7 @@ export const adaptUserToClient = (user) => {
 
   delete adaptedUser.avatar_url;
   delete adaptedUser.is_pro;
+  delete adaptedUser.token;
 
   return adaptedUser;
 };

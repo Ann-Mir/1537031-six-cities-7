@@ -1,14 +1,12 @@
-import React from "react";
+import React from 'react';
 import { Provider } from 'react-redux';
-import {render, screen} from '@testing-library/react';
-import * as redux from 'react-redux';
+import {render} from '@testing-library/react';
 import configureStore from 'redux-mock-store';
 import BookmarkButton from './bookmark-button';
 import {BookmarkButtonTypes} from '../../settings';
 import {createMemoryHistory} from 'history';
 import {AppRoute, AuthorizationStatus} from '../../const';
 import {Router} from 'react-router-dom';
-import userEvent from '@testing-library/user-event';
 
 
 const fakeFavoriteOffer =   {
