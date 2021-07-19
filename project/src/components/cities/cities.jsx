@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import PlacesWrapper from '../places-wrapper/places-wrapper';
 import MainEmpty from '../main-empty/main-empty';
 import {useSelector} from 'react-redux';
@@ -27,4 +27,4 @@ function Cities() {
 }
 
 
-export default Cities;
+export default memo(Cities);

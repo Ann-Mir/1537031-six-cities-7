@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import PlaceCard from '../place-card/place-card';
 import PropTypes from 'prop-types';
 import offerPropTypes from '../offer.prop';
@@ -30,6 +30,6 @@ PlacesList.propTypes = {
 };
 
 
-export default PlacesList;
+export default memo(PlacesList);
 
 

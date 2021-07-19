@@ -1,10 +1,12 @@
 import React from 'react';
 import {render, screen} from '@testing-library/react';
 import {Router} from 'react-router-dom';
+import * as Redux from 'react-redux';
 import {createMemoryHistory} from 'history';
 import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
 import LocationsList from './locations-list';
+import userEvent from '@testing-library/user-event';
 
 
 let history;
@@ -72,14 +74,26 @@ describe('Component: LocationsList', () => {
     store = mockStore({
       UI: {city: 'Amsterdam'},
     });
+
+    const dispatch = jest.fn();
+    const useDispatch = jest.spyOn(Redux, 'useDispatch');
+    useDispatch.mockReturnValue(dispatch);
+
     render(
       <Provider store={store}>
         <Router history={history}>
-          <LocationsList locations={mockLocations} />
+          <LocationsList locations={mockLocations}/>
         </Router>
       </Provider>);
 
     expect(screen.getAllByTestId('locations__item')).toHaveLength(mockLocations.length);
-    mockLocations.forEach((item) => expect(screen.getByText(item.name)).toBeInTheDocument());
+    mockLocations.forEach((item) => {
+      expect(screen.getByText(item.name)).toBeInTheDocument();
+
+      if (item.name !== 'Amsterdam') {
+        userEvent.click(screen.getByTestId(`locations__item-link-${item.name}`));
+        expect(useDispatch).toBeCalledTimes(1);
+      }
+    });
   });
 });

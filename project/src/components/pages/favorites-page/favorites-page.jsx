@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {memo, useEffect, useState} from 'react';
 import Header from '../../header/header';
 import Footer from '../../footer/footer';
 import {useDispatch, useSelector} from 'react-redux';
@@ -45,4 +45,4 @@ function FavoritesPage() {
 }
 
 
-export default FavoritesPage;
+export default memo(FavoritesPage);

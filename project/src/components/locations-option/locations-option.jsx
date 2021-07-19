@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import PropTypes from 'prop-types';
 
 function LocationsOption({ name , isActive, onClick }) {
@@ -8,6 +8,7 @@ function LocationsOption({ name , isActive, onClick }) {
       <a
         className={`locations__item-link tabs__item ${isActive ? 'tabs__item--active' : ''}`}
         onClick={onClick}
+        data-testid={`locations__item-link-${name}`}
       >
         <span>{name}</span>
       </a>
@@ -23,4 +24,4 @@ LocationsOption.propTypes = {
 };
 
 
-export default React.memo(LocationsOption);
+export default memo(LocationsOption);

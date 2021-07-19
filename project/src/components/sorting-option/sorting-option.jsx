@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import PropTypes from 'prop-types';
 import {useDispatch, useSelector} from 'react-redux';
 import {SortTypes} from '../../const';
@@ -35,4 +35,4 @@ SortingOption.propTypes = {
 };
 
 
-export default SortingOption;
+export default memo(SortingOption);

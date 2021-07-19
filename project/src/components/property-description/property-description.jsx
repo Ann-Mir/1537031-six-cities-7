@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import {capitalizeFirstLetter, getRating} from '../../utils/render';
 import FeaturesList from '../feautes-list/features-list';
 import PropertyOwner from '../property-owner/property-owner';
@@ -77,4 +77,4 @@ PropertyDescription.propTypes = {
   offer: offerPropTypes.isRequired,
 };
 
-export default PropertyDescription;
+export default memo(PropertyDescription);

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import PropTypes from 'prop-types';
 import {NavLink} from 'react-router-dom';
 import {LOGO_SETTINGS} from '../../settings';
@@ -29,4 +29,4 @@ Logo.propTypes = {
 };
 
 
-export default Logo;
+export default memo(Logo);

@@ -10,11 +10,6 @@ describe('Reducer: ui', () => {
           city: DEFAULT_CITY,
           activeSortType: DEFAULT_SORT_TYPE,
           activeOfferId: null,
-          hasPostedComment: {
-            hasPosted: true,
-            comment: '',
-            rating: 0,
-          },
         });
     }
   );
@@ -24,11 +19,6 @@ describe('Reducer: ui', () => {
       city: DEFAULT_CITY,
       activeSortType: DEFAULT_SORT_TYPE,
       activeOfferId: null,
-      hasPostedComment: {
-        hasPosted: true,
-        comment: '',
-        rating: 0,
-      },
   };
 
     expect(ui(state, setCity('Amsterdam')))
@@ -36,11 +26,6 @@ describe('Reducer: ui', () => {
         city: 'Amsterdam',
         activeSortType: DEFAULT_SORT_TYPE,
         activeOfferId: null,
-        hasPostedComment: {
-          hasPosted: true,
-          comment: '',
-          rating: 0,
-        },
       });
   })
 
@@ -49,11 +34,6 @@ describe('Reducer: ui', () => {
       city: 'Amsterdam',
       activeSortType: DEFAULT_SORT_TYPE,
       activeOfferId: null,
-      hasPostedComment: {
-        hasPosted: true,
-        comment: '',
-        rating: 0,
-      },
     };
 
     expect(ui(state, setSortType(SortTypes.HIGH)))
@@ -61,11 +41,6 @@ describe('Reducer: ui', () => {
         city: 'Amsterdam',
         activeSortType: SortTypes.HIGH,
         activeOfferId: null,
-        hasPostedComment: {
-          hasPosted: true,
-          comment: '',
-          rating: 0,
-        },
       });
   })
 
@@ -74,28 +49,8 @@ describe('Reducer: ui', () => {
       city: 'Amsterdam',
       activeSortType: DEFAULT_SORT_TYPE,
       activeOfferId: null,
-      hasPostedComment: {
-        hasPosted: false,
-        comment: '',
-        rating: 0,
-      },
     };
 
-    expect(ui(state, setHasPostedComment({
-      hasPosted: true,
-      comment: '',
-      rating: 0,
-    })))
-      .toEqual({
-        city: 'Amsterdam',
-        activeSortType: DEFAULT_SORT_TYPE,
-        activeOfferId: null,
-        hasPostedComment: {
-          hasPosted: true,
-          comment: '',
-          rating: 0,
-        },
-      });
   })
 
   it('should set active offer to a given value', () => {
@@ -133,5 +88,5 @@ describe('Reducer: ui', () => {
           rating: 0,
         },
       });
-  })
+  });
 });

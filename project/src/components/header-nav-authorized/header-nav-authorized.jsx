@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import {AppRoute} from '../../const';
@@ -46,4 +46,4 @@ HeaderNavAuthorized.propTypes = {
 };
 
 
-export default HeaderNavAuthorized;
+export default memo(HeaderNavAuthorized);

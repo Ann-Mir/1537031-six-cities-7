@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import PropTypes from 'prop-types';
 import offerPropTypes from '../offer.prop';
 import FavoritesCityList from '../favorites-city-list/favorites-city-list';
@@ -34,4 +34,4 @@ FavoritesItem.propTypes = {
   city: PropTypes.string.isRequired,
 };
 
-export default FavoritesItem;
+export default memo(FavoritesItem);

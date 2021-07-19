@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from 'react';
+import React, {memo, useEffect, useRef} from 'react';
 import leaflet from 'leaflet';
 import {MARKER_CURRENT, MARKER_DEFAULT} from '../../const';
 import 'leaflet/dist/leaflet.css';
@@ -48,7 +48,7 @@ function Map({ place, offers }) {
   }, [map, offers, place, activeOfferId]);
 
   return (
-    <div style={{height: '100%'}} ref={mapRef}></div>
+    <div style={{height: '100%'}} ref={mapRef} data-testid="map"></div>
   );
 }
 
@@ -65,4 +65,4 @@ Map.propTypes = {
 };
 
 
-export default Map;
+export default memo(Map);

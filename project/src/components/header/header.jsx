@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import Logo from '../logo/logo';
 import {LogoTypes} from '../../settings';
 import {useSelector} from 'react-redux';
@@ -37,4 +37,4 @@ function Header() {
 }
 
 
-export default Header;
+export default memo(Header);

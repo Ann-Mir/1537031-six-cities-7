@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {memo, useEffect, useState} from 'react';
 import Header from '../../header/header';
 import LocationsList from '../../locations-list/locations-list';
 import {LOCATIONS, ToastMessages} from '../../../const';
@@ -49,4 +49,4 @@ function MainPage() {
 }
 
 
-export default MainPage;
+export default memo(MainPage);

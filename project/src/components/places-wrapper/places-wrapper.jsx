@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import SortingForm from '../sorting-form/sorting-form';
 import PlacesList from '../places-list/places-list';
 import Map from '../map/map';
@@ -37,4 +37,4 @@ PlacesWrapper.propTypes = {
   city: PropTypes.string.isRequired,
 };
 
-export default PlacesWrapper;
+export default memo(PlacesWrapper);

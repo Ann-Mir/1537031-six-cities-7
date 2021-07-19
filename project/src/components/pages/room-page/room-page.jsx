@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {memo, useEffect} from 'react';
 import Header from '../../header/header';
 import {fetchOffer} from '../../../store/api-actions';
 import {useDispatch, useSelector} from 'react-redux';
@@ -35,4 +35,4 @@ function RoomPage() {
 }
 
 
-export default RoomPage;
+export default memo(RoomPage);

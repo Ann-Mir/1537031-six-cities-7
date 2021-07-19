@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import PlaceCard from '../place-card/place-card';
 import {CardTypes} from '../../settings';
 import PropTypes from 'prop-types';
@@ -25,4 +25,4 @@ FavoritesCityList.propTypes = {
   favoriteOffersByCity: PropTypes.arrayOf(offerPropTypes).isRequired,
 };
 
-export default FavoritesCityList;
+export default memo(FavoritesCityList);

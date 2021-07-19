@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import PropTypes from 'prop-types';
 import PropertyImage from '../property-image/property-image';
 import {MAX_IMAGES_COUNT} from '../../const';
@@ -18,4 +18,4 @@ PropertyGallery.propTypes = {
   images: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
 };
 
-export default PropertyGallery;
+export default memo(PropertyGallery);
