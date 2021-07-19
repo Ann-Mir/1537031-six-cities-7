@@ -6,7 +6,7 @@ import LoadWrapper from '../../load-wrapper/load-wrapper';
 import PropertyWrapper from '../../property-wrapper/property-wrapper';
 import {useParams} from 'react-router';
 import {getCurrentOffer, getIsOfferLoadedStatus} from '../../../store/data/selectors';
-import {loadOffer} from "../../../store/action";
+import {loadOffer} from '../../../store/action';
 
 function RoomPage() {
   const { id } = useParams();

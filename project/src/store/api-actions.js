@@ -23,9 +23,6 @@ export const fetchOffers = () => (dispatch, _getState, api) => (
       const offers = data.map((offer) => adaptOfferToClient(offer));
       dispatch(loadOffers(offers));
     })
-    .catch(() => {
-      dispatch(loadOffers([]));
-    })
 );
 
 export const fetchOffer = (id) => (dispatch, _getState, api) => {
@@ -97,6 +94,8 @@ export const logout = () => (dispatch, _getState, api) => (
     .then(() => dispatch(logoutUser()))
     .then(() => dispatch(loadFavoriteOffers([])))
     .then(() => dispatch(redirectToRoute(AppRoute.ROOT)))
+    .then(() => dispatch(fetchOffers()))
+    .catch(() => dispatch(loadOffers([])))
 );
 
 export const addToFavorites = ({offerId, status}) => (dispatch, _getState, api) => {
@@ -106,11 +105,9 @@ export const addToFavorites = ({offerId, status}) => (dispatch, _getState, api) 
 };
 
 export const fetchFavoriteOffers = () => (dispatch, _getState, api) => {
-  dispatch(setFavoriteOffersLoadingStatus(false));
   return api.get(APIRoute.FAVORITE)
     .then(({ data }) => {
       const offers = data.map((offer) => adaptOfferToClient(offer));
       dispatch(loadFavoriteOffers(offers))
     })
-    .catch(() => dispatch(loadFavoriteOffers([])))
 };
