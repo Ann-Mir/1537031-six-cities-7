@@ -1,6 +1,6 @@
 import React from 'react';
 import {render} from '@testing-library/react';
-import FavoriteOffersEmptyWrapper from '../favorite-offers-empty-wrapper/favorite-offers-empty-wrapper';
+import FavoriteOffersEmptyWrapper from './favorite-offers-empty-wrapper';
 
 
 describe('Component: FavoriteOffersEmptyWrapper', () => {

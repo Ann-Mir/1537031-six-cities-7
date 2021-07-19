@@ -1,11 +1,11 @@
 import React from 'react';
 import {render, screen} from '@testing-library/react';
-import {Router, Switch, Route} from 'react-router-dom';
+import {Router} from 'react-router-dom';
 import {createMemoryHistory} from 'history';
 import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
-import {AppRoute} from '../../const';
-import Cities from './cities';
+import {AuthorizationStatus} from '../../const';
+import FavoritesList from './favorites-list';
 
 
 const mockOffers = [
@@ -29,7 +29,7 @@ const mockOffers = [
     },
     id: 1,
     images: ['http://picsum.photos/248/152?r=1'],
-    isFavorite: false,
+    isFavorite: true,
     isPremium: false,
     location: {
       latitude: 52.35514938496378,
@@ -51,7 +51,7 @@ const mockOffers = [
         longitude: 4.895168,
         zoom: 10
       },
-      name: 'Amsterdam'
+      name: 'Paris'
     },
     description: 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.',
     goods: ['Heating', 'Kitchen', 'Coffee machine', 'Dishwasher'],
@@ -79,56 +79,31 @@ const mockOffers = [
   },
 ];
 
-const mockCity = 'Amsterdam';
 
 let history;
 let store;
 const mockStore = configureStore({});
 
 
-describe('Component: Cities', () => {
+describe('Component: FavoritesList', () => {
   beforeAll(() => {
     history = createMemoryHistory();
   });
 
   it('should render correctly', () => {
     store = mockStore({
-      UI: {city: mockCity},
-      DATA: {offers: mockOffers}
+      DATA: {favoriteOffers: mockOffers},
+      USER: {authorizationStatus: AuthorizationStatus.AUTH}
     });
     render(
       <Provider store={store}>
         <Router history={history}>
-          <Switch>
-            <Route path={AppRoute.ROOT}>
-              <Cities />
-            </Route>
-          </Switch>
+          <FavoritesList favoriteOffers={mockOffers} />
         </Router>
       </Provider>);
 
-    expect(screen.getByText(/Beautiful & luxurious house at great location/i)).toBeInTheDocument();
     expect(screen.getByText(/Beautiful & luxurious apartment in Amsterdam/i)).toBeInTheDocument();
-  });
-
-  it('should render empty offers list correctly', () => {
-    store = mockStore({
-      UI: {city: mockCity},
-      DATA: {offers: []}
-    });
-    render(
-      <Provider store={store}>
-        <Router history={history}>
-          <Switch>
-            <Route path={AppRoute.ROOT}>
-              <Cities />
-            </Route>
-          </Switch>
-        </Router>
-      </Provider>);
-
-    expect(screen
-      .getByText(/We could not find any property available at the moment in Amsterdam/i))
-      .toBeInTheDocument();
+    expect(screen.getByText(/Beautiful & luxurious house at great location/i)).toBeInTheDocument();
+    expect(screen.getAllByTestId('place-card')).toHaveLength(mockOffers.length);
   });
 });
