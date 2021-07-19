@@ -12,6 +12,7 @@ function Logo({ logoType }) {
       activeClassName="header__logo-link--active"
       exact
       to={AppRoute.ROOT}
+      data-testid="logo-link"
     >
       <img
         className={`${LOGO_SETTINGS[logoType].CLASS_MIX}__logo`}
