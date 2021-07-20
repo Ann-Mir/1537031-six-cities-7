@@ -17,7 +17,7 @@ function SortingOptionsList({ onSortTypeClick, onSetIsSortOpen }) {
           <SortingOption
             key={option}
             sortingType={option}
-            handleSortTypeClick={onSortTypeClick}
+            onSortTypeClick={onSortTypeClick}
           />)
       }
     </ul>
