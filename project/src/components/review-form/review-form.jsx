@@ -74,6 +74,7 @@ function ReviewForm({ offerId }) {
       onChange={handleFormChange}
       onSubmit={handleFormSubmit}
       onFocus={handleFormChange}
+      data-testid="review-form"
     >
       {isReviewInError && <Toast message={ToastMessages.REVIEW_ERROR} />}
       <label className="reviews__label form__label" htmlFor="review">Your review</label>
