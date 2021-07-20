@@ -15,9 +15,9 @@ const fakeFavoriteOffer =   {
     location: {
       latitude: 52.370216,
       longitude: 4.895168,
-      zoom: 10
+      zoom: 10,
     },
-    name: 'Amsterdam'
+    name: 'Amsterdam',
   },
   description: 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.',
   goods: ['Heating', 'Kitchen', 'Cable TV', 'Washing machine', 'Coffee machine', 'Dishwasher'],
@@ -25,7 +25,7 @@ const fakeFavoriteOffer =   {
     avatarUrl: 'img/avatar-angelina.jpg',
     id: 3,
     isPro: true,
-    name: 'Angelina'
+    name: 'Angelina',
   },
   id: 1,
   images: ['http://picsum.photos/248/152?r=$2'],
@@ -34,14 +34,14 @@ const fakeFavoriteOffer =   {
   location: {
     latitude: 52.35514938496378,
     longitude: 4.673877537499948,
-    zoom: 8
+    zoom: 8,
   },
   maxAdults: 4,
   previewImage: 'http://picsum.photos/248/152?r=1',
   price: 120,
   rating: 2.3,
   title: 'Beautiful & luxurious studio at great location',
-  type: 'apartment'
+  type: 'apartment',
 };
 
 
@@ -51,9 +51,9 @@ const fakeUnfavoriteOffer =   {
     location: {
       latitude: 52.370216,
       longitude: 4.895168,
-      zoom: 10
+      zoom: 10,
     },
-    name: 'Amsterdam'
+    name: 'Amsterdam',
   },
   description: 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.',
   goods: ['Heating', 'Kitchen', 'Cable TV', 'Washing machine', 'Coffee machine', 'Dishwasher'],
@@ -61,7 +61,7 @@ const fakeUnfavoriteOffer =   {
     avatarUrl: 'img/avatar-angelina.jpg',
     id: 3,
     isPro: true,
-    name: 'Angelina'
+    name: 'Angelina',
   },
   id: 1,
   images: ['http://picsum.photos/248/152?r=$2'],
@@ -70,14 +70,14 @@ const fakeUnfavoriteOffer =   {
   location: {
     latitude: 52.35514938496378,
     longitude: 4.673877537499948,
-    zoom: 8
+    zoom: 8,
   },
   maxAdults: 4,
   previewImage: 'http://picsum.photos/248/152?r=1',
   price: 120,
   rating: 2.3,
   title: 'Beautiful & luxurious studio at great location',
-  type: 'apartment'
+  type: 'apartment',
 };
 
 let store = null;
@@ -90,9 +90,8 @@ describe('BookmarkButton should render correctly', () => {
     history.push(AppRoute.FAVORITES);
     const createFakeStore = configureStore({});
     store = createFakeStore({ USER: {
-        authorizationStatus: AuthorizationStatus.AUTH,
-      }
-    });
+      authorizationStatus: AuthorizationStatus.AUTH,
+    }});
   });
 
   it('BookmarkButton should render correctly if offer is favorite', () => {
@@ -102,7 +101,7 @@ describe('BookmarkButton should render correctly', () => {
         <Router history={history}>
           <BookmarkButton buttonType={BookmarkButtonTypes.CARD} offerId={fakeFavoriteOffer.id} isFavorite={fakeFavoriteOffer.isFavorite}/>
         </Router>
-      </Provider>
+      </Provider>,
     );
 
     const bookmarkButtonText = getByText('In bookmarks');
@@ -119,7 +118,7 @@ describe('BookmarkButton should render correctly', () => {
         <Router history={history}>
           <BookmarkButton buttonType={BookmarkButtonTypes.CARD} offerId={fakeUnfavoriteOffer.id} isFavorite={fakeUnfavoriteOffer.isFavorite} />
         </Router>
-      </Provider>
+      </Provider>,
     );
 
     const bookmarkButtonText = getByText('To bookmarks');

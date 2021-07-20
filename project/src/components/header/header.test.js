@@ -29,7 +29,7 @@ describe('Component: Header', () => {
           isPro: false,
           name: 'Test name',
         },
-      }
+      },
     });
     render(
       <Provider store={store}>
@@ -54,7 +54,7 @@ describe('Component: Header', () => {
           isPro: false,
           name: '',
         },
-      }
+      },
     });
     render(
       <Provider store={store}>

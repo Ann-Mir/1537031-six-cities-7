@@ -24,8 +24,8 @@ function Header() {
           <nav className="header__nav">
             <ul className="header__nav-list">
               {
-                authorizationStatus === AuthorizationStatus.AUTH
-                && <HeaderNavAuthorized email={email} avatarUrl={avatarUrl}/>
+                (authorizationStatus === AuthorizationStatus.AUTH
+                && <HeaderNavAuthorized email={email} avatarUrl={avatarUrl}/>)
                 || <HeaderNavGuest />
               }
             </ul>

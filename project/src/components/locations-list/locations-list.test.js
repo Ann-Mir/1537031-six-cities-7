@@ -90,10 +90,9 @@ describe('Component: LocationsList', () => {
     mockLocations.forEach((item) => {
       expect(screen.getByText(item.name)).toBeInTheDocument();
 
-      if (item.name !== 'Amsterdam') {
-        userEvent.click(screen.getByTestId(`locations__item-link-${item.name}`));
-        expect(useDispatch).toBeCalledTimes(1);
-      }
+      userEvent.click(screen.getByTestId(`locations__item-link-${item.name}`));
+      expect(useDispatch).toBeCalledTimes(1);
+
     });
   });
 });

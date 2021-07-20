@@ -24,8 +24,8 @@ function FavoritesPage() {
     dispatch(fetchFavoriteOffers())
       .catch(() => {
         setIsServerAvailable(false);
-        dispatch(loadFavoriteOffers([]))
-      })
+        dispatch(loadFavoriteOffers([]));
+      });
   }, [dispatch]);
 
   return (
@@ -34,8 +34,8 @@ function FavoritesPage() {
       <LoadWrapper isDataLoaded={areFavoriteOffersLoaded}>
         {!isServerAvailable && <Toast message={ToastMessages.OFFLINE} />}
         {
-          favoriteOffers.length > 0
-          && <FavoriteOffersWrapper favoriteOffers={favoriteOffers}/>
+          (favoriteOffers.length > 0
+          && <FavoriteOffersWrapper favoriteOffers={favoriteOffers}/>)
           || <FavoriteOffersEmptyWrapper />
         }
       </LoadWrapper>

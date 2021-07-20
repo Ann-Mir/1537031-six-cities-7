@@ -7,12 +7,11 @@ import { Provider } from 'react-redux';
 import userEvent from '@testing-library/user-event';
 import LoginPage from './login-page';
 
-let history = null;
+
 let store = null;
 
 describe('Component: LoginPage', () => {
   beforeEach(() => {
-    history = createMemoryHistory();
     const createFakeStore = configureStore({});
     store = createFakeStore({ USER: {
       authorizationStatus: 'NO_AUTH',
@@ -23,9 +22,8 @@ describe('Component: LoginPage', () => {
         isPro: false,
         name: '',
       },
-    }
+    }});
   });
-});
 
   it('should render "LoginPage" when user navigates to "login" url', () => {
     const history = createMemoryHistory();

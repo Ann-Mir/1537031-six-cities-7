@@ -8,7 +8,7 @@ import RoomPage from './room-page';
 import {AuthorizationStatus, DEFAULT_CITY} from '../../../const';
 import {createAPI} from '../../../services/api';
 import thunk from 'redux-thunk';
-import {Route} from "react-router";
+import {Route} from 'react-router';
 
 
 let history;

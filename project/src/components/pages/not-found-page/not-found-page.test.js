@@ -6,7 +6,7 @@ import configureStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
 
 import NotFoundPage from './not-found-page';
-import {AuthorizationStatus} from "../../../const";
+import {AuthorizationStatus} from '../../../const';
 
 let history = null;
 let store = null;
@@ -25,7 +25,7 @@ describe('Component: NotFoundPage', () => {
           isPro: false,
           name: 'Test name',
         },
-      }
+      },
     });
   });
 

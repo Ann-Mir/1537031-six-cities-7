@@ -9,12 +9,12 @@ function FavoritesCityList({ favoriteOffersByCity }) {
     <div className="favorites__places">
       {
         favoriteOffersByCity.map(
-          (offer) =>
+          (offer) => (
             <PlaceCard
               key={offer.id}
               offer={offer}
               cardType={CardTypes.FAVORITES}
-            />)
+            />))
       }
     </div>
   );

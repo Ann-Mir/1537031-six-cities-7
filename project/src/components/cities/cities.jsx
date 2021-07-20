@@ -14,12 +14,12 @@ function Cities() {
   return (
     <div className="cities">
       {
-        currentOffers.length > 0
+        (currentOffers.length > 0
         &&
         <PlacesWrapper
           currentOffers={currentOffers}
           city={city}
-        />
+        />)
         || <MainEmpty city={city}/>
       }
     </div>

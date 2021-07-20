@@ -15,7 +15,7 @@ describe('Component: Footer', () => {
     const {getByTestId} = render(
       <Router history={history}>
         <Footer />
-      </Router>
+      </Router>,
     );
 
     const footerElement = getByTestId('footer');

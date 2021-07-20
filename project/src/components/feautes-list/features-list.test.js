@@ -3,7 +3,7 @@ import {render} from '@testing-library/react';
 import FeaturesList from './features-list';
 
 
-const mockFeatures = ['Heating', 'Kitchen', 'Cable TV', 'Washing machine', 'Coffee machine', 'Dishwasher']
+const mockFeatures = ['Heating', 'Kitchen', 'Cable TV', 'Washing machine', 'Coffee machine', 'Dishwasher'];
 
 describe('Component: FeaturesList', () => {
   it('should render correctly', () => {

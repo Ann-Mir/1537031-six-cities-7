@@ -45,7 +45,7 @@ function Map({ place, offers }) {
         markers.clearLayers();
       };
     }
-  }, [map, offers, place, activeOfferId]);
+  }, [map, offers, place, activeOfferId, currentCustomIcon, defaultCustomIcon]);
 
   return (
     <div style={{height: '100%'}} ref={mapRef} data-testid="map"></div>

@@ -22,7 +22,7 @@ const offers = [
       location: {
         latitude: 52.370216,
         longitude: 4.895168,
-        zoom: 10
+        zoom: 10,
       },
       name: 'Amsterdam',
     },
@@ -35,7 +35,7 @@ const offers = [
     location: {
       latitude: 52.36129248736812,
       longitude: 4.930045185368442,
-      zoom: 8
+      zoom: 8,
     },
     host: {
       avatarUrl: 'img/1.png',
@@ -47,7 +47,7 @@ const offers = [
     title: 'title',
     isPremium: false,
     maxAdults: 2,
-    previewImage: `http://picsum.photos/248/152?r=1}`,
+    previewImage: 'http://picsum.photos/248/152?r=1',
   },
   {
     id: 1,
@@ -55,7 +55,7 @@ const offers = [
       location: {
         latitude: 52.370216,
         longitude: 4.895168,
-        zoom: 10
+        zoom: 10,
       },
       name: 'Amsterdam',
     },
@@ -68,7 +68,7 @@ const offers = [
     location: {
       latitude: 52.36129248736812,
       longitude: 4.930045185368442,
-      zoom: 8
+      zoom: 8,
     },
     host: {
       avatarUrl: 'img/1.png',
@@ -80,7 +80,7 @@ const offers = [
     title: 'title',
     isPremium: false,
     maxAdults: 2,
-    previewImage: `http://picsum.photos/248/152?r=1}`,
+    previewImage: 'http://picsum.photos/248/152?r=1',
   },
   {
     id: 2,
@@ -88,7 +88,7 @@ const offers = [
       location: {
         latitude: 52.370216,
         longitude: 4.895168,
-        zoom: 10
+        zoom: 10,
       },
       name: 'Amsterdam',
     },
@@ -101,7 +101,7 @@ const offers = [
     location: {
       latitude: 52.36129248736812,
       longitude: 4.930045185368442,
-      zoom: 8
+      zoom: 8,
     },
     host: {
       avatarUrl: 'img/1.png',
@@ -113,7 +113,7 @@ const offers = [
     title: 'title',
     isPremium: false,
     maxAdults: 2,
-    previewImage: `http://picsum.photos/248/152?r=1}`,
+    previewImage: 'http://picsum.photos/248/152?r=1',
   },
   {
     id: 3,
@@ -121,7 +121,7 @@ const offers = [
       location: {
         latitude: 52.370216,
         longitude: 4.895168,
-        zoom: 10
+        zoom: 10,
       },
       name: 'Amsterdam',
     },
@@ -134,7 +134,7 @@ const offers = [
     location: {
       latitude: 52.36129248736812,
       longitude: 4.930045185368442,
-      zoom: 8
+      zoom: 8,
     },
     host: {
       avatarUrl: 'img/1.png',
@@ -146,7 +146,7 @@ const offers = [
     title: 'title',
     isPremium: false,
     maxAdults: 2,
-    previewImage: `http://picsum.photos/248/152?r=1}`,
+    previewImage: 'http://picsum.photos/248/152?r=1',
   },
   {
     id: 4,
@@ -159,7 +159,7 @@ const offers = [
     location: {
       latitude: 52.36129248736812,
       longitude: 4.930045185368442,
-      zoom: 8
+      zoom: 8,
     },
     host: {
       avatarUrl: 'img/1.png',
@@ -171,7 +171,7 @@ const offers = [
     title: 'title',
     isPremium: false,
     maxAdults: 2,
-    previewImage: `http://picsum.photos/248/152?r=1}`,
+    previewImage: 'http://picsum.photos/248/152?r=1',
   },
   {
     id: 5,
@@ -185,7 +185,7 @@ const offers = [
     location: {
       latitude: 52.36129248736812,
       longitude: 4.930045185368442,
-      zoom: 8
+      zoom: 8,
     },
     host: {
       avatarUrl: 'img/1.png',
@@ -197,7 +197,7 @@ const offers = [
     title: 'title',
     isPremium: false,
     maxAdults: 2,
-    previewImage: `http://picsum.photos/248/152?r=1}`,
+    previewImage: 'http://picsum.photos/248/152?r=1',
   },
 ];
 
@@ -234,9 +234,9 @@ const offer = {
     location: {
       latitude: 52.370216,
       longitude: 4.895168,
-      zoom: 10
+      zoom: 10,
     },
-    name: 'Amsterdam'
+    name: 'Amsterdam',
   },
   description: 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.',
   goods: ['Heating', 'Cable TV', 'Coffee machine'],
@@ -247,16 +247,16 @@ const offer = {
     name: 'Angelina',
   },
   id: 0,
-  images: [`http://picsum.photos/248/152?r=1`, `http://picsum.photos/248/152?r=2`, `http://picsum.photos/248/152?r=3`],
+  images: ['http://picsum.photos/248/152?r=1', 'http://picsum.photos/248/152?r=2', 'http://picsum.photos/248/152?r=3'],
   isFavorite: false,
   isPremium: true,
   location: {
     latitude: 52.36129248736812,
     longitude: 4.930045185368442,
-    zoom: 8
+    zoom: 8,
   },
   maxAdults: 2,
-  previewImage: `http://picsum.photos/248/152?r=1}`,
+  previewImage: 'http://picsum.photos/248/152?r=1',
   price: 320,
   rating: 3.4,
   title: 'Beautiful & luxurious hotel at great location',
@@ -270,7 +270,7 @@ const favoriteOffers = [
       location: {
         latitude: 52.370216,
         longitude: 4.895168,
-        zoom: 10
+        zoom: 10,
       },
       name: 'Amsterdam',
     },
@@ -283,7 +283,7 @@ const favoriteOffers = [
     location: {
       latitude: 52.36129248736812,
       longitude: 4.930045185368442,
-      zoom: 8
+      zoom: 8,
     },
     host: {
       avatarUrl: 'img/1.png',
@@ -295,7 +295,7 @@ const favoriteOffers = [
     title: 'Test title',
     isPremium: false,
     maxAdults: 2,
-    previewImage: `http://picsum.photos/248/152?r=1}`,
+    previewImage: 'http://picsum.photos/248/152?r=1',
     rating: 4,
   },
   {
@@ -304,7 +304,7 @@ const favoriteOffers = [
       location: {
         latitude: 52.370216,
         longitude: 4.895168,
-        zoom: 10
+        zoom: 10,
       },
       name: 'Amsterdam',
     },
@@ -317,7 +317,7 @@ const favoriteOffers = [
     location: {
       latitude: 52.36129248736812,
       longitude: 4.930045185368442,
-      zoom: 8
+      zoom: 8,
     },
     host: {
       avatarUrl: 'img/1.png',
@@ -338,7 +338,7 @@ const favoriteOffers = [
       location: {
         latitude: 52.370216,
         longitude: 4.895168,
-        zoom: 10
+        zoom: 10,
       },
       name: 'Amsterdam',
     },
@@ -351,7 +351,7 @@ const favoriteOffers = [
     location: {
       latitude: 52.36129248736812,
       longitude: 4.930045185368442,
-      zoom: 8
+      zoom: 8,
     },
     host: {
       avatarUrl: 'img/1.png',
@@ -375,7 +375,7 @@ const nearbyOffers = [
       location: {
         latitude: 52.370216,
         longitude: 4.895168,
-        zoom: 10
+        zoom: 10,
       },
       name: 'Amsterdam',
     },
@@ -390,7 +390,7 @@ const nearbyOffers = [
     location: {
       latitude: 52.36129248736812,
       longitude: 4.930045185368442,
-      zoom: 8
+      zoom: 8,
     },
     host: {
       avatarUrl: 'img/1.png',
@@ -409,7 +409,7 @@ const nearbyOffers = [
       location: {
         latitude: 52.370216,
         longitude: 4.895168,
-        zoom: 10
+        zoom: 10,
       },
       name: 'Amsterdam',
     },
@@ -424,7 +424,7 @@ const nearbyOffers = [
     location: {
       latitude: 52.36129248736812,
       longitude: 4.930045185368442,
-      zoom: 8
+      zoom: 8,
     },
     host: {
       avatarUrl: 'img/1.png',
@@ -443,7 +443,7 @@ const nearbyOffers = [
       location: {
         latitude: 52.370216,
         longitude: 4.895168,
-        zoom: 10
+        zoom: 10,
       },
       name: 'Amsterdam',
     },
@@ -458,7 +458,7 @@ const nearbyOffers = [
     location: {
       latitude: 52.36129248736812,
       longitude: 4.930045185368442,
-      zoom: 8
+      zoom: 8,
     },
     host: {
       avatarUrl: 'img/1.png',

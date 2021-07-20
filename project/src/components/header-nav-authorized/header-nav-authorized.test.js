@@ -22,7 +22,7 @@ describe('Component: HeaderNavAuthorized', () => {
     store = mockStore({
       USER: {
         authorizationStatus: AuthorizationStatus.AUTH,
-      }
+      },
     });
     render(
       <Provider store={store}>

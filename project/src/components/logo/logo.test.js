@@ -17,13 +17,13 @@ describe('Component: Logo', () => {
     const {getByRole} = render(
       <Router history={history}>
         <Logo logoType={LogoTypes.HEADER} />
-      </Router>
+      </Router>,
     );
 
     const imageElement = getByRole('img');
 
     expect(imageElement).toBeInTheDocument();
-    expect(imageElement).toHaveAttribute('src', "../img/logo.svg");
+    expect(imageElement).toHaveAttribute('src', '../img/logo.svg');
   });
 
   it('should redirect to root url when user clicks the link', () => {
