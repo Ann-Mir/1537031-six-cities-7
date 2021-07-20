@@ -17,4 +17,4 @@ describe('Component: ReviewText', () => {
     expect(textElement).toHaveAttribute('maxLength', MAX_REVIEW_LENGTH.toString());
     expect(textElement).toHaveValue(testValue);
   });
-})
+});

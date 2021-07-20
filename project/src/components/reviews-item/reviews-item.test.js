@@ -13,7 +13,7 @@ const testReview = {
     avatarUrl: 'test url',
     name: 'test name',
     isPro: false,
-  }
+  },
 };
 
 describe('Component: ReviewsItem', () => {
@@ -22,13 +22,13 @@ describe('Component: ReviewsItem', () => {
 
     const commentElement = getByText('test comment');
     const nameElement = getByText('test name');
-    const imageElement = getByRole('img', "test url");
+    const imageElement = getByRole('img', 'test url');
     const timeElement = getByTestId('reviews__time');
 
     expect(commentElement).toBeInTheDocument();
     expect(nameElement).toBeInTheDocument();
-    expect(imageElement).toHaveAttribute('src', "test url");
-    expect(timeElement).toHaveAttribute('dateTime', "2019-05-08");
+    expect(imageElement).toHaveAttribute('src', 'test url');
+    expect(timeElement).toHaveAttribute('dateTime', '2019-05-08');
     expect(timeElement).toHaveTextContent('May 2019');
   });
-})
+});

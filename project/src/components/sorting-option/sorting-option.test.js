@@ -25,7 +25,7 @@ describe('Component: SortingOption', () => {
     const { getByTestId } = render(
       <Provider store={store}>
         <SortingOption sortingType={DEFAULT_SORT_TYPE} onSortTypeClick={mockFunction}/>
-      </Provider>
+      </Provider>,
     );
 
     const optionElement = getByTestId('sort-option');

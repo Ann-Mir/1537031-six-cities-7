@@ -42,7 +42,7 @@ function ReviewForm({ offerId }) {
         setReviewText('');
         setRating(0);
         setIsSubmitDisabled(true);
-        })
+      })
       .catch(() => {
         setIsReviewInError(true);
         setIsSendingComment(false);
@@ -58,13 +58,13 @@ function ReviewForm({ offerId }) {
     if (!isSendingComment) {
       setReviewText(evt.target.value);
     }
-  },[]);
+  },[isSendingComment]);
 
   const handleRatingChange = React.useCallback((evt) => {
     if (!isSendingComment) {
       setRating(Number(evt.target.value));
     }
-  }, []);
+  }, [isSendingComment]);
 
   return (
     <form

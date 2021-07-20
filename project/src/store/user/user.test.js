@@ -79,32 +79,32 @@ describe('Reducer: user', () => {
       });
   });
 
-    it('should clean out user data upon logout', () => {
-      const state = {
-        authorizationStatus: AuthorizationStatus.AUTH,
+  it('should clean out user data upon logout', () => {
+    const state = {
+      authorizationStatus: AuthorizationStatus.AUTH,
+      user: {
+        avatarUrl: '/img/1.png',
+        email: 'ted@mail.cpm',
+        id: 1,
+        isPro: true,
+        name: 'Ted',
+      },
+    };
+
+    const logoutAction = {
+      type: ActionType.LOGOUT,
+    };
+
+    expect(user(state, logoutAction))
+      .toEqual({
+        authorizationStatus: AuthorizationStatus.NO_AUTH,
         user: {
-          avatarUrl: '/img/1.png',
-          email: 'ted@mail.cpm',
-          id: 1,
-          isPro: true,
-          name: 'Ted',
+          avatarUrl: '',
+          email: '',
+          id: null,
+          isPro: false,
+          name: '',
         },
-      };
-
-      const logoutAction = {
-        type: ActionType.LOGOUT,
-      };
-
-      expect(user(state, logoutAction))
-        .toEqual({
-          authorizationStatus: AuthorizationStatus.NO_AUTH,
-          user: {
-            avatarUrl: '',
-            email: '',
-            id: null,
-            isPro: false,
-            name: '',
-          },
-        });
-    });
+      });
+  });
 });

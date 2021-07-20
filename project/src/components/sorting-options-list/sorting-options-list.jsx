@@ -13,12 +13,7 @@ function SortingOptionsList({ onSortTypeClick, onSetIsSortOpen }) {
   return (
     <ul className="places__options places__options--custom places__options--opened" ref={sortingRef}>
       {
-        sortingOptions.map((option) =>
-          <SortingOption
-            key={option}
-            sortingType={option}
-            onSortTypeClick={onSortTypeClick}
-          />)
+        sortingOptions.map((option) => <SortingOption key={option} sortingType={option} onSortTypeClick={onSortTypeClick} />)
       }
     </ul>
   );

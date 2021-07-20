@@ -17,7 +17,7 @@ describe('Component: SortingForm', () => {
     const { getByText } = render(
       <Provider store={store}>
         <SortingForm />
-      </Provider>
+      </Provider>,
     );
     expect(getByText(/Sort by/i)).toBeInTheDocument();
     expect(getByText('Popular')).toBeInTheDocument();

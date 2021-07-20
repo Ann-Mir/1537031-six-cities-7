@@ -2,7 +2,6 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import Reviews from './reviews';
 import {createAPI} from '../../services/api';
-import {createMemoryHistory} from 'history';
 import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import {Provider} from 'react-redux/lib/alternate-renderers';
@@ -35,14 +34,12 @@ const mockReviews = [
   },
 ];
 
-let history = null;
 let store = null;
 let api = null;
 
 describe('Component: ReviewList', () => {
   beforeEach(() => {
     api = createAPI(() => {});
-    history = createMemoryHistory();
   });
 
   it('should render correctly if data is loaded', () => {
@@ -56,7 +53,7 @@ describe('Component: ReviewList', () => {
     const { getByTestId } = render(
       <Provider store={store}>
         <Reviews offerId={'1'}/>
-      </Provider>
+      </Provider>,
     );
 
     const countElement = getByTestId('reviews__amount');
@@ -75,7 +72,7 @@ describe('Component: ReviewList', () => {
     const { getByText } = render(
       <Provider store={store}>
         <Reviews offerId={'1'}/>
-      </Provider>
+      </Provider>,
     );
 
     expect(getByText('Loading...')).toBeInTheDocument();

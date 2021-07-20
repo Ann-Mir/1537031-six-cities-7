@@ -14,12 +14,7 @@ function PlacesList ({ offers }) {
   return (
     <div className="cities__places-list places__list tabs__content">
       {
-        getSortedOffers(offers, activeSortType).map((offer) =>
-          <PlaceCard
-            offer={offer}
-            key={offer.id}
-            cardType={CardTypes.MAIN}
-          />)
+        getSortedOffers(offers, activeSortType).map((offer) => <PlaceCard offer={offer} key={offer.id} cardType={CardTypes.MAIN} />)
       }
     </div>
   );

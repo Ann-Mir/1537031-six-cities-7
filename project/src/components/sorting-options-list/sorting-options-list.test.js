@@ -19,7 +19,7 @@ describe('Component: SortingOptionsList', () => {
     const { getAllByTestId } = render(
       <Provider store={store}>
         <SortingOptionsList onSortTypeClick={mockFunction} onSetIsSortOpen={mockFunction}/>
-      </Provider>
+      </Provider>,
     );
 
     const optionsElements = getAllByTestId('sort-option');

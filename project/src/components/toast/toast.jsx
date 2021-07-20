@@ -39,7 +39,7 @@ function Toast({message = ToastMessages.DEFAULT}) {
       )}
     </div>
   );
-};
+}
 
 
 Toast.propTypes = {

@@ -18,7 +18,7 @@ describe('Component: PropertyOwner', () => {
 
     expect(nameElement).toBeInTheDocument();
     expect(avatarElement).toBeInTheDocument();
-    expect(avatarElement).toHaveAttribute('src', "testUrl");
+    expect(avatarElement).toHaveAttribute('src', 'testUrl');
     expect(proElement).toBeInTheDocument();
   });
 });

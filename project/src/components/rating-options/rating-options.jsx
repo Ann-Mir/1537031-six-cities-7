@@ -6,8 +6,8 @@ function RatingOptions({ rating, onChange, onInput }) {
   return (
     <div className="reviews__rating-form form__rating">
       {
-        ratingStarsOptions.map(({value, title}) => {
-          return (
+        ratingStarsOptions.map(({value, title}) =>
+          (
             <Fragment key={value}>
               <input
                 className="form__rating-input visually-hidden"
@@ -26,8 +26,7 @@ function RatingOptions({ rating, onChange, onInput }) {
                 </svg>
               </label>
             </Fragment>
-          );
-          }
+          ),
         )
       }
     </div>
@@ -37,6 +36,7 @@ function RatingOptions({ rating, onChange, onInput }) {
 RatingOptions.propTypes = {
   rating: PropTypes.number.isRequired,
   onChange: PropTypes.func.isRequired,
+  onInput: PropTypes.func.isRequired,
 };
 
 

@@ -64,7 +64,7 @@ describe('Actions', () => {
         id: 3,
         city: 'Paris',
         price: 500,
-      }
+      },
     ];
 
     const expectedAction = {
@@ -77,10 +77,10 @@ describe('Actions', () => {
 
   it('action creator for loading offer returns correct action', () => {
     const offer = {
-        id: 1,
-        city: 'Paris',
-        price: 300,
-      };
+      id: 1,
+      city: 'Paris',
+      price: 300,
+    };
 
     const expectedAction = {
       type: ActionType.LOAD_OFFER,
@@ -113,7 +113,7 @@ describe('Actions', () => {
     const user = {
       username: 'Alex',
       email: 'alex@mail.ru',
-      id: 1
+      id: 1,
     };
 
     const expectedAction = {
@@ -164,7 +164,7 @@ describe('Actions', () => {
         id: 3,
         city: 'Paris',
         price: 500,
-      }
+      },
     ];
 
     const expectedAction = {
@@ -250,7 +250,7 @@ describe('Actions', () => {
         id: 3,
         city: 'Paris',
         price: 500,
-      }
+      },
     ];
 
     const expectedAction = {

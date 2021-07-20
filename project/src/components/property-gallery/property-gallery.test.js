@@ -4,7 +4,7 @@ import PropertyGallery from './property-gallery';
 import {MAX_IMAGES_COUNT} from '../../const';
 
 
-const mockImages = ['first', 'second', 'third', 'forth', 'fifth', 'sixth', 'seventh', 'eighth']
+const mockImages = ['first', 'second', 'third', 'forth', 'fifth', 'sixth', 'seventh', 'eighth'];
 
 describe('Component: PropertyGallery', () => {
   it('should render correctly', () => {

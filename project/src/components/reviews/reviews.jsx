@@ -17,7 +17,7 @@ function Reviews({ offerId }) {
 
   useEffect(() => {
     dispatch(fetchComments(offerId));
-  }, [offerId]);
+  }, [dispatch, offerId]);
 
   return (
     <LoadWrapper isDataLoaded={areReviewsLoaded}>
