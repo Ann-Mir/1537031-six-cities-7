@@ -7,7 +7,7 @@ import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import { createAPI } from '../../services/api';
 import PropertyWrapper from './property-wrapper';
-import {AuthorizationStatus} from "../../const";
+import {AuthorizationStatus} from '../../const';
 
 
 const mockOffer = {
