@@ -19,7 +19,7 @@ function FavoritesItem({ favoriteOffersByCity, city }) {
     <li className="favorites__locations-items">
       <div className="favorites__locations locations locations--current">
         <div className="locations__item">
-          <Link className="locations__item-link" to={AppRoute.ROOT} onClick={handleClick}>
+          <Link className="locations__item-link" to={AppRoute.ROOT} onClick={handleClick} data-testid="locations__item-link">
             <span>{city}</span>
           </Link>
         </div>

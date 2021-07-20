@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import PropTypes from 'prop-types';
 
 
@@ -33,4 +33,4 @@ PropertyOwner.propTypes = {
   }),
 };
 
-export default PropertyOwner;
+export default memo(PropertyOwner);
