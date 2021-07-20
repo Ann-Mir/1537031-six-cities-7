@@ -51,7 +51,7 @@ function ReviewForm({ offerId }) {
       .finally(() => {
         dispatch(setAreReviewsLoaded(true));
         setIsSendingComment(false);
-      })
+      });
   };
 
   const handleTextChange = React.useCallback((evt) => {
