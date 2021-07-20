@@ -7,10 +7,13 @@ import {addToFavorites} from '../../store/api-actions';
 
 function BookmarkButton({ offerId, buttonType, isFavorite }) {
 
+  const[isDisabled, setIsDisabled] = React.useState(false);
   const dispatch = useDispatch();
 
   const handleClick = () => {
-    dispatch(addToFavorites({ offerId, status: Number(!isFavorite)}));
+    setIsDisabled(true);
+    dispatch(addToFavorites({ offerId, status: Number(!isFavorite)}))
+      .then(() => setIsDisabled(false));
   };
 
   return (
@@ -18,6 +21,7 @@ function BookmarkButton({ offerId, buttonType, isFavorite }) {
       className={`${BOOKMARK_BUTTON_SETTINGS[buttonType].CLASS_MIX}__bookmark-button ${isFavorite ? `${BOOKMARK_BUTTON_SETTINGS[buttonType].CLASS_MIX}__bookmark-button--active` : ''} button`}
       type="button"
       onClick={handleClick}
+      disabled={isDisabled}
     >
       <svg
         className={`${BOOKMARK_BUTTON_SETTINGS[buttonType].CLASS_MIX}__bookmark-icon`}
