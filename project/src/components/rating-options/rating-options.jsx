@@ -2,12 +2,12 @@ import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import {ratingStarsOptions} from '../../settings';
 
-function RatingOptions({ rating, onChange }) {
+function RatingOptions({ rating, onChange, onInput }) {
   return (
     <div className="reviews__rating-form form__rating">
       {
-        ratingStarsOptions.map(({value, title}) => {
-          return (
+        ratingStarsOptions.map(({value, title}) =>
+          (
             <Fragment key={value}>
               <input
                 className="form__rating-input visually-hidden"
@@ -16,6 +16,7 @@ function RatingOptions({ rating, onChange }) {
                 id={`${value}-stars`}
                 type="radio"
                 onChange={onChange}
+                onInput={onInput}
                 checked={rating === value}
                 data-testid={`rating-option-${value}`}
               />
@@ -25,8 +26,7 @@ function RatingOptions({ rating, onChange }) {
                 </svg>
               </label>
             </Fragment>
-          );
-          }
+          ),
         )
       }
     </div>
@@ -36,6 +36,7 @@ function RatingOptions({ rating, onChange }) {
 RatingOptions.propTypes = {
   rating: PropTypes.number.isRequired,
   onChange: PropTypes.func.isRequired,
+  onInput: PropTypes.func.isRequired,
 };
 
 

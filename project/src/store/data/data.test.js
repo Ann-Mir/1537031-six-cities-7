@@ -81,7 +81,7 @@ const offerToUpdate = {
   city: 'Amsterdam',
   price: 200,
   isFavorite: false,
-}
+};
 
 const favoriteOffers = [
   {
@@ -491,7 +491,7 @@ describe('Reducer: data', () => {
         city: 'Amsterdam',
         price: 200,
         isFavorite: true,
-      }
+      },
     ];
 
     const updatedNearbyOffers = [

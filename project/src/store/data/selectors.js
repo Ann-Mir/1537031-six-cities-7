@@ -21,9 +21,6 @@ export const getCurrentOffers = createSelector(
 
 export const getCommentsToRender = createSelector(
   getComments,
-  items => items
+  (items) => items
     .slice(0, MAX_REVIEWS_COUNT)
-    .sort((firstComment, secondComment) => new Date(secondComment.date) - new Date(firstComment.date)),
-);
-
-
+    .sort((firstComment, secondComment) => (new Date(secondComment.date) - new Date(firstComment.date))));

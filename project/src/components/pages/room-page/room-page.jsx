@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {memo, useEffect} from 'react';
 import Header from '../../header/header';
 import {fetchOffer} from '../../../store/api-actions';
 import {useDispatch, useSelector} from 'react-redux';
@@ -6,7 +6,7 @@ import LoadWrapper from '../../load-wrapper/load-wrapper';
 import PropertyWrapper from '../../property-wrapper/property-wrapper';
 import {useParams} from 'react-router';
 import {getCurrentOffer, getIsOfferLoadedStatus} from '../../../store/data/selectors';
-import {loadOffer} from "../../../store/action";
+import {loadOffer} from '../../../store/action';
 
 function RoomPage() {
   const { id } = useParams();
@@ -35,4 +35,4 @@ function RoomPage() {
 }
 
 
-export default RoomPage;
+export default memo(RoomPage);

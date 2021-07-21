@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import FavoritesList from '../favorites-list/favorites-list';
 import PropTypes from 'prop-types';
 import offerPropTypes from '../offer.prop';
@@ -23,4 +23,4 @@ FavoriteOffersWrapper.propTypes = {
 };
 
 
-export default FavoriteOffersWrapper;
+export default memo(FavoriteOffersWrapper);

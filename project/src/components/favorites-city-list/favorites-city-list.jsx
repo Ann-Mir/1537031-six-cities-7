@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import PlaceCard from '../place-card/place-card';
 import {CardTypes} from '../../settings';
 import PropTypes from 'prop-types';
@@ -9,12 +9,12 @@ function FavoritesCityList({ favoriteOffersByCity }) {
     <div className="favorites__places">
       {
         favoriteOffersByCity.map(
-          (offer) =>
+          (offer) => (
             <PlaceCard
               key={offer.id}
               offer={offer}
               cardType={CardTypes.FAVORITES}
-            />)
+            />))
       }
     </div>
   );
@@ -25,4 +25,4 @@ FavoritesCityList.propTypes = {
   favoriteOffersByCity: PropTypes.arrayOf(offerPropTypes).isRequired,
 };
 
-export default FavoritesCityList;
+export default memo(FavoritesCityList);

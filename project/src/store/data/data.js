@@ -1,12 +1,15 @@
 import {
-  loadComments, loadFavoriteOffers,
+  loadComments,
+  loadFavoriteOffers,
   loadOffer,
   loadOffers,
   loadOffersNearby,
   setAreLoadedOffersNearby,
-  setAreReviewsLoaded, setFavoriteOffersLoadingStatus,
+  setAreReviewsLoaded,
+  setFavoriteOffersLoadingStatus,
   setIsDataLoaded,
-  setOfferLoadingStatus, updateOffer
+  setOfferLoadingStatus,
+  updateOffer
 } from '../action';
 import {createReducer} from '@reduxjs/toolkit';
 import {updateFavoriteOffers, updateOfferIsFavorite, updateOffers} from '../../utils/common';

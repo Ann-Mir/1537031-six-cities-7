@@ -5,15 +5,11 @@ import {MAX_REVIEW_LENGTH, MIN_REVIEW_LENGTH} from '../../const';
 
 
 const testValue = 'erguhuhrhvruiuvh';
-const hasPostedComment = {
-  status: true,
-  comment: '',
-  rating: 1
-};
+
 
 describe('Component: ReviewText', () => {
   it('should render correctly', () => {
-    const {getByTestId} = render(<ReviewText value={testValue} onChange={() => {}} hasPostedComment={hasPostedComment}/>);
+    const {getByTestId} = render(<ReviewText value={testValue} onChange={() => {}} />);
 
     const textElement = getByTestId('review');
     expect(textElement).toBeInTheDocument();
@@ -21,4 +17,4 @@ describe('Component: ReviewText', () => {
     expect(textElement).toHaveAttribute('maxLength', MAX_REVIEW_LENGTH.toString());
     expect(textElement).toHaveValue(testValue);
   });
-})
+});

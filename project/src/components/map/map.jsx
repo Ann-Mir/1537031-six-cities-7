@@ -1,8 +1,8 @@
-import React, {useEffect, useRef} from 'react';
+import React, {memo, useEffect, useRef} from 'react';
 import leaflet from 'leaflet';
 import {MARKER_CURRENT, MARKER_DEFAULT} from '../../const';
 import 'leaflet/dist/leaflet.css';
-import useMap from '../../hooks/useMap';
+import useMap from '../../hooks/use-map';
 import PropTypes from 'prop-types';
 import offerPropTypes from '../offer.prop';
 import {useSelector} from 'react-redux';
@@ -45,10 +45,10 @@ function Map({ place, offers }) {
         markers.clearLayers();
       };
     }
-  }, [map, offers, place, activeOfferId]);
+  }, [map, offers, place, activeOfferId, currentCustomIcon, defaultCustomIcon]);
 
   return (
-    <div style={{height: '100%'}} ref={mapRef}></div>
+    <div style={{height: '100%'}} ref={mapRef} data-testid="map"></div>
   );
 }
 
@@ -65,4 +65,4 @@ Map.propTypes = {
 };
 
 
-export default Map;
+export default memo(Map);

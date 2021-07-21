@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {memo, useState} from 'react';
 import SortingOptionsList from '../sorting-options-list/sorting-options-list';
 import {useSelector} from 'react-redux';
 import {getActiveSortType} from '../../store/ui/selectors';
@@ -8,10 +8,10 @@ function SortingForm() {
 
   const activeSortType = useSelector(getActiveSortType);
 
-  const [isSortOpen, toggleIsSortActive] = useState(false);
+  const [isSortOpen, setIsSortOpen] = useState(false);
 
   const handleSortTypeClick = () => {
-    toggleIsSortActive((prevState) => !prevState);
+    setIsSortOpen((prevState) => !prevState);
   };
 
   return (
@@ -27,10 +27,10 @@ function SortingForm() {
           <use xlinkHref="#icon-arrow-select"></use>
         </svg>
       </span>
-      {isSortOpen && <SortingOptionsList onSortTypeClick={handleSortTypeClick}/>}
+      {isSortOpen && <SortingOptionsList onSortTypeClick={handleSortTypeClick} onSetIsSortOpen={setIsSortOpen}/>}
     </form>
   );
 }
 
 
-export default SortingForm;
+export default memo(SortingForm);

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import PropTypes from 'prop-types';
 
 function FeatureItem({ feature }) {
@@ -13,4 +13,4 @@ FeatureItem.propTypes = {
   feature: PropTypes.string.isRequired,
 };
 
-export default FeatureItem;
+export default memo(FeatureItem);

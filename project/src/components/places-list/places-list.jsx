@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import PlaceCard from '../place-card/place-card';
 import PropTypes from 'prop-types';
 import offerPropTypes from '../offer.prop';
@@ -14,12 +14,7 @@ function PlacesList ({ offers }) {
   return (
     <div className="cities__places-list places__list tabs__content">
       {
-        getSortedOffers(offers, activeSortType).map((offer) =>
-          <PlaceCard
-            offer={offer}
-            key={offer.id}
-            cardType={CardTypes.MAIN}
-          />)
+        getSortedOffers(offers, activeSortType).map((offer) => <PlaceCard offer={offer} key={offer.id} cardType={CardTypes.MAIN} />)
       }
     </div>
   );
@@ -30,6 +25,6 @@ PlacesList.propTypes = {
 };
 
 
-export default PlacesList;
+export default memo(PlacesList);
 
 

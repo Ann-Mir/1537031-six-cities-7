@@ -1,7 +1,6 @@
 import {
   setActiveOffer,
   setCity,
-  setHasPostedComment,
   setSortType
 } from '../action';
 import {DEFAULT_CITY, DEFAULT_SORT_TYPE} from '../../const';
@@ -11,11 +10,6 @@ const initialState = {
   city: DEFAULT_CITY,
   activeSortType: DEFAULT_SORT_TYPE,
   activeOfferId: null,
-  hasPostedComment: {
-    hasPosted: true,
-    comment: '',
-    rating: 0,
-  },
 };
 
 
@@ -29,13 +23,6 @@ const ui = createReducer(initialState, (builder) => {
     })
     .addCase(setActiveOffer, (state, action) => {
       state.activeOfferId = action.payload;
-    })
-    .addCase(setHasPostedComment, (state, action) => {
-      state.hasPostedComment = {
-        hasPosted: action.payload.hasPosted,
-        comment: action.payload.comment,
-        rating: action.payload.rating,
-      };
     });
 });
 

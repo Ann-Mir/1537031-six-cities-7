@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import PropTypes from 'prop-types';
 import offerPropTypes from '../offer.prop';
 import FavoritesCityList from '../favorites-city-list/favorites-city-list';
@@ -19,7 +19,7 @@ function FavoritesItem({ favoriteOffersByCity, city }) {
     <li className="favorites__locations-items">
       <div className="favorites__locations locations locations--current">
         <div className="locations__item">
-          <Link className="locations__item-link" to={AppRoute.ROOT} onClick={handleClick}>
+          <Link className="locations__item-link" to={AppRoute.ROOT} onClick={handleClick} data-testid="locations__item-link">
             <span>{city}</span>
           </Link>
         </div>
@@ -34,4 +34,4 @@ FavoritesItem.propTypes = {
   city: PropTypes.string.isRequired,
 };
 
-export default FavoritesItem;
+export default memo(FavoritesItem);

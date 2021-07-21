@@ -17,12 +17,12 @@ function Reviews({ offerId }) {
 
   useEffect(() => {
     dispatch(fetchComments(offerId));
-  }, [offerId]);
+  }, [dispatch, offerId]);
 
   return (
     <LoadWrapper isDataLoaded={areReviewsLoaded}>
       <h2 className="reviews__title">
-        Reviews &middot; <span className="reviews__amount">{commentsCount}</span>
+        Reviews &middot; <span className="reviews__amount" data-testid="reviews__amount">{commentsCount}</span>
       </h2>
       <ul className="reviews__list">
         {comments.map((comment) => <ReviewsItem key={comment.id} review={comment}/>)}

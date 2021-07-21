@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import Logo from '../logo/logo';
 import {LogoTypes} from '../../settings';
 import {useSelector} from 'react-redux';
@@ -24,8 +24,8 @@ function Header() {
           <nav className="header__nav">
             <ul className="header__nav-list">
               {
-                authorizationStatus === AuthorizationStatus.AUTH
-                && <HeaderNavAuthorized email={email} avatarUrl={avatarUrl}/>
+                (authorizationStatus === AuthorizationStatus.AUTH
+                && <HeaderNavAuthorized email={email} avatarUrl={avatarUrl}/>)
                 || <HeaderNavGuest />
               }
             </ul>
@@ -37,4 +37,4 @@ function Header() {
 }
 
 
-export default Header;
+export default memo(Header);

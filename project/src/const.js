@@ -100,3 +100,11 @@ export const MIN_REVIEW_LENGTH = 50;
 export const MAX_REVIEW_LENGTH = 300;
 
 export const RESPONSE_SUCCESS = 200;
+
+export const ToastMessages = {
+  DEFAULT: 'Something went wrong',
+  OFFLINE: 'Connection is lost',
+  REVIEW_ERROR: 'The review is not sent. Please try again',
+};
+
+export const DEFAULT_TIMEOUT = 10000;

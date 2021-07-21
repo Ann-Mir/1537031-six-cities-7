@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import LocationsOption from '../locations-option/locations-option';
 import PropTypes from 'prop-types';
 import {useDispatch, useSelector} from 'react-redux';
@@ -22,13 +22,13 @@ function LocationsList ({ locations }) {
   return (
     <ul className="locations__list tabs__list">
       {
-        locations.map((location) =>
+        locations.map((location) => (
           <LocationsOption
             key={location.name}
             name={location.name}
             isActive={location.name === city}
             onClick={handleClick}
-          />)
+          />))
       }
     </ul>
   );
@@ -46,4 +46,4 @@ LocationsList.propTypes = {
 };
 
 
-export default LocationsList;
+export default memo(LocationsList);

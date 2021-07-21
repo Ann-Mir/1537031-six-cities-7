@@ -1,5 +1,6 @@
 import {
-  loadComments, loadFavoriteOffers,
+  loadComments,
+  loadFavoriteOffers,
   loadOffer,
   loadOffers,
   loadOffersNearby,
@@ -7,12 +8,12 @@ import {
   redirectToRoute,
   requireAuthorization,
   setAreLoadedOffersNearby,
-  setAreReviewsLoaded, setFavoriteOffersLoadingStatus,
-  setHasPostedComment,
+  setAreReviewsLoaded,
   setOfferLoadingStatus,
-  setUser, updateOffer
+  setUser,
+  updateOffer
 } from './action';
-import {AuthorizationStatus, APIRoute, AppRoute, RESPONSE_SUCCESS} from '../const';
+import {AuthorizationStatus, APIRoute, AppRoute} from '../const';
 import {adaptCommentToClient, adaptOfferToClient, adaptUserToClient} from '../adapter/adapter';
 
 export const fetchOffers = () => (dispatch, _getState, api) => (
@@ -20,9 +21,6 @@ export const fetchOffers = () => (dispatch, _getState, api) => (
     .then(({data}) => {
       const offers = data.map((offer) => adaptOfferToClient(offer));
       dispatch(loadOffers(offers));
-    })
-    .catch(() => {
-      dispatch(loadOffers([]));
     })
 );
 
@@ -34,7 +32,7 @@ export const fetchOffer = (id) => (dispatch, _getState, api) => {
       dispatch(loadOffer(offer));
     })
     .then(() => dispatch(setOfferLoadingStatus(true)))
-    .catch((err) => {
+    .catch(() => {
       dispatch(redirectToRoute(AppRoute.NOT_FOUND));
     });
 };
@@ -47,7 +45,7 @@ export const fetchComments = (id) => (dispatch, _getState, api) => {
       dispatch(loadComments(comments));
     })
     .catch(() => dispatch(loadComments([])))
-    .finally(() => dispatch(setAreReviewsLoaded(true)))
+    .finally(() => dispatch(setAreReviewsLoaded(true)));
 };
 
 export const fetchOffersNearby = (id) => (dispatch, _getState, api) => {
@@ -58,26 +56,17 @@ export const fetchOffersNearby = (id) => (dispatch, _getState, api) => {
       dispatch(loadOffersNearby(offers));
     })
     .catch(() => dispatch(loadOffersNearby([])))
-    .finally(() => dispatch(setAreLoadedOffersNearby(true)))
+    .finally(() => dispatch(setAreLoadedOffersNearby(true)));
 };
 
-export const sendComment = ({id, comment, rating}) => (dispatch, _getState, api) => {
-  dispatch(setAreReviewsLoaded(false));
-  return api.post(`${APIRoute.REVIEWS}${id}`, {comment, rating})
+export const sendComment = ({id, comment, rating}) => (dispatch, _getState, api) =>
+  api.post(`${APIRoute.REVIEWS}${id}`, {comment, rating})
     .then((response) => {
-      const { status, data } = response;
-      if (status !== RESPONSE_SUCCESS) {
-        dispatch(setHasPostedComment({hasPosted: false, comment: comment, rating: rating}));
-      } else {
-        const comments = data.map(adaptCommentToClient);
-        dispatch(loadComments(comments));
-        dispatch(setAreReviewsLoaded(true));
-      }
-    })
-    .catch((err) => {
+      const { data } = response;
+      const comments = data.map(adaptCommentToClient);
+      dispatch(loadComments(comments));
+    });
 
-    })
-};
 
 export const checkAuth = () => (dispatch, _getState, api) => (
   api.get(APIRoute.LOGIN)
@@ -104,20 +93,19 @@ export const logout = () => (dispatch, _getState, api) => (
     .then(() => dispatch(logoutUser()))
     .then(() => dispatch(loadFavoriteOffers([])))
     .then(() => dispatch(redirectToRoute(AppRoute.ROOT)))
+    .then(() => dispatch(fetchOffers()))
+    .catch(() => dispatch(loadOffers([])))
 );
 
-export const addToFavorites = ({offerId, status}) => (dispatch, _getState, api) => {
-  return api.post(`${APIRoute.FAVORITE}${offerId}/${status}`)
+export const addToFavorites = ({offerId, status}) => (dispatch, _getState, api) =>
+  api.post(`${APIRoute.FAVORITE}${offerId}/${status}`)
     .then(({data}) => dispatch(updateOffer(adaptOfferToClient(data))))
-    .catch(() => {})
-};
+    .catch(() => dispatch(redirectToRoute(AppRoute.LOGIN)));
 
-export const fetchFavoriteOffers = () => (dispatch, _getState, api) => {
-  dispatch(setFavoriteOffersLoadingStatus(false));
-  return api.get(APIRoute.FAVORITE)
+
+export const fetchFavoriteOffers = () => (dispatch, _getState, api) =>
+  api.get(APIRoute.FAVORITE)
     .then(({ data }) => {
       const offers = data.map((offer) => adaptOfferToClient(offer));
-      dispatch(loadFavoriteOffers(offers))
-    })
-    .catch(() => dispatch(loadFavoriteOffers([])))
-};
+      dispatch(loadFavoriteOffers(offers));
+    });

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import PropTypes from 'prop-types';
 import offerPropTypes from '../offer.prop';
 import PlaceCard from '../place-card/place-card';
@@ -20,4 +20,4 @@ NearPlacesList.propTypes = {
   nearOffers: PropTypes.arrayOf(offerPropTypes).isRequired,
 };
 
-export default NearPlacesList;
+export default memo(NearPlacesList);

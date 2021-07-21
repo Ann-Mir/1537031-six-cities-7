@@ -7,10 +7,13 @@ import {
   fetchComments,
   fetchOffersNearby,
   sendComment,
-  addToFavorites, fetchFavoriteOffers
+  addToFavorites,
+  fetchFavoriteOffers,
+  logout,
+  login
 } from './api-actions';
-import {APIRoute} from '../const';
-import {adaptCommentToClient, adaptOfferToClient} from '../adapter/adapter';
+import {APIRoute, AppRoute, AuthorizationStatus} from '../const';
+import {adaptCommentToClient, adaptOfferToClient, adaptUserToClient} from '../adapter/adapter';
 
 let api = null;
 
@@ -33,33 +36,33 @@ const fakeOffer = {
     location: {
       latitude: 52.370216,
       longitude: 4.895168,
-      zoom: 10
+      zoom: 10,
     },
-    name: 'Amsterdam'
+    name: 'Amsterdam',
   },
   description: 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.',
   goods: ['Heating', 'Kitchen', 'Cable TV', 'Washing machine', 'Coffee machine', 'Dishwasher'],
   host: {
-    avatar_url: 'img/1.png',
+    'avatar_url': 'img/1.png',
     id: 3,
-    is_pro: true,
-    name: 'Angelina'
+    'is_pro': true,
+    name: 'Angelina',
   },
   id: 5,
   images: ['img/1.png', 'img/2.png'],
-  is_favorite: false,
-  is_premium: false,
+  'is_favorite': false,
+  'is_premium': false,
   location: {
     latitude: 52.35514938496378,
     longitude: 4.673877537499948,
-    zoom: 8
+    zoom: 8,
   },
-  max_adults: 4,
-  preview_image: 'img/1.png',
+  'max_adults': 4,
+  'preview_image': 'img/1.png',
   price: 120,
   rating: 4.8,
   title: 'Beautiful & luxurious studio at great location',
-  type: 'apartment'
+  type: 'apartment',
 };
 
 const comment = 'a great place!';
@@ -76,6 +79,15 @@ const fakeReview = {
     isPro: false,
     name: 'Max',
   },
+};
+
+const fakeUser = {
+  'avatar_url': 'Test avatar',
+  email: 'test@mail.com',
+  id: 1,
+  'is_pro': false,
+  name: 'TestNamer',
+  token: 'jdhdividhifeworu8uhi4r',
 };
 
 describe('Async operations', () => {
@@ -211,21 +223,10 @@ describe('Async operations', () => {
     return reviewSender(dispatch, () => {}, api)
 
       .then(() => {
-        expect(dispatch).toHaveBeenCalledTimes(3);
-
+        expect(dispatch).toHaveBeenCalledTimes(1);
         expect(dispatch).toHaveBeenNthCalledWith(1, {
-          type: ActionType.SET_ARE_REVIEWS_LOADED,
-          payload: false,
-        });
-
-        expect(dispatch).toHaveBeenNthCalledWith(2, {
           type: ActionType.LOAD_COMMENTS,
           payload: [adaptCommentToClient(fakeReview)],
-        });
-
-        expect(dispatch).toHaveBeenNthCalledWith(3, {
-          type: ActionType.SET_ARE_REVIEWS_LOADED,
-          payload: true,
         });
       });
   });
@@ -264,17 +265,75 @@ describe('Async operations', () => {
 
     return favoritesOffersLoader(dispatch, () => {}, api)
       .then(() => {
-        expect(dispatch).toHaveBeenCalledTimes(2);
+        expect(dispatch).toHaveBeenCalledTimes(1);
 
         expect(dispatch).toHaveBeenNthCalledWith(1, {
-          type: ActionType.SET_ARE_FAVORITE_OFFERS_LOADED,
-          payload: false,
-        });
-
-        expect(dispatch).toHaveBeenNthCalledWith(2, {
           type: ActionType.LOAD_FAVORITE_OFFERS,
           payload: [adaptOfferToClient(fakeOffer)],
         });
       });
   });
+
+  it('should make a correct API call to DELETE /logout', () => {
+    const apiMock = new MockAdapter(api);
+    const dispatch = jest.fn();
+    const logoutLoader = logout();
+
+    Storage.prototype.removeItem = jest.fn();
+
+    apiMock
+      .onDelete(APIRoute.LOGOUT)
+      .reply(204, [{fake: true}]);
+
+    return logoutLoader(dispatch, jest.fn(() => {}), api)
+      .then(() => {
+        expect(dispatch).toBeCalledTimes(4);
+        expect(dispatch).nthCalledWith(1, {
+          type: ActionType.LOGOUT,
+        });
+
+        expect(dispatch).nthCalledWith(2, {
+          type: ActionType.LOAD_FAVORITE_OFFERS,
+          payload: [],
+        });
+
+        expect(dispatch).nthCalledWith(3, {
+          type: ActionType.REDIRECT_TO_ROUTE,
+          payload: AppRoute.ROOT,
+        });
+
+        expect(Storage.prototype.removeItem).toBeCalledTimes(1);
+        expect(Storage.prototype.removeItem).nthCalledWith(1, 'token');
+      });
+  });
+
+  it('should make a correct API call to POST /login', () => {
+    const apiMock = new MockAdapter(api);
+    const dispatch = jest.fn();
+
+    const loginLoader = login({ login: fakeUser.email, password: '123456' });
+
+    apiMock.onPost(APIRoute.LOGIN).reply(200, fakeUser);
+
+    return loginLoader(dispatch, () => {}, api)
+      .then(() => {
+        expect(dispatch).toHaveBeenCalledTimes(3);
+
+        expect(dispatch).toHaveBeenNthCalledWith(1, {
+          type: ActionType.SET_USER,
+          payload: adaptUserToClient(fakeUser),
+        });
+
+        expect(dispatch).toHaveBeenNthCalledWith(2, {
+          type: ActionType.REQUIRED_AUTHORIZATION,
+          payload: AuthorizationStatus.AUTH,
+        });
+
+        expect(dispatch).toHaveBeenNthCalledWith(3, {
+          type: ActionType.REDIRECT_TO_ROUTE,
+          payload: AppRoute.ROOT,
+        });
+      });
+  });
+
 });

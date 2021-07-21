@@ -1,12 +1,19 @@
 import {
   ActionType,
-  loadComments, loadFavoriteOffers,
+  loadComments,
+  loadFavoriteOffers,
   loadOffer,
-  loadOffers, loadOffersNearby,
+  loadOffers,
+  loadOffersNearby,
   logout,
   redirectToRoute,
-  setActiveOffer, setAreLoadedOffersNearby, setAreReviewsLoaded,
-  setCity, setFavoriteOffersLoadingStatus, setHasPostedComment, setIsDataLoaded, setOfferLoadingStatus,
+  setActiveOffer,
+  setAreLoadedOffersNearby,
+  setAreReviewsLoaded,
+  setCity,
+  setFavoriteOffersLoadingStatus,
+  setIsDataLoaded,
+  setOfferLoadingStatus,
   setSortType,
   setUser, updateOffer
 } from './action';
@@ -57,7 +64,7 @@ describe('Actions', () => {
         id: 3,
         city: 'Paris',
         price: 500,
-      }
+      },
     ];
 
     const expectedAction = {
@@ -70,10 +77,10 @@ describe('Actions', () => {
 
   it('action creator for loading offer returns correct action', () => {
     const offer = {
-        id: 1,
-        city: 'Paris',
-        price: 300,
-      };
+      id: 1,
+      city: 'Paris',
+      price: 300,
+    };
 
     const expectedAction = {
       type: ActionType.LOAD_OFFER,
@@ -106,7 +113,7 @@ describe('Actions', () => {
     const user = {
       username: 'Alex',
       email: 'alex@mail.ru',
-      id: 1
+      id: 1,
     };
 
     const expectedAction = {
@@ -157,7 +164,7 @@ describe('Actions', () => {
         id: 3,
         city: 'Paris',
         price: 500,
-      }
+      },
     ];
 
     const expectedAction = {
@@ -212,19 +219,6 @@ describe('Actions', () => {
     expect(setAreLoadedOffersNearby(isLoaded)).toEqual(expectedAction);
   });
 
-  it('action creator for setting has posted comment status returns correct action', () => {
-    const hasPosted = {
-      status: true,
-    };
-
-    const expectedAction = {
-      type: ActionType.SET_HAS_POSTED_COMMENT,
-      payload: hasPosted,
-    };
-
-    expect(setHasPostedComment(hasPosted)).toEqual(expectedAction);
-  });
-
   it('action creator for updating offer returns correct action', () => {
     const offer = {
       id: 5,
@@ -256,7 +250,7 @@ describe('Actions', () => {
         id: 3,
         city: 'Paris',
         price: 500,
-      }
+      },
     ];
 
     const expectedAction = {

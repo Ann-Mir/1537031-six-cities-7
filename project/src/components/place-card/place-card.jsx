@@ -42,6 +42,7 @@ function PlaceCard({ offer, cardType }) {
       className={`${CARD_SETTINGS[cardType].CLASS_MIX} place-card`}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      data-testid="place-card"
     >
       <div className={`place-card__mark ${isPremium ? '' : 'visually-hidden'}`}>
         <span>Premium</span>

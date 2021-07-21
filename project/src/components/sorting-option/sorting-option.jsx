@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import PropTypes from 'prop-types';
 import {useDispatch, useSelector} from 'react-redux';
 import {SortTypes} from '../../const';
@@ -6,7 +6,7 @@ import {setSortType} from '../../store/action';
 import {getActiveSortType} from '../../store/ui/selectors';
 
 
-function SortingOption({ sortingType, handleSortTypeClick }) {
+function SortingOption({ sortingType, onSortTypeClick }) {
 
   const activeSortType = useSelector(getActiveSortType);
 
@@ -14,7 +14,7 @@ function SortingOption({ sortingType, handleSortTypeClick }) {
 
   const handleSortOptionClick = () => {
     dispatch(setSortType(SortTypes[sortingType]));
-    handleSortTypeClick();
+    onSortTypeClick();
   };
 
   return (
@@ -23,6 +23,7 @@ function SortingOption({ sortingType, handleSortTypeClick }) {
       tabIndex="0"
       data-sort={sortingType}
       onClick={handleSortOptionClick}
+      data-testid="sort-option"
     >
       {SortTypes[sortingType]}
     </li>
@@ -31,8 +32,8 @@ function SortingOption({ sortingType, handleSortTypeClick }) {
 
 SortingOption.propTypes = {
   sortingType: PropTypes.string.isRequired,
-  handleSortTypeClick: PropTypes.func.isRequired,
+  onSortTypeClick: PropTypes.func.isRequired,
 };
 
 
-export default SortingOption;
+export default memo(SortingOption);

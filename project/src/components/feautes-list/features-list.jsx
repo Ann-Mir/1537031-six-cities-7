@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import PropTypes from 'prop-types';
 import FeatureItem from '../feature-item/feature-item';
 
@@ -17,4 +17,4 @@ FeaturesList.propTypes = {
   goods: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
 };
 
-export default FeaturesList;
+export default memo(FeaturesList);

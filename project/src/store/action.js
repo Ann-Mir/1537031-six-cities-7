@@ -20,6 +20,7 @@ export const ActionType = {
   UPDATE_OFFER: 'offers/updateOffer',
   LOAD_FAVORITE_OFFERS: 'offers/loadFavoriteOffers',
   SET_ARE_FAVORITE_OFFERS_LOADED: 'offers/setAreFavoriteOffersLoaded',
+  SET_REVIEW_ERROR_STATUS: 'comments/setReviewErrorStatus',
 };
 
 export const setCity = createAction(ActionType.SET_CITY, (city) => ({

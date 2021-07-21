@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {memo, useEffect} from 'react';
 import PropTypes from 'prop-types';
 import offerPropTypes from '../offer.prop';
 import PropertyGallery from '../property-gallery/property-gallery';
@@ -66,4 +66,4 @@ PropertyWrapper.propTypes = {
 };
 
 
-export default PropertyWrapper;
+export default memo(PropertyWrapper);

@@ -9,7 +9,6 @@ describe('Component: PropertyImage', () => {
     const imageElement = getByRole('img');
 
     expect(imageElement).toBeInTheDocument();
-    expect(imageElement).toHaveAttribute('src', "fakeImage");
-
+    expect(imageElement).toHaveAttribute('src', 'fakeImage');
   });
 });
