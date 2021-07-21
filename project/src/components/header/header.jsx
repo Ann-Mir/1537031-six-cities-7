@@ -5,7 +5,11 @@ import {useSelector} from 'react-redux';
 import {AuthorizationStatus} from '../../const';
 import HeaderNavAuthorized from '../header-nav-authorized/header-nav-authorized';
 import HeaderNavGuest from '../header-nav-guest/header-nav-guest';
-import {getAuthorizationStatus, getUserAvatar, getUserEmail} from '../../store/user/selectors';
+import {
+  getAuthorizationStatus,
+  getUserAvatar,
+  getUserEmail
+} from '../../store/user/selectors';
 
 
 function Header() {

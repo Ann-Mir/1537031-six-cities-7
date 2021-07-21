@@ -4,6 +4,7 @@ import {NavLink} from 'react-router-dom';
 import {LOGO_SETTINGS} from '../../settings';
 import {AppRoute} from '../../const';
 
+
 function Logo({ logoType }) {
 
   return (

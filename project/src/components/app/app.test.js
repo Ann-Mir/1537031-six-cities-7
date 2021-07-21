@@ -4,7 +4,13 @@ import {Router} from 'react-router-dom';
 import {createMemoryHistory} from 'history';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
-import {AuthorizationStatus, AppRoute, DEFAULT_SORT_TYPE, DEFAULT_CITY, SortTypes} from '../../const';
+import {
+  AuthorizationStatus,
+  AppRoute,
+  DEFAULT_SORT_TYPE,
+  DEFAULT_CITY,
+  SortTypes
+} from '../../const';
 import App from './app';
 import thunk from 'redux-thunk';
 import {createAPI} from '../../services/api';

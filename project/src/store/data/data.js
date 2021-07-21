@@ -12,7 +12,11 @@ import {
   updateOffer
 } from '../action';
 import {createReducer} from '@reduxjs/toolkit';
-import {updateFavoriteOffers, updateOfferIsFavorite, updateOffers} from '../../utils/common';
+import {
+  updateFavoriteOffers,
+  updateOfferIsFavorite,
+  updateOffers
+} from '../../utils/common';
 
 const initialState = {
   offers: [],

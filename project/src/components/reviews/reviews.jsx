@@ -4,7 +4,11 @@ import ReviewsItem from '../reviews-item/reviews-item';
 import {fetchComments} from '../../store/api-actions';
 import {useDispatch, useSelector} from 'react-redux';
 import LoadWrapper from '../load-wrapper/load-wrapper';
-import {getAreReviewsLoadedStatus, getComments, getCommentsToRender} from '../../store/data/selectors';
+import {
+  getAreReviewsLoadedStatus,
+  getComments,
+  getCommentsToRender
+} from '../../store/data/selectors';
 
 
 function Reviews({ offerId }) {

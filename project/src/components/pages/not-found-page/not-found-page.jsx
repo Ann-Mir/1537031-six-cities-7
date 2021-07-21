@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from '../../header/header';
 
+
 function NotFoundPage() {
   return (
     <main className="page__main">

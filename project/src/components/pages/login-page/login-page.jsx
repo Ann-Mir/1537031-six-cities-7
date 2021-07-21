@@ -1,26 +1,49 @@
-import React, {useRef} from 'react';
+import React, {useRef, useState} from 'react';
 import Header from '../../header/header';
 import {login} from '../../../store/api-actions';
 import {useDispatch} from 'react-redux';
 import {Link} from 'react-router-dom';
-import {AppRoute} from '../../../const';
+import {AppRoute, LOGIN_PAGE_CITY, ToastMessages} from '../../../const';
 import {setCity} from '../../../store/action';
+import Toast from '../../toast/toast';
+
 
 function LoginPage() {
+
   const loginRef = useRef();
   const passwordRef = useRef();
   const dispatch = useDispatch();
 
+  const [isError, setIsError] = useState(false);
+  const [isSubmitDisabled, setIsSubmitDisabled] = useState(false);
+  const [isSubmitError, setIsSubmitError] = useState(false);
+
+  const handlePasswordChange = (evt) =>
+    setIsError(evt.target.value.trim().length === 0);
+
   const handleSubmit = (evt) => {
     evt.preventDefault();
+    setIsSubmitError(false);
+    setIsSubmitDisabled(true);
+    const password = passwordRef.current.value.trim();
+
+    if(isError) {
+      setIsSubmitDisabled(false);
+      return;
+    }
+
     dispatch(login({
       login: loginRef.current.value,
-      password: passwordRef.current.value.trim(),
-    }));
+      password: password,
+    }))
+      .catch(() => {
+        setIsSubmitDisabled(false);
+        setIsSubmitError(true);
+      });
   };
 
   const handleClick = () => {
-    dispatch(setCity('Amsterdam'));
+    dispatch(setCity(LOGIN_PAGE_CITY));
   };
 
   return (
@@ -31,6 +54,7 @@ function LoginPage() {
         <div className="page__login-container container">
           <section className="login">
             <h1 className="login__title">Sign in</h1>
+            {isSubmitError && <Toast message={ToastMessages.LOGIN_ERROR} />}
             <form
               className="login__form form"
               action="#"
@@ -61,11 +85,14 @@ function LoginPage() {
                   required=""
                   id="password"
                   data-testid="password"
+                  style={isError ? {borderColor: 'red'} : {} }
+                  onChange={handlePasswordChange}
                 />
               </div>
               <button
                 className="login__submit form__submit button"
                 type="submit"
+                disabled={isSubmitDisabled}
               >
                 Sign in
               </button>

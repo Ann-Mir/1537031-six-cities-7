@@ -7,6 +7,7 @@ import {Link} from 'react-router-dom';
 import {useDispatch} from 'react-redux';
 import {setCity} from '../../store/action';
 
+
 function FavoritesItem({ favoriteOffersByCity, city }) {
 
   const dispatch = useDispatch();
