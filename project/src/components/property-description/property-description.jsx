@@ -1,11 +1,10 @@
 import React, {memo} from 'react';
-import {capitalizeFirstLetter, getRating} from '../../utils/render';
+import {capitalizeFirstLetter, getRating, pluralize} from '../../utils/render';
 import FeaturesList from '../feautes-list/features-list';
 import PropertyOwner from '../property-owner/property-owner';
 import offerPropTypes from '../offer.prop';
 import BookmarkButton from '../bookmark-button/bookmark-button';
 import {BookmarkButtonTypes} from '../../settings';
-import {SINGULAR_COUNT} from '../../const';
 
 
 function PropertyDescription({ offer }) {
@@ -27,9 +26,11 @@ function PropertyDescription({ offer }) {
 
   return (
     <React.Fragment>
-      <div className={`property__mark ${isPremium ? '' : 'visually-hidden'}`}>
-        <span>Premium</span>
-      </div>
+      {isPremium && (
+        <div className="property__mark">
+          <span>Premium</span>
+        </div>
+      )}
       <div className="property__name-wrapper">
         <h1 className="property__name">
           {title}
@@ -48,10 +49,10 @@ function PropertyDescription({ offer }) {
           {capitalizeFirstLetter(type)}
         </li>
         <li className="property__feature property__feature--bedrooms">
-          {`${bedrooms} Bedroom${bedrooms > SINGULAR_COUNT ? 's' : ''}`}
+          {`${bedrooms} ${pluralize('Bedroom', bedrooms)}`}
         </li>
         <li className="property__feature property__feature--adults">
-          {`Max ${maxAdults} adult${maxAdults === SINGULAR_COUNT ? '' : 's'}`}
+          {`Max ${maxAdults} ${pluralize('adult', maxAdults)}`}
         </li>
       </ul>
       <div className="property__price">

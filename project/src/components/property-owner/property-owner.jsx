@@ -17,9 +17,11 @@ function PropertyOwner({ host }) {
       <span className="property__user-name">
         {name}
       </span>
-      <span className={`property__user-status ${isPro ? '' : 'visually-hidden'}`}>
-        Pro
-      </span>
+      {isPro && (
+        <span className="property__user-status">
+          Pro
+        </span>
+      )}
     </div>
   );
 }
