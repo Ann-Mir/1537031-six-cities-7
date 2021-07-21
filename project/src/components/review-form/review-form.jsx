@@ -1,16 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import RatingOptions from '../rating-options/rating-options';
-import {MAX_REVIEW_LENGTH, MIN_REVIEW_LENGTH, ToastMessages} from '../../const';
+import {
+  DEFAULT_RATING,
+  MAX_REVIEW_LENGTH,
+  MIN_REVIEW_LENGTH,
+  ToastMessages
+} from '../../const';
 import {useDispatch} from 'react-redux';
 import {sendComment} from '../../store/api-actions';
 import ReviewText from '../review-text/review-text';
 import Toast from '../toast/toast';
 import {setAreReviewsLoaded} from '../../store/action';
 
+
 function ReviewForm({ offerId }) {
 
-  const [rating, setRating] = React.useState(0);
+  const [rating, setRating] = React.useState(DEFAULT_RATING);
   const [review, setReviewText] = React.useState('');
   const [isSubmitDisabled, setIsSubmitDisabled] = React.useState(true);
   const [isSendingComment, setIsSendingComment] = React.useState(false);
@@ -21,7 +27,7 @@ function ReviewForm({ offerId }) {
   const handleFormChange = () => {
     setIsSubmitDisabled(!(review.length >= MIN_REVIEW_LENGTH
       && review.length <= MAX_REVIEW_LENGTH
-      && rating > 0
+      && rating > DEFAULT_RATING
       && !isSendingComment));
   };
 
@@ -40,7 +46,7 @@ function ReviewForm({ offerId }) {
     dispatch(sendComment({id: offerId, comment: review, rating: rating}))
       .then(() => {
         setReviewText('');
-        setRating(0);
+        setRating(DEFAULT_RATING);
         setIsSubmitDisabled(true);
       })
       .catch(() => {

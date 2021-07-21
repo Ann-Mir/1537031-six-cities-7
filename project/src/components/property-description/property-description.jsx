@@ -5,6 +5,7 @@ import PropertyOwner from '../property-owner/property-owner';
 import offerPropTypes from '../offer.prop';
 import BookmarkButton from '../bookmark-button/bookmark-button';
 import {BookmarkButtonTypes} from '../../settings';
+import {SINGULAR_COUNT} from '../../const';
 
 
 function PropertyDescription({ offer }) {
@@ -47,10 +48,10 @@ function PropertyDescription({ offer }) {
           {capitalizeFirstLetter(type)}
         </li>
         <li className="property__feature property__feature--bedrooms">
-          {`${bedrooms} Bedroom${bedrooms > 1 ? 's' : ''}`}
+          {`${bedrooms} Bedroom${bedrooms > SINGULAR_COUNT ? 's' : ''}`}
         </li>
         <li className="property__feature property__feature--adults">
-          {`Max ${maxAdults} adult${maxAdults === 1 ? '' : 's'}`}
+          {`Max ${maxAdults} adult${maxAdults === SINGULAR_COUNT ? '' : 's'}`}
         </li>
       </ul>
       <div className="property__price">

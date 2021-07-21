@@ -1,6 +1,7 @@
 import React, {memo} from 'react';
 import PropTypes from 'prop-types';
 
+
 function LocationsOption({ name , isActive, onClick }) {
 
   return (

@@ -4,6 +4,7 @@ import MainEmpty from '../main-empty/main-empty';
 import {useSelector} from 'react-redux';
 import {getCurrentOffers} from '../../store/data/selectors';
 import {getCity} from '../../store/ui/selectors';
+import {EMPTY_OFFERS_LENGTH} from '../../const';
 
 
 function Cities() {
@@ -14,7 +15,7 @@ function Cities() {
   return (
     <div className="cities">
       {
-        (currentOffers.length > 0
+        (currentOffers.length > EMPTY_OFFERS_LENGTH
         &&
         <PlacesWrapper
           currentOffers={currentOffers}

@@ -4,6 +4,7 @@ import offerPropTypes from '../offer.prop';
 import PlaceCard from '../place-card/place-card';
 import {CardTypes} from '../../settings';
 
+
 function NearPlacesList({ nearOffers }) {
 
   return (

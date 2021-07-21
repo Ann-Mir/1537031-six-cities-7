@@ -1,5 +1,6 @@
 import {AuthorizationStatus, SortTypes} from '../const';
 
+
 export const mapOffersByCity = (offers) => {
   const offersByCity = new Map();
   offers.forEach((offer) => {

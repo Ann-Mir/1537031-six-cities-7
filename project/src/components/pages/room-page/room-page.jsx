@@ -8,6 +8,7 @@ import {useParams} from 'react-router';
 import {getCurrentOffer, getIsOfferLoadedStatus} from '../../../store/data/selectors';
 import {loadOffer} from '../../../store/action';
 
+
 function RoomPage() {
   const { id } = useParams();
 

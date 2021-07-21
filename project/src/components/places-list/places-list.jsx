@@ -7,6 +7,7 @@ import {getSortedOffers} from '../../utils/common';
 import {useSelector} from 'react-redux';
 import {getActiveSortType} from '../../store/ui/selectors';
 
+
 function PlacesList ({ offers }) {
 
   const activeSortType = useSelector(getActiveSortType);

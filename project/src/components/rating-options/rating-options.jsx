@@ -2,6 +2,7 @@ import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import {ratingStarsOptions} from '../../settings';
 
+
 function RatingOptions({ rating, onChange, onInput }) {
   return (
     <div className="reviews__rating-form form__rating">

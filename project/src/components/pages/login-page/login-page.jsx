@@ -3,11 +3,13 @@ import Header from '../../header/header';
 import {login} from '../../../store/api-actions';
 import {useDispatch} from 'react-redux';
 import {Link} from 'react-router-dom';
-import {AppRoute, ToastMessages} from '../../../const';
+import {AppRoute, LOGIN_PAGE_CITY, ToastMessages} from '../../../const';
 import {setCity} from '../../../store/action';
 import Toast from '../../toast/toast';
 
+
 function LoginPage() {
+
   const loginRef = useRef();
   const passwordRef = useRef();
   const dispatch = useDispatch();
@@ -41,7 +43,7 @@ function LoginPage() {
   };
 
   const handleClick = () => {
-    dispatch(setCity('Amsterdam'));
+    dispatch(setCity(LOGIN_PAGE_CITY));
   };
 
   return (

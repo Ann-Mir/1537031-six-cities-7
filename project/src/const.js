@@ -78,6 +78,8 @@ export const LOCATIONS = [
 
 export const DEFAULT_CITY = 'Paris';
 
+export const LOGIN_PAGE_CITY = 'Amsterdam';
+
 export const MAX_ROOMS_PER_PAGE = 4;
 
 export const SortTypes = {
@@ -109,3 +111,31 @@ export const ToastMessages = {
 };
 
 export const DEFAULT_TIMEOUT = 10000;
+
+export const DEFAULT_RATING = 0;
+
+export const EMPTY_OFFERS_LENGTH = 0;
+
+export const DEFAULT_CUSTOM_ICON = {
+  iconUrl: MARKER_DEFAULT,
+  iconSize: [27, 39],
+  iconAnchor: [13, 39],
+};
+
+export const CURRENT_CUSTOM_ICON = {
+  iconUrl: MARKER_CURRENT,
+  iconSize: [27, 39],
+  iconAnchor: [13, 39],
+};
+
+export const SINGULAR_COUNT = 1;
+
+export const FIRST_ELEMENT_INDEX = 0;
+
+export const LAST_DATE_INDEX = 10;
+
+export const FIRST_MONTH_INDEX = 5;
+
+export const LAST_MONTH_INDEX = 7;
+
+export const LAST_YEAR_INDEX = 4;

@@ -2,15 +2,27 @@ import React from 'react';
 import {getRating} from '../../utils/render';
 import {monthsByNumber} from '../../settings';
 import reviewPropTypes from '../review.prop';
+import {
+  FIRST_ELEMENT_INDEX,
+  FIRST_MONTH_INDEX,
+  LAST_DATE_INDEX,
+  LAST_MONTH_INDEX,
+  LAST_YEAR_INDEX
+} from '../../const';
+
 
 function ReviewsItem({ review }) {
+
   const {comment, date, rating, user} = review;
   const { avatarUrl, name} = user;
+
   const ratingWidth = getRating(rating);
-  const dateTime = date.slice(0, 10);
-  const monthNumber = date.slice(5, 7);
+
+  const dateTime = date.slice(FIRST_ELEMENT_INDEX, LAST_DATE_INDEX);
+  const monthNumber = date.slice(FIRST_MONTH_INDEX, LAST_MONTH_INDEX);
   const month = monthsByNumber[monthNumber];
-  const year = date.slice(0, 4);
+  const year = date.slice(FIRST_ELEMENT_INDEX, LAST_YEAR_INDEX);
+
   return (
     <li className="reviews__item">
       <div className="reviews__user user">

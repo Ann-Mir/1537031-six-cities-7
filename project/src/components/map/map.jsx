@@ -1,6 +1,6 @@
 import React, {memo, useEffect, useRef} from 'react';
 import leaflet from 'leaflet';
-import {MARKER_CURRENT, MARKER_DEFAULT} from '../../const';
+import {CURRENT_CUSTOM_ICON, DEFAULT_CUSTOM_ICON} from '../../const';
 import 'leaflet/dist/leaflet.css';
 import useMap from '../../hooks/use-map';
 import PropTypes from 'prop-types';
@@ -15,17 +15,9 @@ function Map({ place, offers }) {
   const mapRef = useRef(null);
   const map = useMap(mapRef, place);
 
-  const defaultCustomIcon = leaflet.icon({
-    iconUrl: MARKER_DEFAULT,
-    iconSize: [27, 39],
-    iconAnchor: [13, 39],
-  });
+  const defaultCustomIcon = leaflet.icon(DEFAULT_CUSTOM_ICON);
 
-  const currentCustomIcon = leaflet.icon({
-    iconUrl: MARKER_CURRENT,
-    iconSize: [27, 39],
-    iconAnchor: [13, 39],
-  });
+  const currentCustomIcon = leaflet.icon(CURRENT_CUSTOM_ICON);
 
   useEffect(() => {
     const markers = leaflet.layerGroup();

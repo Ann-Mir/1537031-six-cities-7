@@ -10,6 +10,7 @@ import {getCurrentOffers, getIsDataLoadedStatus} from '../../../store/data/selec
 import {loadOffers} from '../../../store/action';
 import Toast from '../../toast/toast';
 
+
 function MainPage() {
 
   const currentOffers = useSelector(getCurrentOffers);

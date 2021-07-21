@@ -14,7 +14,12 @@ import {
   updateOffer
 } from './action';
 import {AuthorizationStatus, APIRoute, AppRoute} from '../const';
-import {adaptCommentToClient, adaptOfferToClient, adaptUserToClient} from '../adapter/adapter';
+import {
+  adaptCommentToClient,
+  adaptOfferToClient,
+  adaptUserToClient
+} from '../adapter/adapter';
+
 
 export const fetchOffers = () => (dispatch, _getState, api) => (
   api.get(APIRoute.OFFERS)

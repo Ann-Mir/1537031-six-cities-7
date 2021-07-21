@@ -4,6 +4,7 @@ import {SortTypes} from '../../const';
 import SortingOption from '../sorting-option/sorting-option';
 import useOutsideClick from '../../hooks/use-outside-click';
 
+
 function SortingOptionsList({ onSortTypeClick, onSetIsSortOpen }) {
   const sortingOptions = Object.keys(SortTypes);
   const sortingRef = useRef(null);

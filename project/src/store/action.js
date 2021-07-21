@@ -1,5 +1,6 @@
 import {createAction} from '@reduxjs/toolkit';
 
+
 export const ActionType = {
   SET_CITY: 'cities/setCity',
   SET_SORT_TYPE: 'setSortType',
@@ -16,7 +17,6 @@ export const ActionType = {
   SET_IS_OFFER_LOADED: 'offers/setIsOfferLoaded',
   SET_ARE_REVIEWS_LOADED: 'offers/setAreReviewsLoaded',
   SET_ARE_LOADED_OFFERS_NEARBY: 'offers/setAreLoadedOffersNearby',
-  SET_HAS_POSTED_COMMENT: 'comments/setHasPostedComment',
   UPDATE_OFFER: 'offers/updateOffer',
   LOAD_FAVORITE_OFFERS: 'offers/loadFavoriteOffers',
   SET_ARE_FAVORITE_OFFERS_LOADED: 'offers/setAreFavoriteOffersLoaded',
@@ -79,10 +79,6 @@ export const setAreReviewsLoaded = createAction(ActionType.SET_ARE_REVIEWS_LOADE
 
 export const setAreLoadedOffersNearby = createAction(ActionType.SET_ARE_LOADED_OFFERS_NEARBY, (areLoaded) => ({
   payload: areLoaded,
-}));
-
-export const setHasPostedComment = createAction(ActionType.SET_HAS_POSTED_COMMENT, (hasPosted) => ({
-  payload: hasPosted,
 }));
 
 export const updateOffer = createAction(ActionType.UPDATE_OFFER, (offer) => ({

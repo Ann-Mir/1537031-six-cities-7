@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import { ToastMessages, DEFAULT_TIMEOUT } from '../../const';
 
+
 function Toast({message = ToastMessages.DEFAULT}) {
 
   const [isVisible, setVisible] = useState(true);

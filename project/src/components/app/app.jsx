@@ -42,7 +42,6 @@ function App() {
         <NotFoundPage />
       </Route>
     </Switch>
-
   );
 }
 
