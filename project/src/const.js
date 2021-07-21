@@ -105,6 +105,7 @@ export const ToastMessages = {
   DEFAULT: 'Something went wrong',
   OFFLINE: 'Connection is lost',
   REVIEW_ERROR: 'The review is not sent. Please try again',
+  LOGIN_ERROR: 'Something went wrong. Please try again',
 };
 
 export const DEFAULT_TIMEOUT = 10000;
