@@ -44,9 +44,11 @@ function PlaceCard({ offer, cardType }) {
       onMouseLeave={handleMouseLeave}
       data-testid="place-card"
     >
-      <div className={`place-card__mark ${isPremium ? '' : 'visually-hidden'}`}>
-        <span>Premium</span>
-      </div>
+      {isPremium && (
+        <div className="place-card__mark">
+          <span>Premium</span>
+        </div>
+      )}
       <div className={`${CARD_SETTINGS[cardType].IMAGE_WRAPPER_CLASS} place-card__image-wrapper`}>
         <Link to={{ pathname: generatePath(AppRoute.ROOM, { id })}}>
           <img
