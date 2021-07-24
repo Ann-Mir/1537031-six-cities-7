@@ -4,13 +4,19 @@ import PropTypes from 'prop-types';
 
 function PropertyOwner({ host }) {
   const { avatarUrl, isPro, name } = host;
+
+  const AvatarSizes = {
+    WIDTH: '54',
+    HEIGHT: '74',
+  };
+
   return (
     <div className="property__host-user user">
       <div className="property__avatar-wrapper property__avatar-wrapper--pro user__avatar-wrapper">
         <img
           className="property__avatar user__avatar"
           src={avatarUrl}
-          style={{width: '74', height: '74'}}
+          style={{width: AvatarSizes.WIDTH, height: AvatarSizes.HEIGHT}}
           alt="Host avatar"
         />
       </div>
