@@ -16,6 +16,11 @@ function ReviewsItem({ review }) {
   const {comment, date, rating, user} = review;
   const { avatarUrl, name} = user;
 
+  const AvatarSizes = {
+    WIDTH: '54',
+    HEIGHT: '54',
+  };
+
   const ratingWidth = getRating(rating);
 
   const dateTime = date.slice(FIRST_ELEMENT_INDEX, LAST_DATE_INDEX);
@@ -30,7 +35,7 @@ function ReviewsItem({ review }) {
           <img
             className="reviews__avatar user__avatar"
             src={avatarUrl}
-            style={{width: '54', height: '54'}}
+            style={{width: AvatarSizes.WIDTH, height: AvatarSizes.HEIGHT}}
             alt="Reviews avatar"
           />
         </div>

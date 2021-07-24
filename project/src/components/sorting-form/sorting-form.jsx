@@ -8,6 +8,11 @@ function SortingForm() {
 
   const activeSortType = useSelector(getActiveSortType);
 
+  const IconSizes = {
+    WIDTH: '7',
+    HEIGHT: '4',
+  };
+
   const [isSortOpen, setIsSortOpen] = useState(false);
 
   const handleSortTypeClick = () => {
@@ -23,7 +28,7 @@ function SortingForm() {
         onClick={handleSortTypeClick}
       >
         { activeSortType }
-        <svg className="places__sorting-arrow" style={{width: '7', height: '4'}}>
+        <svg className="places__sorting-arrow" style={{width: IconSizes.WIDTH, height: IconSizes.HEIGHT}}>
           <use xlinkHref="#icon-arrow-select"></use>
         </svg>
       </span>

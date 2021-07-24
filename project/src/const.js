@@ -80,16 +80,12 @@ export const DEFAULT_CITY = 'Paris';
 
 export const LOGIN_PAGE_CITY = 'Amsterdam';
 
-export const MAX_ROOMS_PER_PAGE = 4;
-
 export const SortTypes = {
   POPULAR: 'Popular',
   LOW: 'Price: low to high',
   HIGH: 'Price: high to low',
   TOP: 'Top rated first',
 };
-
-export const MAX_OFFERS_NEARBY_COUNT = 3;
 
 export const MAX_REVIEWS_COUNT = 10;
 
@@ -127,8 +123,6 @@ export const CURRENT_CUSTOM_ICON = {
   iconSize: [27, 39],
   iconAnchor: [13, 39],
 };
-
-export const SINGULAR_COUNT = 1;
 
 export const FIRST_ELEMENT_INDEX = 0;
 
